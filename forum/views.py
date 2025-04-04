@@ -11,4 +11,5 @@ def registrar_usuario(request):
             return redirect('login')  # ajuste conforme sua URL de login
     else:
         form = RegistroUsuarioForm()
-    return render(request, 'cadastro.html', {'form': form})
+    return render(request, 'forum/cadastro.html', {'form': form})
+
