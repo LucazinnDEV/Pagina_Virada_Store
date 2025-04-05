@@ -6,11 +6,17 @@ def registrar_usuario(request):
     if request.method == 'POST':
         form = RegistroUsuarioForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save(commit=False)
+            user.email = form.cleaned_data.get('email')
+            user.save()
             messages.success(request, 'Cadastro realizado com sucesso!')
-            return redirect('login')  # ajuste conforme sua URL de login
+            return redirect('home')
     else:
         form = RegistroUsuarioForm()
+<<<<<<< HEAD
+    return render(request, 'cadastro.html', {'form': form})
+    
+=======
     return render(request, 'forum/cadastro.html', {'form': form})
 
 
@@ -23,3 +29,7 @@ def categorias(request):
 def mais_vendidos(request):
     return render(request, 'forum/mais_vendidos.html')
 
+<<<<<<< HEAD
+=======
+>>>>>>> cfe045a5180d455fe49f3cd6af0466d27d7355c7
+>>>>>>> aa1d869fba86a8894fd54008d56838d273f3eb02
