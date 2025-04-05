@@ -5,3 +5,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('forum.urls')),  # conecta as urls do app forum
 ]
+

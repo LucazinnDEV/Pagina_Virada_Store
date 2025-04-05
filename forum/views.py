@@ -13,3 +13,7 @@ def registrar_usuario(request):
         form = RegistroUsuarioForm()
     return render(request, 'forum/cadastro.html', {'form': form})
 
+
+from django.shortcuts import render
+def home(request):
+    return render(request, 'forum/home.html')
