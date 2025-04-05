@@ -18,6 +18,7 @@ def registrar_usuario(request):
 from django.shortcuts import render
 def home(request):
     return render(request, 'forum/home.html')
+
 def categorias(request):
     return render(request, 'forum/categorias.html')
 
