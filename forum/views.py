@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import RegistroUsuarioForm
 from django.contrib import messages
+from .models import Livro
 
 def registrar_usuario(request):
     if request.method == 'POST':
@@ -24,3 +25,7 @@ def categorias(request):
 
 def mais_vendidos(request):
     return render(request, 'forum/mais_vendidos.html')
+
+def home(request) :
+    livros = Livro.objects.all()
+    return render(request, 'forum/home.html', {'livros' : livros})
