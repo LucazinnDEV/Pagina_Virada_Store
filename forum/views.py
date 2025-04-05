@@ -13,5 +13,9 @@ def registrar_usuario(request):
             return redirect('home')
     else:
         form = RegistroUsuarioForm()
-    return render(request, 'cadastro.html', {'form': form})
     
+    # Este return precisa estar dentro da função (e não fora dela)
+    return render(request, 'forum/cadastro.html', {'form': form})
+
+def home(request):
+    return render(request, 'forum/home.html')
