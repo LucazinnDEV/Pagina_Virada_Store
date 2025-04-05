@@ -1,21 +1,79 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
+    <meta charset="UTF-8">
     <title>Cadastro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: orange;
+        }
+        .form-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            max-width: 500px;
+            margin: 50px auto;
+        }
+        .form-title {
+            text-align: center;
+            color: #4b2e00;
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+        .btn-laranja {
+            background: linear-gradient(to right, orange, gold);
+            border: none;
+            color: white;
+            font-weight: bold;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        .btn-laranja:hover {
+            background: linear-gradient(to right, darkorange, goldenrod);
+        }
+        .termos {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #4b2e00;
+            margin-top: 20px;
+        }
+        .link-alterar {
+            color: orange;
+            display: block;
+            text-align: center;
+            margin: 15px 0;
+        }
+    </style>
 </head>
 <body>
-    <h2>Cadastro de Usuário</h2>
 
-    {% if messages %}
-        {% for message in messages %}
-            <p style="color: green">{{ message }}</p>
-        {% endfor %}
-    {% endif %}
-
-    <form method="post">
+<div class="form-container">
+    <h2 class="form-title">Digite seus dados</h2>
+    <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Cadastrar</button>
+        <div class="mb-3">{{ form.username.label_tag }} {{ form.username }}</div>
+        <div class="mb-3">{{ form.email.label_tag }} {{ form.email }}</div>
+        <div class="mb-3">{{ form.nome.label_tag }} {{ form.nome }}</div>
+        <div class="mb-3">{{ form.sobrenome.label_tag }} {{ form.sobrenome }}</div>
+        <div class="mb-3">{{ form.tipo_pessoa.label_tag }} {{ form.tipo_pessoa }}</div>
+        <div class="mb-3">{{ form.password1.label_tag }} {{ form.password1 }}</div>
+        <div class="mb-3">{{ form.password2.label_tag }} {{ form.password2 }}</div>
+        <div class="mb-3">{{ form.data_nascimento.label_tag }} {{ form.data_nascimento }}</div>
+        <div class="mb-3">{{ form.cpf.label_tag }} {{ form.cpf }}</div>
+        <div class="mb-3">{{ form.cep.label_tag }} {{ form.cep }}</div>
+        <div class="mb-3">{{ form.endereco.label_tag }} {{ form.endereco }}</div>
+        <div class="mb-3">{{ form.telefone.label_tag }} {{ form.telefone }}</div>
+
+        <a href="#" class="link-alterar">Alterar Mensalidade</a>
+        <div class="termos">Termos de Uso</div>
+        <div class="d-grid mt-4">
+            <button type="submit" class="btn btn-laranja btn-lg">Cadastre-se</button>
+        </div>
     </form>
+</div>
+
 </body>
 </html>

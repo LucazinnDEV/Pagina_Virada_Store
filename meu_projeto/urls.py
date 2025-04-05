@@ -5,7 +5,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('forum.urls')),
+    path('', include('forum.urls')),  # Inclui as rotas do app forum
 ]
 
 # SERVINDO ARQUIVOS DE MÍDIA NO DEV
