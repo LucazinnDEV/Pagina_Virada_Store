@@ -36,15 +36,26 @@
 
 <!-- DIV MAIS VENDIDOS -->
 <div class="container mt-4">
-    <h2 class="mb-4">Mais vendidos</h2>
+    <h2 class="mb-4">Livros em Destaque</h2>
     <div class="row row-cols-1 row-cols-md-3 g-4">
-
+        {% for livro in livros %}
         <div class="col">
             <div class="card h-100">
-                <img src="{% static 'img/livro1.jpg' %}" class="card-img-top" alt="Livro 1">
+                <img src="{{ livro.imagem.url }}" class="card-img-top" alt="{{ livro.titulo }}">
                 <div class="card-body">
-                    <h5 class="card-title">Título do Livro 1</h5>
-                    <p class="card-text">Descrição breve do livro ou autor.</p>
+                    <h5 class="card-title">{{ livro.titulo }}</h5>
+                    <p class="card-text">{{ livro.descricao }}</p>
+                    <a href="#" class="btn btn-primary">Ver mais</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col">
+            <div class="card h-100">
+                <img src="{{ livro.imagem.url }}" class="card-img-top" alt="{{ livro.titulo }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ livro.titulo }}</h5>
+                    <p class="card-text">{{ livro.descricao }}</p>
                     <a href="#" class="btn btn-primary">Ver mais</a>
                 </div>
             </div>
@@ -52,26 +63,15 @@
 
         <div class="col">
             <div class="card h-100">
-                <img src="{% static 'img/livro2.jpg' %}" class="card-img-top" alt="Livro 2">
+                <img src="{{ livro.imagem.url }}" class="card-img-top" alt="{{ livro.titulo }}">
                 <div class="card-body">
-                    <h5 class="card-title">Título do Livro 2</h5>
-                    <p class="card-text">Descrição breve do livro ou autor.</p>
+                    <h5 class="card-title">{{ livro.titulo }}</h5>
+                    <p class="card-text">{{ livro.descricao }}</p>
                     <a href="#" class="btn btn-primary">Ver mais</a>
                 </div>
             </div>
         </div>
-
-        <div class="col">
-            <div class="card h-100">
-                <img src="{% static 'img/livro3.jpg' %}" class="card-img-top" alt="Livro 3">
-                <div class="card-body">
-                    <h5 class="card-title">Título do Livro 3</h5>
-                    <p class="card-text">Descrição breve do livro ou autor.</p>
-                    <a href="#" class="btn btn-primary">Ver mais</a>
-                </div>
-            </div>
-        </div>
-
+        {% endfor %}
     </div>
 </div>
 
