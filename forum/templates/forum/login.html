@@ -8,6 +8,8 @@
     <style>
         body {
             background-color: orange;
+            min-height: 100vh; 
+            
         }
         .form-container {
             background-color: white;
@@ -39,6 +41,12 @@
             margin-top: 15px;
             color: orange;
         }
+        .main-content {
+            flex-grow: 1; 
+        }
+        footer {
+            margin-top: auto;    
+        }    
     </style>
 </head>
 <body>
@@ -63,6 +71,8 @@
     </form>
     <a href="{% url 'registrar' %}" class="link-cadastro">Não tem uma conta? Cadastre-se</a>
 </div>
+
+{% include "global/partials/footer.html" %}
 
 </body>
 </html>
