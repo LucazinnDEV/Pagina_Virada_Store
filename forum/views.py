@@ -59,17 +59,10 @@ def mais_vendidos(request):
     return render(request, 'forum/mais_vendidos.html')
 
 def adicionar_ao_carrinho(request, livro_id):
-    livro = get_object_or_404(Livro, id=livro_id)
-
     carrinho = request.session.get('carrinho', {})
-
-    if str(livro_id) in carrinho:
-        carrinho[str(livro_id)] += 1
-    else:
-        carrinho[str(livro_id)] = 1
-
+    carrinho[str(livro_id)] = carrinho.get(str(livro_id), 0) + 1
     request.session['carrinho'] = carrinho
-    messages.success(request, f'"{livro.titulo}" foi adicionado ao carrinho!')
+    messages.success(request, 'Livro adicionado ao carrinho!')
     return redirect('home')
 
 def carrinho(request):
@@ -78,14 +71,17 @@ def carrinho(request):
     total = 0
 
     for livro_id, quantidade in carrinho.items():
-        livro = Livro.objects.get(id=livro_id)
-        subtotal = livro.preco * quantidade
-        total += subtotal
-        livros.append({
-            'livro': livro,
-            'quantidade': quantidade,
-            'subtotal': subtotal,
-        })
+        try:
+            livro = Livro.objects.get(id=livro_id)
+            subtotal = livro.preco * quantidade
+            total += subtotal
+            livros.append({
+                'livro': livro,
+                'quantidade': quantidade,
+                'subtotal': subtotal,
+            })
+        except Livro.DoesNotExist:
+            continue
 
     return render(request, 'forum/carrinho.html', {
         'livros': livros,
