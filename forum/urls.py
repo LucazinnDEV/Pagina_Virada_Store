@@ -10,4 +10,9 @@ urlpatterns = [
     path('logout/', views.logout_usuario, name='logout'),
     path('adicionar-ao-carrinho/<int:livro_id>/', views.adicionar_ao_carrinho, name='adicionar_ao_carrinho'),
     path('carrinho/', views.carrinho, name='carrinho'),
+    path('adicionar-ao-carrinho/<int:livro_id>/', views.adicionar_ao_carrinho, name='adicionar_ao_carrinho'),
+    path('remover-do-carrinho/<int:livro_id>/', views.remover_do_carrinho, name='remover_do_carrinho'),
+    path('finalizar-compra/', views.finalizar_compra, name='finalizar_compra'),
+    path('carrinho/', views.carrinho, name='carrinho'),
+    path('remover-todos-do-carrinho/<int:livro_id>/', views.remover_todos_do_carrinho, name='remover_todos_do_carrinho'),
 ]
