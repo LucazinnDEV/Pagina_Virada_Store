@@ -45,7 +45,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item"><a class="nav-link active" href="{% url 'home' %}">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Categorias</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'categorias' %}">Categorias</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Mais Vendidos</a></li>
             </ul>
             
@@ -94,6 +94,11 @@
             </div>
             {% endfor %}
         </div>
+
+        <!-- Botão adicional para categorias -->
+        <div class="mt-5 text-center">
+            <a href="{% url 'categorias' %}" class="btn btn-primary">Ver Categorias de Livros</a>
+        </div>
     </div>
 </main>
 
@@ -110,7 +115,7 @@
                 <h5>Links Rápidos</h5>
                 <ul class="list-unstyled">
                     <li><a href="{% url 'home' %}" class="text-light text-decoration-none">Home</a></li>
-                    <li><a href="#" class="text-light text-decoration-none">Categorias</a></li>
+                    <li><a href="{% url 'categorias' %}" class="text-light text-decoration-none">Categorias</a></li>
                     <li><a href="#" class="text-light text-decoration-none">Mais Vendidos</a></li>
                     <li><a href="#" class="text-light text-decoration-none">Contato</a></li>
                 </ul>
