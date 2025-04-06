@@ -30,6 +30,15 @@
             padding: 20px 0;
             width: 100%;
         }
+
+        .fade-out {
+            opacity: 1;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .fade-out.hidden {
+            opacity: 0;
+        }
     </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
@@ -37,9 +46,11 @@
 {% if messages %}
   <div class="container mt-3">
     {% for message in messages %}
-      <div class="alert alert-success" role="alert">
-        {{ message }}
-      </div>
+      {% if message.tags == "success" %}
+        <div class="alert alert-success fade-out" role="alert">
+          {{ message }}
+        </div>
+      {% endif %}
     {% endfor %}
   </div>
 {% endif %}
@@ -153,5 +164,15 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Remove mensagens de sucesso após 5 segundos
+    setTimeout(function() {
+        document.querySelectorAll('.alert-success').forEach(function(el) {
+            el.classList.add('hidden'); // Aplica a classe de fade-out
+            setTimeout(() => el.remove(), 1000); // Remove do DOM após o fade-out
+        });
+    }, 5000);
+</script>
+
 </body>
 </html>
