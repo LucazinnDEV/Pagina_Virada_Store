@@ -51,7 +51,7 @@
 </head>
 <body>
 
-{% include "global/partials/navmenu.html" %} <!-- O include acessa a parte do código referente a nav bar a insere aqui-->
+{% include "global/partials/navmenu.html" %}
 
 <div class="form-container">
     <h2 class="form-title">Digite seus dados</h2>
@@ -65,13 +65,12 @@
                 <div class="col-sm-8">
                     {{ field }}
                     {% if field.errors %}
-                        <div class="text-danger">{{ field.errors }}</div>
+                        <div class="text-danger error-message">{{ field.errors }}</div>
                     {% endif %}
                 </div>
             </div>
         {% endfor %}
 
-        <a href="#" class="link-alterar">Alterar Mensalidade</a>
         <div class="termos">Termos de Uso</div>
         <div class="d-grid mt-4">
             <button type="submit" class="btn btn-laranja btn-lg">Cadastre-se</button>
@@ -80,6 +79,16 @@
 </div>
 
 {% include "global/partials/footer.html" %}
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        setTimeout(function() {
+            document.querySelectorAll('.error-message').forEach(function(el) {
+                el.style.display = 'none';
+            });
+        }, 5000);
+    });
+</script>
 
 </body>
 </html>
