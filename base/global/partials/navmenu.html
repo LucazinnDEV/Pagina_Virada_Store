@@ -1,0 +1,33 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'forum/img/LogoPVS.jpeg' %}" alt="Logo" height="40">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item"><a class="nav-link active" href="{% url 'home' %}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'categorias' %}">Categorias</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Mais Vendidos</a></li>
+            </ul>
+            
+            <form method="GET" action="{% url 'home' %}" class="d-flex me-3" role="search">
+                <input type="text" name="q" class="form-control me-2" placeholder="Buscar livros..." value="{{ request.GET.q }}" style="width: 650px;">
+                <button type="submit" class="btn btn-outline-light">Buscar</button>
+            </form>
+
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="#">Carrinho 🛒</a></li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
