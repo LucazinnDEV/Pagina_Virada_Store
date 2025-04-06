@@ -3,6 +3,17 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 class RegistroUsuarioForm(UserCreationForm):
+    TIPO_PESSOA_CHOICES = [
+        ('Física', 'Pessoa Física'),
+        ('Jurídica', 'Pessoa Jurídica'),
+    ]
+
+    tipo_pessoa = forms.ChoiceField(
+        choices=TIPO_PESSOA_CHOICES,
+        widget=forms.Select(attrs={'class': 'form-control'}),
+        required=True,
+    )
+
     email = forms.EmailField(
         required=True,
         widget=forms.EmailInput(attrs={'class': 'form-control'})
@@ -37,11 +48,10 @@ class RegistroUsuarioForm(UserCreationForm):
         max_length=15,
         widget=forms.TextInput(attrs={'class': 'form-control'})
     )
-
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2',
-                  'nome', 'sobrenome', 'data_nascimento',
+                  'tipo_pessoa', 'nome', 'sobrenome', 'data_nascimento',
                   'cpf', 'cep', 'endereco', 'telefone']
         widgets = {
             'username': forms.TextInput(attrs={'class': 'form-control'}),
