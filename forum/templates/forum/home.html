@@ -50,7 +50,7 @@
             </ul>
             
             <form method="GET" action="{% url 'home' %}" class="d-flex me-3" role="search">
-                <input type="text" name="q" class="form-control me-2" placeholder="Buscar livros..." value="{{ request.GET.q }}">
+                <input type="text" name="q" class="form-control me-2" placeholder="Buscar livros..." value="{{ request.GET.q }}" style="width: 650px;">
                 <button type="submit" class="btn btn-outline-light">Buscar</button>
             </form>
 
@@ -74,13 +74,6 @@
              class="img-fluid d-block mx-auto"
              style="max-height: 400px; object-fit: cover; width: 100%;">
     </div>
-</div>
-
-<div class="container mt-4">
-    <form method="GET" action="{% url 'home' %}" class="d-flex mb-4">
-        <input type="text" name="q" class="form-control me-2" placeholder="Buscar livros..." value="{{ request.GET.q }}">
-        <button type="submit" class="btn btn-outline-primary">Buscar</button>
-    </form>
 </div>
 
     <div class="container mt-4">
