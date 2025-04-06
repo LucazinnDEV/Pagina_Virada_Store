@@ -39,7 +39,7 @@ def login_usuario(request):
             return redirect('home')
         else:
             messages.error(request, 'Usuário ou senha incorretos.')
-    return render(request, 'login.html')
+    return render(request, 'forum/login.html')
 
 def logout_usuario(request):
     logout(request)
