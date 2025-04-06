@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import RegistroUsuarioForm
-from .models import Perfil, Livro
+from .models import Perfil, Livro, Categoria
 
 def registrar_usuario(request):
     if request.method == 'POST':
@@ -28,7 +28,6 @@ def registrar_usuario(request):
         form = RegistroUsuarioForm()
     return render(request, 'forum/cadastro.html', {'form': form})
 
-
 def login_usuario(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -37,11 +36,10 @@ def login_usuario(request):
         if user is not None:
             login(request, user)
             messages.success(request, 'Login realizado com sucesso!')
-            return redirect('home')  # Redirecionar para a página principal
+            return redirect('home')
         else:
             messages.error(request, 'Usuário ou senha incorretos.')
     return render(request, 'login.html')
-
 
 def logout_usuario(request):
     logout(request)
@@ -53,7 +51,8 @@ def home(request):
     return render(request, 'forum/home.html', {'livros': livros})
 
 def categorias(request):
-    return render(request, 'forum/categorias.html')
+    categorias = Categoria.objects.prefetch_related('livros').all()
+    return render(request, 'forum/categorias.html', {'categorias': categorias})
 
 def mais_vendidos(request):
     return render(request, 'forum/mais_vendidos.html')
