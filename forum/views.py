@@ -1,6 +1,8 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.contrib.auth.models import User
+from django.db import transaction
 from .forms import RegistroUsuarioForm
 from .models import Perfil, Livro, Categoria
 
@@ -9,30 +11,51 @@ def registrar_usuario(request):
     if request.method == 'POST':
         form = RegistroUsuarioForm(request.POST)
         if form.is_valid():
-            usuario = form.save()
-            Perfil.objects.create(
-                usuario=usuario,
-                nome=form.cleaned_data['nome'],
-                sobrenome=form.cleaned_data['sobrenome'],
-                tipo_pessoa=form.cleaned_data['tipo_pessoa'],
-                data_nascimento=form.cleaned_data['data_nascimento'],
-                cpf=form.cleaned_data['cpf'],
-                cep=form.cleaned_data['cep'],
-                endereco=form.cleaned_data['endereco'],
-                telefone=form.cleaned_data['telefone'],
-            )
+            if Perfil.objects.filter(cpf=form.cleaned_data['cpf']).exists():
+                messages.error(request, 'CPF já cadastrado.')
+                return render(request, 'forum/cadastro.html', {'form': form})
+
+            if Perfil.objects.filter(telefone=form.cleaned_data['telefone']).exists():
+                messages.error(request, 'Telefone já cadastrado.')
+                return render(request, 'forum/cadastro.html', {'form': form})
+
+            if User.objects.filter(username=form.cleaned_data['username']).exists():
+                messages.error(request, 'Usuário já cadastrado.')
+                return render(request, 'forum/cadastro.html', {'form': form})
+
+            with transaction.atomic():  
+                usuario = form.save()
+                Perfil.objects.create(
+                    usuario=usuario,
+                    nome=form.cleaned_data['nome'],
+                    sobrenome=form.cleaned_data['sobrenome'],
+                    tipo_pessoa=form.cleaned_data['tipo_pessoa'],
+                    data_nascimento=form.cleaned_data['data_nascimento'],
+                    cpf=form.cleaned_data['cpf'],
+                    cep=form.cleaned_data['cep'],
+                    endereco=form.cleaned_data['endereco'],
+                    telefone=form.cleaned_data['telefone'],
+                )
+
             messages.success(request, 'Cadastro realizado com sucesso! Faça login.')
             return redirect('login')
         else:
             messages.error(request, 'Erro ao cadastrar. Verifique os dados.')
+    
     else:
         form = RegistroUsuarioForm()
+    
     return render(request, 'forum/cadastro.html', {'form': form})
 
 def login_usuario(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        if not username or not password:
+            messages.error(request, 'Preencha todos os campos.')
+            return render(request, 'forum/login.html', {'username': username})
+
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
@@ -40,6 +63,8 @@ def login_usuario(request):
             return redirect('home')
         else:
             messages.error(request, 'Usuário ou senha incorretos.')
+            return render(request, 'forum/login.html', {'username': username})
+
     return render(request, 'forum/login.html')
 
 def logout_usuario(request):
@@ -57,13 +82,6 @@ def categorias(request):
 
 def mais_vendidos(request):
     return render(request, 'forum/mais_vendidos.html')
-
-def adicionar_ao_carrinho(request, livro_id):
-    carrinho = request.session.get('carrinho', {})
-    carrinho[str(livro_id)] = carrinho.get(str(livro_id), 0) + 1
-    request.session['carrinho'] = carrinho
-    messages.success(request, 'Livro adicionado ao carrinho!')
-    return redirect('home')
 
 def carrinho(request):
     carrinho = request.session.get('carrinho', {})
