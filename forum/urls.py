@@ -8,4 +8,6 @@ urlpatterns = [
     path('registrar/', views.registrar_usuario, name='registrar'),
     path('login/', views.login_usuario, name='login'),
     path('logout/', views.logout_usuario, name='logout'),
+    path('adicionar-ao-carrinho/<int:livro_id>/', views.adicionar_ao_carrinho, name='adicionar_ao_carrinho'),
+    path('carrinho/', views.carrinho, name='carrinho'),
 ]
