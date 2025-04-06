@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Meu Carrinho</h2>
+
+    {% if livros %}
+        <div class="row">
+            {% for item in livros %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="{{ item.livro.imagem.url }}" class="card-img-top" alt="{{ item.livro.titulo }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.livro.titulo }}</h5>
+                            <p class="card-text">Preço: R$ {{ item.livro.preco }}</p>
+                            <p class="card-text">Quantidade: {{ item.quantidade }}</p>
+                            <p class="card-text">Subtotal: R$ {{ item.subtotal }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <h4>Total: R$ {{ total }}</h4>
+    {% else %}
+        <p>Seu carrinho está vazio.</p>
+    {% endif %}
+</div>
+{% endblock %}

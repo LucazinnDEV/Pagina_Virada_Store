@@ -72,3 +72,22 @@ def adicionar_ao_carrinho(request, livro_id):
     messages.success(request, f'"{livro.titulo}" foi adicionado ao carrinho!')
     return redirect('home')
 
+def carrinho(request):
+    carrinho = request.session.get('carrinho', {})
+    livros = []
+    total = 0
+
+    for livro_id, quantidade in carrinho.items():
+        livro = Livro.objects.get(id=livro_id)
+        subtotal = livro.preco * quantidade
+        total += subtotal
+        livros.append({
+            'livro': livro,
+            'quantidade': quantidade,
+            'subtotal': subtotal,
+        })
+
+    return render(request, 'forum/carrinho.html', {
+        'livros': livros,
+        'total': total,
+    })
