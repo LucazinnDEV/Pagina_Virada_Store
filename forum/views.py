@@ -1,9 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import RegistroUsuarioForm
 from .models import Perfil, Livro, Categoria
-from django.shortcuts import get_object_or_404
+
 
 def registrar_usuario(request):
     if request.method == 'POST':
@@ -87,3 +87,40 @@ def carrinho(request):
         'livros': livros,
         'total': total,
     })
+
+def adicionar_ao_carrinho(request, livro_id):
+    carrinho = request.session.get('carrinho', {})
+    carrinho[str(livro_id)] = carrinho.get(str(livro_id), 0) + 1
+    request.session['carrinho'] = carrinho
+    messages.success(request, 'Livro adicionado ao carrinho.')
+    return redirect('carrinho')
+
+def remover_do_carrinho(request, livro_id):
+    carrinho = request.session.get('carrinho', {})
+
+    livro_id_str = str(livro_id)
+    if livro_id_str in carrinho:
+        if carrinho[livro_id_str] > 1:
+            carrinho[livro_id_str] -= 1
+        else:
+            del carrinho[livro_id_str]
+
+        request.session['carrinho'] = carrinho
+        messages.success(request, 'Livro removido do carrinho.')
+
+    return redirect('carrinho')
+
+def remover_todos_do_carrinho(request, livro_id):
+    carrinho = request.session.get('carrinho', {})
+
+    if str(livro_id) in carrinho:
+        del carrinho[str(livro_id)]
+        request.session['carrinho'] = carrinho
+        messages.success(request, "Livro removido completamente do carrinho.")
+
+    return redirect('carrinho')
+
+def finalizar_compra(request):
+    request.session['carrinho'] = {}
+    messages.success(request, 'Compra finalizada com sucesso! Obrigado pela preferência.')
+    return redirect('carrinho')
