@@ -23,6 +23,7 @@ class Perfil(models.Model):
 
 class Categoria(models.Model):
     nome = models.CharField(max_length=100)
+    imagem = models.URLField(blank=True)  # Campo para imagem da categoria
 
     def __str__(self):
         return self.nome
@@ -37,8 +38,8 @@ class Livro(models.Model):
         Categoria,
         on_delete=models.CASCADE,
         related_name='livros',
-        null=True,    # permite valor nulo no banco
-        blank=True    # permite formulário em branco
+        null=True,
+        blank=True
     )
 
     def __str__(self):
