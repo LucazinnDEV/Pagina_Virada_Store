@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import RegistroUsuarioForm
-from .models import Perfil
+from .models import Perfil, Livro
 
 def registrar_usuario(request):
     if request.method == 'POST':
@@ -49,7 +49,8 @@ def logout_usuario(request):
     return redirect('home')
 
 def home(request):
-    return render(request, 'forum/home.html')
+    livros = Livro.objects.all()
+    return render(request, 'forum/home.html', {'livros': livros})
 
 def categorias(request):
     return render(request, 'forum/categorias.html')
