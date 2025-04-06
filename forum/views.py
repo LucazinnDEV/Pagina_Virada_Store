@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import RegistroUsuarioForm
 from .models import Perfil, Livro, Categoria
+from django.shortcuts import get_object_or_404
 
 def registrar_usuario(request):
     if request.method == 'POST':
@@ -56,3 +57,18 @@ def categorias(request):
 
 def mais_vendidos(request):
     return render(request, 'forum/mais_vendidos.html')
+
+def adicionar_ao_carrinho(request, livro_id):
+    livro = get_object_or_404(Livro, id=livro_id)
+
+    carrinho = request.session.get('carrinho', {})
+
+    if str(livro_id) in carrinho:
+        carrinho[str(livro_id)] += 1
+    else:
+        carrinho[str(livro_id)] = 1
+
+    request.session['carrinho'] = carrinho
+    messages.success(request, f'"{livro.titulo}" foi adicionado ao carrinho!')
+    return redirect('home')
+
