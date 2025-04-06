@@ -1,28 +1,21 @@
-{% extends 'base.html' %}
+{% extends 'forum/home.html' %}
 
 {% block content %}
 <div class="container mt-5">
-    <h2 class="mb-4">Meu Carrinho</h2>
+    <h2>🛒 Meu Carrinho</h2>
 
     {% if livros %}
-        <div class="row">
+        <ul class="list-group my-4">
             {% for item in livros %}
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <img src="{{ item.livro.imagem.url }}" class="card-img-top" alt="{{ item.livro.titulo }}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ item.livro.titulo }}</h5>
-                            <p class="card-text">Preço: R$ {{ item.livro.preco }}</p>
-                            <p class="card-text">Quantidade: {{ item.quantidade }}</p>
-                            <p class="card-text">Subtotal: R$ {{ item.subtotal }}</p>
-                        </div>
-                    </div>
-                </div>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ item.livro.titulo }} (x{{ item.quantidade }})
+                    <span>Subtotal: R$ {{ item.subtotal }}</span>
+                </li>
             {% endfor %}
-        </div>
-        <h4>Total: R$ {{ total }}</h4>
+        </ul>
+        <h4 class="text-end">Total: <strong>R$ {{ total }}</strong></h4>
     {% else %}
-        <p>Seu carrinho está vazio.</p>
+        <p class="mt-4">Seu carrinho está vazio.</p>
     {% endif %}
 </div>
 {% endblock %}
