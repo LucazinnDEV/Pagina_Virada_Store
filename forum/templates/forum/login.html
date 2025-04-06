@@ -9,6 +9,8 @@
         body {
             background-color: orange;
             min-height: 100vh; 
+            display:flex;
+            flex-direction: column;
             
         }
         .form-container {
@@ -53,7 +55,7 @@
 
 {% include "global/partials/navmenu.html" %} <!-- O include acessa a parte do código referente a nav bar a insere aqui-->
 
-<div class="form-container">
+<div class="form-container main-content">
     <h2 class="form-title">Faça login</h2>
     <form method="POST">
         {% csrf_token %}
