@@ -2,20 +2,44 @@
 
 {% block content %}
 <div class="container mt-5">
-    <h2>🛒 Meu Carrinho</h2>
+    <h2 class="mb-4">🛒 Meu Carrinho</h2>
 
     {% if livros %}
-        <ul class="list-group my-4">
-            {% for item in livros %}
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    {{ item.livro.titulo }} (x{{ item.quantidade }})
-                    <span>Subtotal: R$ {{ item.subtotal }}</span>
-                </li>
-            {% endfor %}
-        </ul>
-        <h4 class="text-end">Total: <strong>R$ {{ total }}</strong></h4>
+        <div class="table-responsive">
+            <table class="table align-middle text-center">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Livro</th>
+                        <th>Preço</th>
+                        <th>Quantidade</th>
+                        <th>Subtotal</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in livros %}
+                    <tr>
+                        <td>{{ item.livro.titulo }}</td>
+                        <td>R$ {{ item.livro.preco }}</td>
+                        <td>{{ item.quantidade }}</td>
+                        <td>R$ {{ item.subtotal }}</td>
+                        <td>
+                            <a href="{% url 'adicionar_ao_carrinho' item.livro.id %}" class="btn btn-success btn-sm">+</a>
+                            <a href="{% url 'remover_do_carrinho' item.livro.id %}" class="btn btn-warning btn-sm">-</a>
+                            <a href="{% url 'remover_todos_do_carrinho' item.livro.id %}" class="btn btn-danger btn-sm">Remover tudo</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="text-end">
+            <h4>Total: <strong>R$ {{ total }}</strong></h4>
+            <a href="{% url 'finalizar_compra' %}" class="btn btn-primary btn-lg mt-3">Finalizar Compra</a>
+        </div>
     {% else %}
-        <p class="mt-4">Seu carrinho está vazio.</p>
+        <p class="alert alert-info">Seu carrinho está vazio.</p>
     {% endif %}
 </div>
 {% endblock %}
