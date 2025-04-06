@@ -88,7 +88,9 @@
                         <h5 class="card-title">{{ livro.titulo }}</h5>
                         <p class="card-text">{{ livro.descricao }}</p>
                         <p class="text-success fw-bold">R$ {{ livro.preco }}</p>
-                        <a href="#" class="btn btn-primary">Adicionar ao Carrinho</a>
+                        <a href="{% url 'adicionar_ao_carrinho' livro.id %}" class="btn btn-primary mt-2">
+                            Adicionar ao Carrinho
+                        </a>
                     </div>
                 </div>
             </div>
