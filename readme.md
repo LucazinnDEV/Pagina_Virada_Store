@@ -17,8 +17,8 @@
  * - Figma : https://www.figma.com/design/aDKjwqFzzYOgslpmmFgf3w/Untitled?node-id=0-1&t=petcbihtWxGSNXbQ-1
    - Vídeo : https://youtu.be/muRVmqQawBw
    - Docs com as histórias: https://docs.google.com/document/d/1qxWeY8sgxpPxejGPDY0ZJitrgwIRGgKHSkECFL7OSgg/edit?usp=sharing
-   - Jira: https://hugodiego898-1740087993468.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog?atlOrigin=eyJpIjoiYTkwYTZkMDRhZGZmNDJkNmE2OTY0MDQ3YWY2NjE5ODAiLCJwIjoiaiJ9
+   - Jira: https://paginaviradastore.atlassian.net/jira/software/projects/SCRUM/summary
  ## Print do Jira
 
- ![quadro](quadroJira.png)
- ![backlog](backlog.png)
+ ![quadro](./printJira/Sprint1.png)
+ ![backlog](./printJira/backlog.png)
