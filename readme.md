@@ -47,7 +47,18 @@
 ![Sprint Done](./prints/entrega2_sprint1Done.png)
 ![Backlog](./prints/entrega2_backlog.png)
 ![Issues/Tracker](./prints/entrega2_issues.png)
+#### 💬 Relato Programação em Par
+Optamos por não utilizar o modelo de programação em par em nosso projeto, principalmente devido à dificuldade de conciliar os horários dos integrantes do grupo. Muitas vezes, não era possível reunir todos ao mesmo tempo, o que tornava inviável manter sessões contínuas de codificação conjunta.
 
-### 🚀 Entrega 3
+Em vez disso, adotamos uma abordagem mais flexível: realizamos reuniões no Discord com os membros disponíveis no momento para discutir o andamento do projeto e definir os próximos passos. A partir dessas conversas, cada integrante ficou responsável por desenvolver partes específicas do sistema, contribuindo de forma colaborativa, ainda que em momentos diferentes.
 
-### 🚀 Entrega 4
+Essa estratégia nos permitiu manter o ritmo de trabalho, respeitar os prazos e garantir a qualidade do projeto, mesmo sem seguir o modelo tradicional de programação em par.
+
+### 🚧 Entrega 3
+*(em andamento)*
+
+### 🚧 Entrega 4
+*(em andamento)*
+
+## 💡 Observações
+> Este projeto é parte da disciplina de Fundamentos de Desenvolvimento de Software (FDS) – 2025.1.
