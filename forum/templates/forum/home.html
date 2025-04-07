@@ -129,8 +129,9 @@
             </div>            
             <img src="{{ livro.imagem.url }}" class="card-img-top" alt="{{ livro.titulo }}" style="height: 200px; object-fit: cover;">
             <div class="card-body text-center">
-                <h6 class="card-title">{{ livro.titulo }}</h6>
-            </div>
+                <h6 class="card-title mb-1">{{ livro.titulo }}</h6>
+                <p class="text-success fw-bold">R$ {{ livro.preco }}</p>
+            </div>            
         </div>
     </div>
     {% endfor %}
@@ -150,7 +151,8 @@
             </div>            
             <img src="{{ livro.imagem.url }}" class="card-img-top" alt="{{ livro.titulo }}" style="height: 200px; object-fit: cover;">
             <div class="card-body text-center">
-                <h6 class="card-title">{{ livro.titulo }}</h6>
+                <h6 class="card-title mb-1">{{ livro.titulo }}</h6>
+                <p class="text-success fw-bold">R$ {{ livro.preco }}</p>
             </div>
         </div>
     </div>
