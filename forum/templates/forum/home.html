@@ -39,6 +39,21 @@
         .fade-out.hidden {
             opacity: 0;
         }
+        
+        .ranking-flag {
+            background-color: #fe8d29;
+            color: white;
+            font-weight: bold;
+            width: 36px;
+            height: 50px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 82%, 0 100%);
+        }
+        
     </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
@@ -103,24 +118,48 @@
 {% block content %}
 <main class="flex-grow-1">
     <div class="container mt-4">
-        <h2 class="mb-4">Livros em Destaque</h2>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            {% for livro in livros %}
-            <div class="col">
-                <div class="card h-100">
-                    <img src="{{ livro.imagem.url }}" class="card-img-top" alt="{{ livro.titulo }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ livro.titulo }}</h5>
-                        <p class="card-text">{{ livro.descricao }}</p>
-                        <p class="text-success fw-bold">R$ {{ livro.preco }}</p>
-                        <a href="{% url 'adicionar_ao_carrinho' livro.id %}" class="btn btn-primary mt-2">
-                            Adicionar ao Carrinho
-                        </a>
-                    </div>
-                </div>
+<!-- MAIS VENDIDOS -->
+<h2 class="mb-4">Mais Vendidos &gt;</h2>
+<div class="row row-cols-2 row-cols-md-5 g-3 mb-4">
+    {% for livro in mais_vendidos|slice:":10" %}
+    <div class="col">
+        <div class="card h-100 position-relative">
+            <div class="position-absolute top-0 start-0" style="z-index: 1;">
+                <div class="ranking-flag">#{{ forloop.counter }}</div>
+            </div>            
+            <img src="{{ livro.imagem.url }}" class="card-img-top" alt="{{ livro.titulo }}" style="height: 200px; object-fit: cover;">
+            <div class="card-body text-center">
+                <h6 class="card-title">{{ livro.titulo }}</h6>
             </div>
-            {% endfor %}
         </div>
+    </div>
+    {% endfor %}
+</div>
+<div class="text-center mb-5">
+    <a href="{% url 'mais_vendidos' %}" class="text-primary fw-bold">Ver mais &gt;</a>
+</div>
+
+<!-- RECOMENDAÇÕES -->
+<h2 class="mb-4">Recomendações &gt;</h2>
+<div class="row row-cols-2 row-cols-md-5 g-3 mb-4">
+    {% for livro in recomendados|slice:":10" %}
+    <div class="col">
+        <div class="card h-100 position-relative">
+            <div class="position-absolute top-0 start-0" style="z-index: 1;">
+                <div class="ranking-flag">#{{ forloop.counter }}</div>
+            </div>            
+            <img src="{{ livro.imagem.url }}" class="card-img-top" alt="{{ livro.titulo }}" style="height: 200px; object-fit: cover;">
+            <div class="card-body text-center">
+                <h6 class="card-title">{{ livro.titulo }}</h6>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div class="text-center mb-5">
+    <a href="{% url 'recomendados' %}" class="text-primary fw-bold">Ver mais &gt;</a>
+</div>
+
 
         <div class="mt-5 text-center">
             <a href="{% url 'categorias' %}" class="btn btn-primary">Ver Categorias de Livros</a>

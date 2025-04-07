@@ -74,14 +74,26 @@ def logout_usuario(request):
 
 def home(request):
     livros = Livro.objects.all()
-    return render(request, 'forum/home.html', {'livros': livros})
+
+    # Ordena por quantidade de vendas (campo fictício que você deve ter no modelo)
+    mais_vendidos = Livro.objects.order_by('-vendas')[:10]
+
+    # Recomendados — aqui você pode usar um campo booleano ou lógica personalizada
+    recomendados = Livro.objects.filter(recomendado=True)[:10]
+
+    return render(request, 'forum/home.html', {
+        'livros': livros,
+        'mais_vendidos': mais_vendidos,
+        'recomendados': recomendados,
+    })
 
 def categorias(request):
     categorias = Categoria.objects.prefetch_related('livros').all()
     return render(request, 'forum/categorias.html', {'categorias': categorias})
 
 def mais_vendidos(request):
-    return render(request, 'forum/mais_vendidos.html')
+    livros = Livro.objects.order_by('-vendas')[:10]
+    return render(request, 'forum/mais_vendidos.html', {'livros': livros})
 
 def carrinho(request):
     carrinho = request.session.get('carrinho', {})
@@ -142,3 +154,11 @@ def finalizar_compra(request):
     request.session['carrinho'] = {}
     messages.success(request, 'Compra finalizada com sucesso! Obrigado pela preferência.')
     return redirect('carrinho')
+
+def ver_mais_vendidos(request):
+    mais_vendidos = Livro.objects.order_by('-vendas')
+    return render(request, 'forum/ver_mais_vendidos.html', {'livros': mais_vendidos})
+
+def ver_recomendados(request):
+    recomendados = Livro.objects.filter(recomendado=True)
+    return render(request, 'forum/ver_recomendados.html', {'livros': recomendados})
