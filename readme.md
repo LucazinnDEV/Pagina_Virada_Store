@@ -21,14 +21,18 @@
 - Inclui informações como título, autor, descrição e preço.
 - Geração automática de identificação para cada livro.
 
-## 👥 Equipe
+## 👥 Equipe de Desenvolvimento
 
-- **Guilherme Rapela Medeiros** - grm2@cesar.school
-- **Hugo Diêgo Da Silva Arruda** - hdsa@cesar.school
-- **João Guilherme Almeida** - jgbof@cesar.school
-- **José Vitor Gomes Veloso** - jvgv@cesar.school
-- **Lucas Samuel Pereira Alves** - lspa@cesar.school
-- **Rafael Lyra Costa** - rlc3@cesar.school
+| Nome                         | E-mail                         |
+|-----------------------------|--------------------------------|
+| Guilherme Rapela Medeiros   | grm2@cesar.school              |
+| Hugo Diêgo Da Silva Arruda  | hdsa@cesar.school              |
+| João Guilherme Almeida      | jgbof@cesar.school             |
+| José Vitor Gomes Veloso     | jvgv@cesar.school              |
+| Lucas Samuel Pereira Alves  | lspa@cesar.school              |
+| Rafael Lyra Costa           | rlc3@cesar.school              |
+
+---
 
 ## 🔗 Links do Projeto
 
