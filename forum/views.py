@@ -154,11 +154,3 @@ def finalizar_compra(request):
     request.session['carrinho'] = {}
     messages.success(request, 'Compra finalizada com sucesso! Obrigado pela preferência.')
     return redirect('carrinho')
-
-def ver_mais_vendidos(request):
-    mais_vendidos = Livro.objects.order_by('-vendas')
-    return render(request, 'forum/ver_mais_vendidos.html', {'livros': mais_vendidos})
-
-def ver_recomendados(request):
-    recomendados = Livro.objects.filter(recomendado=True)
-    return render(request, 'forum/ver_recomendados.html', {'livros': recomendados})
