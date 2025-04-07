@@ -20,8 +20,8 @@
    - Jira: https://paginaviradastore.atlassian.net/jira/software/projects/SCRUM/summary
  ## Print do Jira
 
- ![quadro](./printJira/Sprint1.png)
- ![backlog](./printJira/backlog.png)
+ ![quadro](./prints/Sprint1.png)
+ ![backlog](./prints/backlog.png)
 
  ## Print issues/tracker
 
