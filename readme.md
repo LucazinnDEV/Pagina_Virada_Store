@@ -22,3 +22,7 @@
 
  ![quadro](./printJira/Sprint1.png)
  ![backlog](./printJira/backlog.png)
+
+ ## Print issues/tracker
+
+ ![quadro](./prints/issuesTracker.png)
