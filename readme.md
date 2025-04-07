@@ -27,7 +27,7 @@
 |-----------------------------|--------------------------------|
 | Guilherme Rapela Medeiros   | grm2@cesar.school              |
 | Hugo Diêgo Da Silva Arruda  | hdsa@cesar.school              |
-| João Guilherme Almeida      | jgbof@cesar.school             |
+| João Guilherme Omena        | jgbof@cesar.school             |
 | José Vitor Gomes Veloso     | jvgv@cesar.school              |
 | Lucas Samuel Pereira Alves  | lspa@cesar.school              |
 | Rafael Lyra Costa           | rlc3@cesar.school              |
