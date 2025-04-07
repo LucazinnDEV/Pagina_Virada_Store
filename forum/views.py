@@ -154,3 +154,6 @@ def finalizar_compra(request):
     request.session['carrinho'] = {}
     messages.success(request, 'Compra finalizada com sucesso! Obrigado pela preferência.')
     return redirect('carrinho')
+
+def ver_recomendados(request):
+    return render(request, 'recomendados.html')
