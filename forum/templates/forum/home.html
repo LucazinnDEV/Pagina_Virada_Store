@@ -131,7 +131,12 @@
             <div class="card-body text-center">
                 <h6 class="card-title mb-1">{{ livro.titulo }}</h6>
                 <p class="text-success fw-bold">R$ {{ livro.preco }}</p>
-            </div>            
+                <form method="POST" action="{% url 'adicionar_ao_carrinho' livro.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-sm btn-outline-primary mt-2">Adicionar ao Carrinho</button>
+                </form>
+            </div>
+                        
         </div>
     </div>
     {% endfor %}
@@ -153,7 +158,12 @@
             <div class="card-body text-center">
                 <h6 class="card-title mb-1">{{ livro.titulo }}</h6>
                 <p class="text-success fw-bold">R$ {{ livro.preco }}</p>
+                <form method="POST" action="{% url 'adicionar_ao_carrinho' livro.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-sm btn-outline-primary mt-2">Adicionar ao Carrinho</button>
+                </form>
             </div>
+            
         </div>
     </div>
     {% endfor %}
