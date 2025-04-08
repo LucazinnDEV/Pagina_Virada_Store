@@ -38,8 +38,18 @@
             <h4>Total: <strong>R$ {{ total }}</strong></h4>
             <a href="{% url 'finalizar_compra' %}" class="btn btn-primary btn-lg mt-3">Finalizar Compra</a>
         </div>
+
+        <div class="text-start mt-3">
+            <a href="{% url 'home' %}" class="btn btn-outline-secondary">← Voltar para a Home</a>
+        </div>
+
     {% else %}
         <p class="alert alert-info">Seu carrinho está vazio.</p>
+
+        <div class="text-start mt-3">
+            <a href="{% url 'home' %}" class="btn btn-outline-secondary">← Voltar para a Home</a>
+        </div>
+        
     {% endif %}
 </div>
 {% endblock %}
