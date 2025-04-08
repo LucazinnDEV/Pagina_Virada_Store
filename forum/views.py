@@ -73,19 +73,19 @@ def logout_usuario(request):
     return redirect('home')
 
 def home(request):
+    # Todos os livros
     livros = Livro.objects.all()
-
-    # Ordena por quantidade de vendas (campo fictício que você deve ter no modelo)
+    # Top 10 mais vendidos
     mais_vendidos = Livro.objects.order_by('-vendas')[:10]
-
-    # Recomendados — aqui você pode usar um campo booleano ou lógica personalizada
+    # Top 10 recomendados (com base no campo booleano)
     recomendados = Livro.objects.filter(recomendado=True)[:10]
-
-    return render(request, 'forum/home.html', {
+    context = {
         'livros': livros,
         'mais_vendidos': mais_vendidos,
         'recomendados': recomendados,
-    })
+    }
+    return render(request, 'forum/home.html', context)
+
 
 def categorias(request):
     categorias = Categoria.objects.prefetch_related('livros').all()

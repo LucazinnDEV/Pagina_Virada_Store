@@ -27,7 +27,7 @@
 |-----------------------------|--------------------------------|
 | Guilherme Rapela Medeiros   | grm2@cesar.school              |
 | Hugo Diêgo Da Silva Arruda  | hdsa@cesar.school              |
-| João Guilherme Almeida      | jgbof@cesar.school             |
+| João Guilherme Omena        | jgbof@cesar.school             |
 | José Vitor Gomes Veloso     | jvgv@cesar.school              |
 | Lucas Samuel Pereira Alves  | lspa@cesar.school              |
 | Rafael Lyra Costa           | rlc3@cesar.school              |
@@ -52,7 +52,9 @@
 ![Backlog](./prints/entrega2_backlog.png)
 ![Issues/Tracker](./prints/entrega2_issues.png)
 #### 💬 Relato Programação em Par
-Optamos por não utilizar o modelo de programação em par em nosso projeto, principalmente devido à dificuldade de conciliar os horários dos integrantes do grupo. Muitas vezes, não era possível reunir todos ao mesmo tempo, o que tornava inviável manter sessões contínuas de codificação conjunta.
+Tentamos utilizar o metodo de programação em par, porém, com resultados abaixo da expectativa e que não agregaram suficientemente para com o projeto. 
+
+Dessa forma, optamos por não utilizar o modelo de programação em par em nosso projeto, principalmente devido à dificuldade de conciliar os horários dos integrantes do grupo. Muitas vezes, não era possível reunir todos ao mesmo tempo, o que tornava inviável manter sessões contínuas de codificação conjunta.
 
 Em vez disso, adotamos uma abordagem mais flexível: realizamos reuniões no Discord com os membros disponíveis no momento para discutir o andamento do projeto e definir os próximos passos. A partir dessas conversas, cada integrante ficou responsável por desenvolver partes específicas do sistema, contribuindo de forma colaborativa, ainda que em momentos diferentes.
 

@@ -129,8 +129,14 @@
             </div>            
             <img src="{{ livro.imagem.url }}" class="card-img-top" alt="{{ livro.titulo }}" style="height: 200px; object-fit: cover;">
             <div class="card-body text-center">
-                <h6 class="card-title">{{ livro.titulo }}</h6>
+                <h6 class="card-title mb-1">{{ livro.titulo }}</h6>
+                <p class="text-success fw-bold">R$ {{ livro.preco }}</p>
+                <form method="POST" action="{% url 'adicionar_ao_carrinho' livro.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-sm btn-outline-primary mt-2">Adicionar ao Carrinho</button>
+                </form>
             </div>
+                        
         </div>
     </div>
     {% endfor %}
@@ -150,8 +156,14 @@
             </div>            
             <img src="{{ livro.imagem.url }}" class="card-img-top" alt="{{ livro.titulo }}" style="height: 200px; object-fit: cover;">
             <div class="card-body text-center">
-                <h6 class="card-title">{{ livro.titulo }}</h6>
+                <h6 class="card-title mb-1">{{ livro.titulo }}</h6>
+                <p class="text-success fw-bold">R$ {{ livro.preco }}</p>
+                <form method="POST" action="{% url 'adicionar_ao_carrinho' livro.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-sm btn-outline-primary mt-2">Adicionar ao Carrinho</button>
+                </form>
             </div>
+            
         </div>
     </div>
     {% endfor %}
