@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -157,3 +157,7 @@ def finalizar_compra(request):
 
 def ver_recomendados(request):
     return render(request, 'recomendados.html')
+
+def detalhes_livro(request, livro_id):
+    livro = get_object_or_404(Livro, id=livro_id)
+    return render(request, 'forum/detalhes_livro.html', {'livro': livro})

@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ livro.titulo }}</title>
+    
+</head>
+<body>
+
+{% include "global/partials/navmenu.html" %}
+
+    <h1>{{ livro.titulo }}</h1>
+    <p><strong>Autor:</strong> {{ livro.autor }}</p>
+    <p><strong>Data de publicação:</strong> {{ livro.data_publicacao }}</p>
+    <p><strong>Preço:</strong> R$ {{ livro.preco }}</p>
+    <p><strong>Descrição:</strong> {{ livro.descricao }}</p>
+    <img src="{{ livro.imagem.url }}" alt="{{ livro.titulo }}">
+
+    <br><br>
+    <a href="{% url 'home' %}">Voltar para a página inicial</a>
+
+{% include "global/partials/footer.html" %}
+
+</body>
+</html>
