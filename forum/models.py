@@ -30,11 +30,7 @@ class Categoria(models.Model):
 
 class Livro(models.Model):
     titulo = models.CharField(max_length=200)
-    imagem = models.ImageField(
-        upload_to='livros/',
-        validators=[FileExtensionValidator(['jpg', 'png', 'jpeg'])],
-        blank=True, null=True
-    )
+    imagem = models.URLField()
     autor = models.CharField(max_length=100)
     preco = models.DecimalField(max_digits=6, decimal_places=2)
     vendas = models.PositiveIntegerField(default=0)

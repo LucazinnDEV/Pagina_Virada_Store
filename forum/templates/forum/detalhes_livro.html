@@ -18,6 +18,7 @@
         .main-content {
             flex: 1;
         }
+        
     </style>
 </head>
 <body>
@@ -26,7 +27,7 @@
 
     <div class="main-content container py-4">
         <h1>{{ livro.titulo }}</h1>
-        <img src="{{ livro.imagem.url }}" alt="{{ livro.titulo }}" class="img-fluid">
+        <img src="{{ livro.imagem }}" alt="{{ livro.titulo }}" class="img-fluid">
         <p><strong>Autor:</strong> {{ livro.autor }}</p>
         <p><strong>Data de publicação:</strong> {{ livro.data_publicacao }}</p>
         <p><strong>Preço:</strong> R$ {{ livro.preco }}</p>
