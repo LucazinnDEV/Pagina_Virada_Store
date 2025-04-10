@@ -5,23 +5,39 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ livro.titulo }}</title>
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        .main-content {
+            flex: 1;
+        }
+    </style>
 </head>
 <body>
 
-{% include "global/partials/navmenu.html" %}
+    {% include "global/partials/navmenu.html" %}
 
-    <h1>{{ livro.titulo }}</h1>
-    <p><strong>Autor:</strong> {{ livro.autor }}</p>
-    <p><strong>Data de publicação:</strong> {{ livro.data_publicacao }}</p>
-    <p><strong>Preço:</strong> R$ {{ livro.preco }}</p>
-    <p><strong>Descrição:</strong> {{ livro.descricao }}</p>
-    <img src="{{ livro.imagem.url }}" alt="{{ livro.titulo }}">
+    <div class="main-content container py-4">
+        <h1>{{ livro.titulo }}</h1>
+        <img src="{{ livro.imagem.url }}" alt="{{ livro.titulo }}" class="img-fluid">
+        <p><strong>Autor:</strong> {{ livro.autor }}</p>
+        <p><strong>Data de publicação:</strong> {{ livro.data_publicacao }}</p>
+        <p><strong>Preço:</strong> R$ {{ livro.preco }}</p>
+        <p><strong>Descrição:</strong> {{ livro.descricao }}</p>
+        
 
-    <br><br>
-    <a href="{% url 'home' %}">Voltar para a página inicial</a>
+        <br><br>
+        <a href="{% url 'home' %}">Voltar para a página inicial</a>
+    </div>
 
-{% include "global/partials/footer.html" %}
+    {% include "global/partials/footer.html" %}
 
 </body>
 </html>
