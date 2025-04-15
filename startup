@@ -1,0 +1,1 @@
+gunicorn nome_do_projeto.wsgi --bind=0.0.0.0 --timeout 600
