@@ -21,27 +21,27 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install -r meu_projeto/requirements.txt
+        run: pip install -r Projeto_django/requirements.txt
 
       - name: Collect static files
         run: |
-          cd meu_projeto
+          cd Projeto_django
           python manage.py collectstatic --noinput
           cd ..
 
       - name: Clean testing files
         run: |
-          cd meu_projeto
+          cd Projeto_django
           rm -f db.sqlite3
           rm -f .env
           cd ..
 
       - name: Zip artifact for deployment
         run: |
-          cd meu_projeto
+          cd Projeto_django
           zip release.zip ./* -r
           cd ..
-          mv meu_projeto/release.zip .
+          mv Projeto_django/release.zip .
 
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v4
