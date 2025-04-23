@@ -56,7 +56,7 @@ MIDDLEWARE = [
 ]
 
 # Configuração de URLs
-ROOT_URLCONF = 'meu_projeto.urls'
+ROOT_URLCONF = 'Pagina_Virada_Store.urls'
 
 # Templates
 TEMPLATES = [
@@ -76,8 +76,7 @@ TEMPLATES = [
 ]
 
 # Aplicação WSGI
-WSGI_APPLICATION = 'meu_projeto.wsgi.application'
-
+WSGI_APPLICATION = 'Pagina_Virada_Store.wsgi.application'
 # Banco de dados
 if NOT_PROD:
     DATABASES = {
