@@ -51,6 +51,9 @@
 ![Sprint Done](./prints/entrega2_sprint1Done.png)
 ![Backlog](./prints/entrega2_backlog.png)
 ![Issues/Tracker](./prints/entrega2_issues.png)
+
+Link azure: paginaviradastore-g8fjeqbuc9beeuc3.brazilsouth-01.azurewebsites.net 
+
 #### 💬 Relato Programação em Par
 Tentamos utilizar o metodo de programação em par, porém, com resultados abaixo da expectativa e que não agregaram suficientemente para com o projeto. 
 
