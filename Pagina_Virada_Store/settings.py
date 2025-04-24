@@ -17,7 +17,11 @@ SECRET_KEY = os.getenv('SECRET_KEY') if not NOT_PROD else '<SUA_SECRET_KEY_LOCAL
 DEBUG = os.getenv('DEBUG', 'True' if NOT_PROD else 'False').lower() in ['true', '1', 't']
 
 # Hosts permitidos e origens confiáveis para CSRF
-ALLOWED_HOSTS = ['paginaviradastore-g8fjeqbuc9beeuc3.brazilsouth-01.azurewebsites.net']
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    'paginaviradastore-g8fjeqbuc9beeuc3.brazilsouth-01.azurewebsites.net'
+]
 CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', 'https://paginaviradastore-g8fjeqbuc9beeuc3.brazilsouth-01.azurewebsites.net').split() if not NOT_PROD else []
 
 # Redirecionamento HTTPS (produção)
