@@ -37,7 +37,8 @@
 ## 🔗 Links do Projeto
 
 - 🎨 **Figma**: [Protótipo](https://www.figma.com/design/aDKjwqFzzYOgslpmmFgf3w/Untitled?node-id=0-1&t=petcbihtWxGSNXbQ-1)
-- 🎥 **Vídeo**: [Demonstração](https://youtu.be/muRVmqQawBw)
+- 🎥 **Vídeo 1**: [Demonstração](https://youtu.be/muRVmqQawBw)
+- 🎥 **Vídeo 2**: [Demonstração]([https://youtu.be/muRVmqQawBw](https://youtu.be/kaBcxNm3d-Y))
 - 📄 **Histórias do Usuário**: [Documentação](https://docs.google.com/document/d/1qxWeY8sgxpPxejGPDY0ZJitrgwIRGgKHSkECFL7OSgg/edit?usp=sharing)
 - 📌 **Jira**: [Gerenciamento do Projeto](https://paginaviradastore.atlassian.net/jira/software/projects/SCRUM/summary)
 
@@ -51,6 +52,7 @@
 ![Sprint Done](./prints/entrega2_sprint1Done.png)
 ![Backlog](./prints/entrega2_backlog.png)
 ![Issues/Tracker](./prints/entrega2_issues.png)
+![video do youtube](https://youtu.be/kaBcxNm3d-Y)
 
 Link azure: paginaviradastore-g8fjeqbuc9beeuc3.brazilsouth-01.azurewebsites.net 
 
