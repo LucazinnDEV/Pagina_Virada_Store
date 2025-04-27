@@ -89,10 +89,10 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNav">    
-            <form method="GET" action="{% url 'home' %}" class="d-flex me-3" role="search">
+            <form method="GET" action="{% url 'buscar_livros' %}" class="d-flex me-3" role="search">
                 <input type="text" name="q" class="form-control me-2" placeholder="Buscar livros..." value="{{ request.GET.q }}" style="width: 650px;">
                 <button type="submit" class="btn btn-outline-light">Buscar</button>
-            </form>
+            </form>            
         
             <ul class="navbar-nav ms-auto d-flex align-items-center gap-2">
                 {% if user.is_authenticated %}

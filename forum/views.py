@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.db import transaction
 from .forms import RegistroUsuarioForm
 from .models import Perfil, Livro, Categoria
+from django.db.models import Q
 
 
 def registrar_usuario(request):
@@ -156,8 +157,28 @@ def finalizar_compra(request):
     return redirect('carrinho')
 
 def ver_recomendados(request):
-    return render(request, 'recomendados.html')
+    livros = Livro.objects.filter(recomendado=True)
+    return render(request, 'forum/recomendados.html', {'livros': livros})
 
 def detalhes_livro(request, livro_id):
     livro = get_object_or_404(Livro, id=livro_id)
     return render(request, 'forum/detalhes_livro.html', {'livro': livro})
+
+def buscar_livros(request):
+    query = request.GET.get('q')
+    resultados = []
+
+    if query:
+        resultados = Livro.objects.filter(
+            Q(titulo__icontains=query) |
+            Q(autor__icontains=query) |
+            Q(categoria__nome__icontains=query)
+        )
+        if not resultados.exists():
+            mensagem = "Desculpe, não encontramos resultados para sua pesquisa. Tente novamente com outras palavras-chave."
+            return render(request, 'forum/buscar.html', {'mensagem': mensagem, 'query': query})
+    else:
+        mensagem = "Por favor, insira um termo para buscar."
+        return render(request, 'forum/buscar.html', {'mensagem': mensagem})
+
+    return render(request, 'forum/buscar.html', {'resultados': resultados, 'query': query})

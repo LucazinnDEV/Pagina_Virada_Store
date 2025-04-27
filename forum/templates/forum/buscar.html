@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Resultados da Busca</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .main-content {
+      flex-grow: 1;
+    }
+
+    footer {
+      background-color: #f8f9fa;
+      padding: 20px 0;
+      text-align: center;
+      margin-top: auto;
+    }
+    .card-title {
+      font-size: 1rem;
+      font-weight: bold;
+    }
+    .card-body p {
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+{% include "global/partials/navmenu.html" %}
+
+<div class="container py-5 main-content">
+    <h2 class="mb-4 text-center">Resultados para: "{{ query }}"</h2>
+
+    {% if resultados %}
+      <div class="row row-cols-2 row-cols-md-5 g-4 mb-5">
+        {% for livro in resultados %}
+          <div class="col">
+            <div class="card h-100 shadow-sm">
+              <img src="{{ livro.imagem|default:'https://via.placeholder.com/200x300?text=Livro' }}" class="card-img-top" alt="{{ livro.titulo }}" style="height: 200px; object-fit: cover;">
+              <div class="card-body text-center">
+                <h6 class="card-title">{{ livro.titulo }}</h6>
+                <p class="text-success fw-bold">R$ {{ livro.preco }}</p>
+                <a href="{% url 'detalhes_livro' livro.id %}" class="btn btn-sm btn-outline-secondary mt-2">Ver Detalhes</a>
+                <form method="POST" action="{% url 'adicionar_ao_carrinho' livro.id %}" class="mt-2">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-sm btn-outline-primary">Adicionar ao Carrinho</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="alert alert-danger text-center">
+        {{ mensagem }}
+      </div>
+    {% endif %}
+
+    <div class="text-center mt-5">
+      <a href="{% url 'home' %}" class="btn btn-secondary">Voltar à Home</a>
+    </div>
+</div>
+
+{% include "global/partials/footer.html" %}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
