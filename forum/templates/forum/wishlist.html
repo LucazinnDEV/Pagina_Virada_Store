@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">❤️ Minha Lista de Desejos</h2>
+
+    {% if desejos %}
+        <div class="list-group">
+            {% for item in desejos %}
+                <div class="list-group-item d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center gap-3">
+                        <img src="{{ item.livro.imagem }}" alt="{{ item.livro.titulo }}" style="width: 60px; height: 90px; object-fit: cover;" class="rounded shadow-sm">
+                        <div>
+                            <h6 class="mb-0">{{ item.livro.titulo }}</h6>
+                            <small class="text-muted">Autor: {{ item.livro.autor }}</small>
+                        </div>
+                    </div>
+                    <form method="POST" action="{% url 'toggle_wishlist' item.livro.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-sm">Remover</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info" role="alert">
+            Nenhum livro na sua lista de desejos ainda.
+        </div>
+    {% endif %}
+
+    <div class="text-start mt-4">
+        <a href="{% url 'home' %}" class="btn btn-outline-secondary">← Voltar para a Home</a>
+    </div>
+</div>
+{% endblock %}
