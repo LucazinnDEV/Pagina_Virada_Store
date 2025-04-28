@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5 text-center">
+    <div class="mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="green" class="bi bi-check-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zM8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+            <path d="M10.97 5.97a.75.75 0 0 1 1.07 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L5.324 10.384a.75.75 0 1 1 1.06-1.06l1.094 1.093 3.492-4.436z"/>
+        </svg>
+    </div>
+    <h1 class="mb-3">Obrigado pela sua compra! 🎉</h1>
+    <p class="lead mb-5">Seu pedido foi recebido e está sendo processado. Você receberá uma confirmação por e-mail em breve.</p>
+
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <a href="{% url 'home' %}" class="btn btn-primary btn-lg">Voltar para a Loja</a>
+        <a href="#" class="btn btn-outline-success btn-lg disabled">Acompanhar Pedido (Em breve)</a>
+    </div>
+</div>
+{% endblock %}
