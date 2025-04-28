@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">⭐ Livros Recomendados</h2>
+
+    {% if livros %}
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+            {% for livro in livros %}
+            <div class="col">
+                <div class="card h-100">
+                    <img src="{{ livro.imagem }}" class="card-img-top" alt="Imagem do livro">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ livro.titulo }}</h5>
+                        <p class="card-text">Autor: {{ livro.autor }}</p>
+                        <p class="card-text">Preço: R$ {{ livro.preco }}</p>
+                        <a href="{% url 'detalhes_livro' livro.id %}" class="btn btn-primary w-100">Ver Detalhes</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="alert alert-info">Nenhum livro recomendado disponível no momento.</p>
+    {% endif %}
+</div>
+{% endblock %}
