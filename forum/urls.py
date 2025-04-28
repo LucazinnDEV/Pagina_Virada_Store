@@ -8,7 +8,7 @@ urlpatterns = [
     # Livros e Categorias
     path('categorias/', views.categorias, name='categorias'),
     path('mais-vendidos/', views.mais_vendidos, name='mais_vendidos'),
-    path('recomendados/', views.ver_recomendados, name='recomendados'),
+    path('recomendados/', views.ver_recomendados, name='ver_recomendados'),
     path('<int:livro_id>/', views.detalhes_livro, name='detalhes_livro'),
 
     # Usuário
@@ -21,7 +21,10 @@ urlpatterns = [
     path('adicionar-ao-carrinho/<int:livro_id>/', views.adicionar_ao_carrinho, name='adicionar_ao_carrinho'),
     path('remover-do-carrinho/<int:livro_id>/', views.remover_do_carrinho, name='remover_do_carrinho'),
     path('remover-todos-do-carrinho/<int:livro_id>/', views.remover_todos_do_carrinho, name='remover_todos_do_carrinho'),
-    path('finalizar-compra/', views.finalizar_compra, name='finalizar_compra'),
+
+    # Finalização de compra
+    path('confirmar-finalizacao/', views.confirmar_finalizacao, name='confirmar_finalizacao'),  # página de confirmação
+    path('checkout/', views.checkout, name='checkout'),
 
     # Pesquisa
     path('buscar/', views.buscar_livros, name='buscar_livros'),
