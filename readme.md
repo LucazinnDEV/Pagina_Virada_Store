@@ -58,16 +58,30 @@
 
 ---
 
-## 🔗 Links do Projeto
+<h2>🔗 Links do Projeto</h2>
+<hr>
 
-- 🎨 **Figma**: [Protótipo](https://www.figma.com/design/aDKjwqFzzYOgslpmmFgf3w/Untitled?node-id=0-1&t=petcbihtWxGSNXbQ-1)
-- 🎥 **Vídeo 1**: [Demonstração](https://youtu.be/muRVmqQawBw)
-- 🎥 **Vídeo 2**: [Demonstração](https://youtu.be/kaBcxNm3d-Y)
-- 📄 **Histórias do Usuário**: [Documentação](https://docs.google.com/document/d/1qxWeY8sgxpPxejGPDY0ZJitrgwIRGgKHSkECFL7OSgg/edit?usp=sharing)
-- 📌 **Jira**: [Gerenciamento do Projeto](https://paginaviradastore.atlassian.net/jira/software/projects/SCRUM/summary)
-- 🌐 **Azure**: [Projeto](paginaviradastore-g8fjeqbuc9beeuc3.brazilsouth-01.azurewebsites.net)
+<div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px;">
+  <a href="https://www.figma.com/design/aDKjwqFzzYOgslpmmFgf3w/Untitled?node-id=0-1&t=petcbihtWxGSNXbQ-1" target="_blank" style="background-color: #6C2BD9; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold;">
+    🎨 Figma
+  </a>
+  <a href="https://youtu.be/muRVmqQawBw" target="_blank" style="background-color: #FF5733; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold;">
+    🎥 Vídeo 1
+  </a>
+  <a href="https://youtu.be/kaBcxNm3d-Y" target="_blank" style="background-color: #FF5733; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold;">
+    🎥 Vídeo 2
+  </a>
+  <a href="https://docs.google.com/document/d/1qxWeY8sgxpPxejGPDY0ZJitrgwIRGgKHSkECFL7OSgg/edit?usp=sharing" target="_blank" style="background-color: #4CAF50; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold;">
+    📄 Histórias do Usuário
+  </a>
+  <a href="https://paginaviradastore.atlassian.net/jira/software/projects/SCRUM/summary" target="_blank" style="background-color: #0052CC; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold;">
+    📌 Jira
+  </a>
+  <a href="https://paginaviradastore-g8fjeqbuc9beeuc3.brazilsouth-01.azurewebsites.net" target="_blank" style="background-color: #008080; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold;">
+    🌐 Azure
+  </a>
+</div>
 
-## 📦 Entregas
 
 ## 📦 Entregas
 
