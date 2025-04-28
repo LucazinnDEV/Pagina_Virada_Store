@@ -71,7 +71,7 @@
 
     <a href="{% url 'home' %}" class="text-dark text-decoration-none fs-5">Home</a>
     <a href="{% url 'mais_vendidos' %}" class="text-dark text-decoration-none fs-5">Mais Vendidos</a>
-    <a href="{% url 'recomendados' %}" class="text-dark text-decoration-none fs-5">Recomendados</a>
+    <a href="{% url 'ver_recomendados' %}" class="text-dark text-decoration-none fs-5">Recomendados</a>
 
     {% if user.is_authenticated %}
       <a href="{% url 'wishlist' %}" class="text-dark text-decoration-none fs-5">Lista de Desejos</a>
@@ -117,7 +117,7 @@
 
     <h2 class="mb-4">Recomendações &gt;</h2>
     <div class="row row-cols-2 row-cols-md-5 g-3 mb-4">
-        {% for livro in recomendados %}
+        {% for livro in ver_recomendados %}
         <div class="col">
             <div class="card h-100 position-relative">
                 <div class="position-absolute top-0 start-0">
@@ -135,7 +135,7 @@
     </div>
 
     <div class="text-center mb-5">
-        <a href="{% url 'recomendados' %}" class="text-primary fw-bold">Ver mais &gt;</a>
+      <a href="{% url 'ver_recomendados' %}" class="text-primary fw-bold">Ver mais &gt;</a>
     </div>
 
     <div class="text-center mt-5">
