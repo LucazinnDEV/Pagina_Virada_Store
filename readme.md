@@ -58,30 +58,20 @@
 
 ---
 
-<h2>🔗 Links do Projeto</h2>
-<hr>
-
-<div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px;">
-  <a href="https://www.figma.com/design/aDKjwqFzzYOgslpmmFgf3w/Untitled?node-id=0-1&t=petcbihtWxGSNXbQ-1" target="_blank" style="background-color: #6C2BD9; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold;">
-    🎨 Figma
+<p align="center">
+  <a href="https://jira.example.com" target="_blank">
+    <img src="https://yourimagehost.com/jira-button.png" alt="Jira" height="50">
   </a>
-  <a href="https://youtu.be/muRVmqQawBw" target="_blank" style="background-color: #FF5733; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold;">
-    🎥 Vídeo 1
+  <a href="https://youtube.com/screencast" target="_blank">
+    <img src="https://yourimagehost.com/screencast-button.png" alt="Screencast" height="50">
   </a>
-  <a href="https://youtu.be/kaBcxNm3d-Y" target="_blank" style="background-color: #FF5733; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold;">
-    🎥 Vídeo 2
+  <a href="https://figma.com" target="_blank">
+    <img src="https://yourimagehost.com/figma-button.png" alt="Figma" height="50">
   </a>
-  <a href="https://docs.google.com/document/d/1qxWeY8sgxpPxejGPDY0ZJitrgwIRGgKHSkECFL7OSgg/edit?usp=sharing" target="_blank" style="background-color: #4CAF50; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold;">
-    📄 Histórias do Usuário
+  <a href="https://docs.google.com" target="_blank">
+    <img src="https://yourimagehost.com/historias-button.png" alt="Histórias" height="50">
   </a>
-  <a href="https://paginaviradastore.atlassian.net/jira/software/projects/SCRUM/summary" target="_blank" style="background-color: #0052CC; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold;">
-    📌 Jira
-  </a>
-  <a href="https://paginaviradastore-g8fjeqbuc9beeuc3.brazilsouth-01.azurewebsites.net" target="_blank" style="background-color: #008080; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold;">
-    🌐 Azure
-  </a>
-</div>
-
+</p>
 
 ## 📦 Entregas
 
