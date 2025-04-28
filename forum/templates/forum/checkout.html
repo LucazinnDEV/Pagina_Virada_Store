@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">💳 Finalizar Compra</h2>
+
+    {% if livros %}
+        <form method="POST" action="{% url 'checkout' %}">
+            {% csrf_token %}
+
+            <h5 class="mb-3">Dados de Entrega</h5>
+            <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                    <label for="nome" class="form-label">Nome</label>
+                    <input type="text" id="nome" name="nome" class="form-control" value="{{ request.user.perfil.nome }}" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="sobrenome" class="form-label">Sobrenome</label>
+                    <input type="text" id="sobrenome" name="sobrenome" class="form-control" value="{{ request.user.perfil.sobrenome }}" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="cep" class="form-label">CEP</label>
+                    <input type="text" id="cep" name="cep" class="form-control" value="{{ request.user.perfil.cep }}" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="endereco" class="form-label">Endereço</label>
+                    <input type="text" id="endereco" name="endereco" class="form-control" value="{{ request.user.perfil.endereco }}" required>
+                </div>
+            </div>
+
+            <h5 class="mb-3">Forma de Pagamento</h5>
+            <div class="mb-4">
+                <select name="forma_pagamento" class="form-select" required>
+                    <option value="Cartão de Crédito">Cartão de Crédito</option>
+                    <option value="Pix">Pix</option>
+                    <option value="Boleto">Boleto</option>
+                </select>
+            </div>
+
+            <div class="text-end">
+                <button type="submit" class="btn btn-success btn-lg">Confirmar Compra</button>
+            </div>
+
+        </form>
+    {% else %}
+        <p class="alert alert-warning">Seu carrinho está vazio.</p>
+    {% endif %}
+
+    <div class="mt-4">
+        <a href="{% url 'carrinho' %}" class="btn btn-outline-secondary">&larr; Voltar para o Carrinho</a>
+    </div>
+</div>
+{% endblock %}
