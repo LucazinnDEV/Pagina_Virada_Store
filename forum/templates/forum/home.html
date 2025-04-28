@@ -3,19 +3,16 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Virada Store</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
     <style>
         html, body {
             height: 100%;
             margin: 0;
             display: flex;
             flex-direction: column;
-        }
-
-        .content {
-            flex: 1;
         }
 
         .card img {
@@ -31,15 +28,6 @@
             width: 100%;
         }
 
-        .fade-out {
-            opacity: 1;
-            transition: opacity 1s ease-in-out;
-        }
-
-        .fade-out.hidden {
-            opacity: 0;
-        }
-        
         .ranking-flag {
             background-color: #fe8d29;
             color: white;
@@ -50,19 +38,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
             clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 82%, 0 100%);
         }
-        
-        .bg-white {
-            margin-bottom: 10 !important;
-        }
-
-        .menu-superior a {
-            font-size: 1.25rem; /* 20px */
-            font-weight: 500;
-        }
-        
     </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
@@ -71,7 +48,7 @@
   <div class="container mt-3">
     {% for message in messages %}
       {% if message.tags == "success" %}
-        <div class="alert alert-success fade-out" role="alert">
+        <div class="alert alert-success" role="alert">
           {{ message }}
         </div>
       {% endif %}
@@ -79,47 +56,26 @@
   </div>
 {% endif %}
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-0" style="min-height: 100px;">
-    <div class="container">
-        <a class="navbar-brand" href="{% url 'home' %}">
-            <img src="{% static 'forum/img/Logo_PaginaVirada.png' %}" alt="Logo" height="180">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<!-- NAVBAR -->
+{% include "global/partials/navmenu.html" %}
 
-        <div class="collapse navbar-collapse" id="navbarNav">    
-            <form method="GET" action="{% url 'buscar_livros' %}" class="d-flex me-3" role="search">
-                <input type="text" name="q" class="form-control me-2" placeholder="Buscar livros..." value="{{ request.GET.q }}" style="width: 650px;">
-                <button type="submit" class="btn btn-outline-light">Buscar</button>
-            </form>            
-        
-            <ul class="navbar-nav ms-auto d-flex align-items-center gap-2">
-                {% if user.is_authenticated %}
-                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
-                {% else %}
-                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
-                {% endif %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'carrinho' %}">Carrinho 🛒</a>
-                </li>
-            </ul>
-        </div>                
-    </div>
-</nav>
-<!-- <!-- MENU SUPERIOR -->
+<!-- MENU SUPERIOR (branco) -->
 <div class="bg-white py-3 px-3 shadow-sm">
   <div class="container d-flex align-items-center gap-5 flex-wrap">
     <a href="#" class="d-flex align-items-center text-decoration-none" style="color: #5ba3af;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#5ba3af" class="me-2" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 2.5 4h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 4.5z"/>
-        </svg>
-        <span style="font-size: 1.5rem;">Categoria</span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#5ba3af" class="me-2" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 2.5 4h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 4.5z"/>
+      </svg>
+      <span style="font-size: 1.5rem;">Categoria</span>
     </a>
 
     <a href="{% url 'home' %}" class="text-dark text-decoration-none fs-5">Home</a>
     <a href="{% url 'mais_vendidos' %}" class="text-dark text-decoration-none fs-5">Mais Vendidos</a>
     <a href="{% url 'recomendados' %}" class="text-dark text-decoration-none fs-5">Recomendados</a>
+
+    {% if user.is_authenticated %}
+      <a href="{% url 'wishlist' %}" class="text-dark text-decoration-none fs-5">Lista de Desejos</a>
+    {% endif %}
   </div>
 </div>
 
@@ -130,126 +86,73 @@
              alt="Banner de Ofertas"
              class="img-fluid d-block mx-auto"
              style="max-height: 400px; object-fit: cover; width: 100%;">
-    </div>
+    </div>
 </div>
 
-<!-- 🔻 BLOCO DE CONTEÚDO (cada página insere o seu aqui) -->
-{% block content %}
+<!-- CONTEÚDO -->
 <main class="flex-grow-1">
-    <div class="container mt-4">
-<!-- MAIS VENDIDOS -->
-<h2 class="mb-4">Mais Vendidos &gt;</h2>
-<div class="row row-cols-2 row-cols-md-5 g-3 mb-4">
-    {% for livro in mais_vendidos|slice:":10" %}
-    <div class="col">
-        <div class="card h-100 position-relative">
-            <div class="position-absolute top-0 start-0" style="z-index: 1;">
-                <div class="ranking-flag">#{{ forloop.counter }}</div>
-            </div>            
-            {% if livro.imagem.url|slice:":4" == "http" %}
-                <img src="{{ livro.imagem.url }}" class="card-img-top" alt="{{ livro.titulo }}" style="height: 200px; object-fit: cover;">
-            {% else %}
+  <div class="container mt-4">
+    <h2 class="mb-4">Mais Vendidos &gt;</h2>
+    <div class="row row-cols-2 row-cols-md-5 g-3 mb-4">
+        {% for livro in mais_vendidos %}
+        <div class="col">
+            <div class="card h-100 position-relative">
+                <div class="position-absolute top-0 start-0">
+                    <div class="ranking-flag">#{{ forloop.counter }}</div>
+                </div>
                 <img src="{{ livro.imagem }}" class="card-img-top" alt="{{ livro.titulo }}" style="height: 200px; object-fit: cover;">
-            {% endif %}
-            <div class="card-body text-center">
-                <h6 class="card-title mb-1">{{ livro.titulo }}</h6>
-                <p class="text-success fw-bold">R$ {{ livro.preco }}</p>
-              
-                <a href="{% url 'detalhes_livro' livro.id %}" class="btn btn-sm btn-outline-secondary mt-2">Ver Detalhes</a>
-              
-                <form method="POST" action="{% url 'adicionar_ao_carrinho' livro.id %}">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-sm btn-outline-primary mt-2">Adicionar ao Carrinho</button>
-                </form>
+                <div class="card-body text-center">
+                    <h6 class="card-title mb-1">{{ livro.titulo }}</h6>
+                    <p class="text-success fw-bold">R$ {{ livro.preco }}</p>
+                    <a href="{% url 'detalhes_livro' livro.id %}" class="btn btn-sm btn-outline-secondary mt-2">Ver Detalhes</a>
+                </div>
             </div>
-                        
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-</div>
-<div class="text-center mb-5">
-    <a href="{% url 'mais_vendidos' %}" class="text-primary fw-bold">Ver mais &gt;</a>
-</div>
 
-<!-- RECOMENDAÇÕES -->
-<h2 class="mb-4">Recomendações &gt;</h2>
-<div class="row row-cols-2 row-cols-md-5 g-3 mb-4">
-    {% for livro in recomendados|slice:":10" %}
-    <div class="col">
-        <div class="card h-100 position-relative">
-            <div class="position-absolute top-0 start-0" style="z-index: 1;">
-                <div class="ranking-flag">#{{ forloop.counter }}</div>
-            </div>            
-            <img src="{{ livro.imagem }}" class="card-img-top" alt="{{ livro.titulo }}" style="height: 200px; object-fit: cover;">
-            <div class="card-body text-center">
-                <h6 class="card-title mb-1">{{ livro.titulo }}</h6>
-                <p class="text-success fw-bold">R$ {{ livro.preco }}</p>
-                <form method="POST" action="{% url 'adicionar_ao_carrinho' livro.id %}">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-sm btn-outline-primary mt-2">Adicionar ao Carrinho</button>
-                </form>
+    <div class="text-center mb-5">
+        <a href="{% url 'mais_vendidos' %}" class="text-primary fw-bold">Ver mais &gt;</a>
+    </div>
+
+    <h2 class="mb-4">Recomendações &gt;</h2>
+    <div class="row row-cols-2 row-cols-md-5 g-3 mb-4">
+        {% for livro in recomendados %}
+        <div class="col">
+            <div class="card h-100 position-relative">
+                <div class="position-absolute top-0 start-0">
+                    <div class="ranking-flag">#{{ forloop.counter }}</div>
+                </div>
+                <img src="{{ livro.imagem }}" class="card-img-top" alt="{{ livro.titulo }}" style="height: 200px; object-fit: cover;">
+                <div class="card-body text-center">
+                    <h6 class="card-title mb-1">{{ livro.titulo }}</h6>
+                    <p class="text-success fw-bold">R$ {{ livro.preco }}</p>
+                    <a href="{% url 'detalhes_livro' livro.id %}" class="btn btn-sm btn-outline-secondary mt-2">Ver Detalhes</a>
+                </div>
             </div>
-            
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-</div>
-<div class="text-center mb-5">
-    <a href="{% url 'recomendados' %}" class="text-primary fw-bold">Ver mais &gt;</a>
-</div>
 
-
-        <div class="mt-5 text-center">
-            <a href="{% url 'categorias' %}" class="btn btn-primary">Ver Categorias de Livros</a>
-        </div>
+    <div class="text-center mb-5">
+        <a href="{% url 'recomendados' %}" class="text-primary fw-bold">Ver mais &gt;</a>
     </div>
+
+    <div class="text-center mt-5">
+        <a href="{% url 'categorias' %}" class="btn btn-primary">Ver Categorias de Livros</a>
+    </div>
+
+  </div>
 </main>
-{% endblock %}
-<!-- 🔺 FIM DO BLOCO -->
 
+<!-- FOOTER -->
 <footer class="bg-dark text-light mt-5">
-    <div class="container py-4">
-        <div class="row">
-
-            <div class="col-md-4 mb-3">
-                <h5>Página Virada Store</h5>
-                <p>Seu destino online para livros incríveis, ofertas especiais e novidades literárias.</p>
-            </div>
-
-            <div class="col-md-4 mb-3">
-                <h5>Links Rápidos</h5>
-                <ul class="list-unstyled">
-                    <li><a href="{% url 'home' %}" class="text-light text-decoration-none">Home</a></li>
-                    <li><a href="{% url 'categorias' %}" class="text-light text-decoration-none">Categorias</a></li>
-                    <li><a href="#" class="text-light text-decoration-none">Mais Vendidos</a></li>
-                    <li><a href="#" class="text-light text-decoration-none">Contato</a></li>
-                </ul>
-            </div>
-
-            <div class="col-md-4 mb-3">
-                <h5>Contato</h5>
-                <p>Email: contato@paginavirada.com</p>
-                <p>Telefone: (11) 99999-9999</p>
-                <p>Atendimento: Seg a Sex, 9h às 18h</p>
-            </div>
-        </div>
-
-        <div class="text-center mt-4">
-            <p class="mb-0">&copy; 2025 Página Virada Store - Todos os direitos reservados.</p>
-        </div>
-    </div>
+  <div class="container py-4">
+    <p class="mb-0">&copy; 2025 Página Virada Store - Todos os direitos reservados.</p>
+  </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    // Remove mensagens de sucesso após 5 segundos
-    setTimeout(function() {
-        document.querySelectorAll('.alert-success').forEach(function(el) {
-            el.classList.add('hidden'); // Aplica a classe de fade-out
-            setTimeout(() => el.remove(), 1000); // Remove do DOM após o fade-out
-        });
-    }, 5000);
-</script>
 
 </body>
 </html>
