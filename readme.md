@@ -6,20 +6,44 @@
 
 ## 🚀 Funcionalidades Implementadas
 
-### 📝 Cadastro de Usuário
+### 👤 Usuário
+#### 📝 Cadastro de Usuário
 - Permite que novos usuários criem uma conta na plataforma.
 - Validação de dados no momento do cadastro.
 - Armazenamento seguro das informações no banco de dados.
 
-### 🛒 Carrinho de Compras
+#### 🛒 Carrinho de Compras
 - Usuários podem adicionar e remover livros do carrinho.
 - Cálculo do valor total da compra.
 - Possibilidade de finalizar a compra.
 
-### 📖 Cadastro de Livros
+#### 💖 Lista de Desejos
+- Usuários podem adicionar e remover livros da sua lista de desejos.
+- Acesso fácil à wishlist pela navbar.
+- Visualização dos livros favoritos de forma organizada.
+
+#### 🔎 Busca de Livros
+- Campo de busca visível na navbar em todas as páginas.
+- Busca de livros pelo título, ignorando diferenças de maiúsculas/minúsculas.
+- Resultados exibidos em cards responsivos.
+- Mensagem amigável exibida quando nenhum livro é encontrado.
+
+#### 💳 Pagamento (Simulado)
+- Usuário pode revisar os itens do carrinho e finalizar a compra.
+- Sistema de pagamento fictício (simulado).
+- Limpeza do carrinho e registro de pedido após pagamento.
+
+---
+
+### 🛠️ Administrador
+#### 📖 Cadastro de Livros
 - Permite que administradores cadastrem novos livros no catálogo.
-- Inclui informações como título, autor, descrição e preço.
+- Inclusão de informações como título, autor, descrição e preço.
 - Geração automática de identificação para cada livro.
+
+#### 📋 Gerenciamento de Pedidos
+- Visualização e atualização do status dos pedidos.
+- Controle sobre pedidos pagos, pendentes ou cancelados.
 
 ## 👥 Equipe de Desenvolvimento
 
@@ -34,31 +58,42 @@
 
 ---
 
-## 🔗 Links do Projeto
-
-- 🎨 **Figma**: [Protótipo](https://www.figma.com/design/aDKjwqFzzYOgslpmmFgf3w/Untitled?node-id=0-1&t=petcbihtWxGSNXbQ-1)
-- 🎥 **Vídeo 1**: [Demonstração](https://youtu.be/muRVmqQawBw)
-- 🎥 **Vídeo 2**: [Demonstração](https://youtu.be/kaBcxNm3d-Y)
-- 📄 **Histórias do Usuário**: [Documentação](https://docs.google.com/document/d/1qxWeY8sgxpPxejGPDY0ZJitrgwIRGgKHSkECFL7OSgg/edit?usp=sharing)
-- 📌 **Jira**: [Gerenciamento do Projeto](https://paginaviradastore.atlassian.net/jira/software/projects/SCRUM/summary)
-- 📌 **Azure**: [Projeto](paginaviradastore-g8fjeqbuc9beeuc3.brazilsouth-01.azurewebsites.net)
+<p align="center">
+  <a href="https://jira.example.com" target="_blank">
+    <img src="https://yourimagehost.com/jira-button.png" alt="Jira" height="50">
+  </a>
+  <a href="https://youtube.com/screencast" target="_blank">
+    <img src="https://yourimagehost.com/screencast-button.png" alt="Screencast" height="50">
+  </a>
+  <a href="https://figma.com" target="_blank">
+    <img src="https://yourimagehost.com/figma-button.png" alt="Figma" height="50">
+  </a>
+  <a href="https://docs.google.com" target="_blank">
+    <img src="https://yourimagehost.com/historias-button.png" alt="Histórias" height="50">
+  </a>
+</p>
 
 ## 📦 Entregas
 
-### 🚀 Entrega 1
-![Quadro Jira](./prints/entrega1_quadro.png)
-![Backlog](./prints/entrega1_backlog.png)
+<details>
+  <summary>🚀 Entrega 1</summary>
 
-### 🚀 Entrega 2
-![Sprint Done](./prints/entrega2_sprint1Done.png)
-![Backlog](./prints/entrega2_backlog.png)
-![Issues/Tracker](./prints/entrega2_issues.png)
-![video do youtube](https://youtu.be/kaBcxNm3d-Y)
+  ![Quadro Jira](./prints/entrega1_quadro.png)  
+  ![Backlog](./prints/entrega1_backlog.png)
 
-Link azure: paginaviradastore-g8fjeqbuc9beeuc3.brazilsouth-01.azurewebsites.net 
+</details>
 
-#### 💬 Relato Programação em Par
-Tentamos utilizar o metodo de programação em par, porém, com resultados abaixo da expectativa e que não agregaram suficientemente para com o projeto. 
+<details>
+  <summary>🚀 Entrega 2</summary>
+
+  ![Sprint Done](./prints/entrega2_sprint1Done.png)  
+  ![Backlog](./prints/entrega2_backlog.png)  
+  ![Issues/Tracker](./prints/entrega2_issues.png)  
+  🎥 [Vídeo Demonstração](https://youtu.be/kaBcxNm3d-Y)  
+  🌐 Link Azure: [Página Virada Store](https://paginaviradastore-g8fjeqbuc9beeuc3.brazilsouth-01.azurewebsites.net)
+
+  #### 💬 Relato Programação em Par
+  Tentamos utilizar o metodo de programação em par, porém, com resultados abaixo da expectativa e que não agregaram suficientemente para com o projeto. 
 
 Dessa forma, optamos por não utilizar o modelo de programação em par em nosso projeto, principalmente devido à dificuldade de conciliar os horários dos integrantes do grupo. Muitas vezes, não era possível reunir todos ao mesmo tempo, o que tornava inviável manter sessões contínuas de codificação conjunta.
 
@@ -66,11 +101,22 @@ Em vez disso, adotamos uma abordagem mais flexível: realizamos reuniões no Dis
 
 Essa estratégia nos permitiu manter o ritmo de trabalho, respeitar os prazos e garantir a qualidade do projeto, mesmo sem seguir o modelo tradicional de programação em par.
 
-### 🚧 Entrega 3
-*(em andamento)*
+</details>
 
-### 🚧 Entrega 4
-*(em andamento)*
+<details>
+  <summary>🚧 Entrega 3</summary>
+
+  *(Em andamento)*
+
+</details>
+
+<details>
+  <summary>🚧 Entrega 4</summary>
+
+  *(Em andamento)*
+
+</details>
+
 
 ## 💡 Observações
 > Este projeto é parte da disciplina de Fundamentos de Desenvolvimento de Software (FDS) – 2025.1.
