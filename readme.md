@@ -58,20 +58,15 @@
 
 ---
 
-<p align="center">
-  <a href="https://jira.example.com" target="_blank">
-    <img src="https://yourimagehost.com/jira-button.png" alt="Jira" height="50">
-  </a>
-  <a href="https://youtube.com/screencast" target="_blank">
-    <img src="https://yourimagehost.com/screencast-button.png" alt="Screencast" height="50">
-  </a>
-  <a href="https://figma.com" target="_blank">
-    <img src="https://yourimagehost.com/figma-button.png" alt="Figma" height="50">
-  </a>
-  <a href="https://docs.google.com" target="_blank">
-    <img src="https://yourimagehost.com/historias-button.png" alt="Histórias" height="50">
-  </a>
-</p>
+## 🔗 Links do Projeto
+
+- 🎨 **[Protótipo no Figma](https://www.figma.com/design/aDKjwqFzzYOgslpmmFgf3w/Untitled?node-id=0-1&t=petcbihtWxGSNXbQ-1)**
+- 🎥 **[Demonstração - Vídeo 1](https://youtu.be/muRVmqQawBw)**
+- 🎥 **[Demonstração - Vídeo 2](https://youtu.be/kaBcxNm3d-Y)**
+- 📄 **[Histórias do Usuário](https://docs.google.com/document/d/1qxWeY8sgxpPxejGPDY0ZJitrgwIRGgKHSkECFL7OSgg/edit?usp=sharing)**
+- 📌 **[Gerenciamento do Projeto - Jira](https://paginaviradastore.atlassian.net/jira/software/projects/SCRUM/summary)**
+- 🌐 **[Deploy no Azure](https://paginaviradastore-g8fjeqbuc9beeuc3.brazilsouth-01.azurewebsites.net)**
+
 
 ## 📦 Entregas
 
