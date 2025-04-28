@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Confirmar Finalização da Compra</h2>
+
+    {% if livros %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Livro</th>
+                    <th>Quantidade</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in livros %}
+                    <tr>
+                        <td>{{ item.livro.titulo }}</td>
+                        <td>{{ item.quantidade }}</td>
+                        <td>R$ {{ item.subtotal|floatformat:2 }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h4 class="mt-4">Total: <strong>R$ {{ total|floatformat:2 }}</strong></h4>
+
+        <form method="POST" action="{% url 'checkout' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success">Sim, Finalizar Compra</button>
+            <a href="{% url 'carrinho' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+        
+    {% else %}
+        <div class="alert alert-warning">
+            Seu carrinho está vazio.
+        </div>
+        <a href="{% url 'home' %}" class="btn btn-primary">Voltar para a loja</a>
+    {% endif %}
+</div>
+{% endblock %}
