@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Compra Finalizada</h2>
+
+    <div class="alert alert-success">
+        <h4 class="alert-heading">Obrigado pela sua compra!</h4>
+        <p>Sua compra foi concluída com sucesso. Um e-mail de confirmação será enviado para você.</p>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="{% url 'home' %}" class="btn btn-primary">Voltar para a página inicial</a>
+    </div>
+</div>
+{% endblock %}
