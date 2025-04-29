@@ -101,8 +101,8 @@
 <details>
   <summary>🚀 Entrega 3</summary>
 
-  ![Sprint ToDo](./prints/entrega3_sprint2Todo.png) 
-  ![Sprint Done](./prints/entrega3_sprint2Done.png) 
+  ![Sprint ToDo](./prints/entrega3_sprint2backlog.png) 
+  ![Sprint Done](./prints/entrega3_sprint2quadro.png) 
   ![Issues/Tracker](./prints/entrega3_issues.png) 
 
   #### 💬 Relato Programação em Par
