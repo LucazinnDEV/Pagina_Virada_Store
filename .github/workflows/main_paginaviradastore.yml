@@ -25,6 +25,9 @@ jobs:
 
       - name: Collect static files
         run: python manage.py collectstatic --noinput
+        
+      - name: Run database migrations
+        run: python manage.py migrate 
 
       - name: Clean testing files
         run: |
