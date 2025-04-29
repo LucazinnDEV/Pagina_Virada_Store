@@ -25,7 +25,28 @@ jobs:
 
       - name: Collect static files
         run: python manage.py collectstatic --noinput
-        
+
+      - name: Run database migrations
+        run: python manage.py migrate
+
+      - name: Start Django server in background
+        run: |
+          nohup python manage.py runserver 0.0.0.0:8000 &
+          sleep 10
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Cypress
+        run: |
+          npm install
+          npx cypress install
+
+      - name: Run Cypress tests
+        run: npx cypress run
+
       - name: Clean testing files
         run: |
           rm -f db.sqlite3
