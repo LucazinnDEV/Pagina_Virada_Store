@@ -101,7 +101,8 @@ Essa estratégia nos permitiu manter o ritmo de trabalho, respeitar os prazos e 
 <details>
   <summary>🚧 Entrega 3</summary>
 
-  *(Em andamento)*
+  ![Sprint ToDo](./prints/entrega3_sprint2Todo.png) 
+  ![Sprint Done](./prints/entrega3_sprint2Done.png) 
 
 </details>
 
