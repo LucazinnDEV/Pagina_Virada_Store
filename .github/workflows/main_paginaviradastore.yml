@@ -32,12 +32,18 @@ jobs:
       - name: Install Node.js dependencies
         run: npm ci
 
+      - name: Fix directory permissions
+        run: sudo chown -R $USER:$USER ./
+
+      - name: Give permission to Cypress binary
+        run: chmod +x ./node_modules/.bin/cypress
+
       - name: Run migrations
         run: python manage.py migrate
 
       - name: Start Django server in background
         run: |
-          nohup python manage.py runserver 0.0.0.0:8000 &
+          nohup python manage.py runserver 0.0.0.0:8000 & 
           sleep 10
 
       - name: Run Cypress tests via npx (sem erro de permissão)
