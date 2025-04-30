@@ -1,38 +1,25 @@
-name: Rodar Testes Cypress
+name: Testes Automatizados
 
 on:
   push:
-    branches: [ "**" ]
+    branches: [ main ]
   pull_request:
-    branches: [ "**" ]
+    branches: [ main ]
 
 jobs:
-  test:
+  build-and-test:
     runs-on: ubuntu-latest
-
-    services:
-      postgres:
-        image: postgres:13
-        ports:
-          - 5432:5432
-        env:
-          POSTGRES_DB: test_db
-          POSTGRES_USER: user
-          POSTGRES_PASSWORD: password
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
+    env:
+      TARGET_ENV: dev  # Garante uso do SQLite (e não PostgreSQL)
 
     steps:
-      - name: Checkout código
+      - name: Clonar repositório
         uses: actions/checkout@v3
 
-      - name: Configurar Python
+      - name: Instalar Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.11
+          python-version: '3.11'
 
       - name: Instalar dependências Python
         run: |
@@ -40,29 +27,14 @@ jobs:
           pip install -r requirements.txt
 
       - name: Aplicar migrações do Django
-        run: |
-          python manage.py migrate
+        run: python manage.py migrate
 
-      - name: Iniciar servidor Django em segundo plano
-        run: |
-          nohup python manage.py runserver 0.0.0.0:8000 &
-        env:
-          DJANGO_SETTINGS_MODULE: seu_projeto.settings  # troque pelo nome do seu módulo de settings
-
-      - name: Configurar Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
+      - name: Rodar testes Django
+        run: python manage.py test
 
       - name: Instalar dependências do Cypress
         run: npm install
-        working-directory: e2e/cypress  # ajuste se o package.json estiver em outro lugar
-
-      - name: Aguardar o servidor iniciar
-        run: |
-          sleep 10  # pode ajustar se necessário
-          curl -sSf http://localhost:8000
 
       - name: Rodar testes Cypress
         run: npx cypress run
-        working-directory: e2e/cypress
+        working-directory: ./e2e/cypress
