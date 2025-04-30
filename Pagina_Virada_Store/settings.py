@@ -20,9 +20,9 @@ DEBUG = os.getenv('DEBUG', 'True' if NOT_PROD else 'False').lower() in ['true', 
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
-    'paginaviradastore-g8fjeqbuc9beeuc3.brazilsouth-01.azurewebsites.net'
+    'paginaviradastore--g8fjeqbuc9beeuc3.brazilsouth-01.azurewebsites.net'
 ]
-CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', 'https://paginaviradastore-g8fjeqbuc9beeuc3.brazilsouth-01.azurewebsites.net').split() if not NOT_PROD else []
+CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', 'http://paginaviradastore--aac3ehfxb6h8bzhu.brazilsouth-01.azurewebsites.net').split() if not NOT_PROD else []
 
 # Redirecionamento HTTPS (produção)
 SECURE_SSL_REDIRECT = os.getenv('SECURE_SSL_REDIRECT', 'False').lower() in ['true', '1', 't']
