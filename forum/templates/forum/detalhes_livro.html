@@ -1,146 +1,152 @@
-    {% load static %}
+{% load static %}
 
-    <!DOCTYPE html>
-    <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <title>{{ livro.titulo }}</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-        <style>
-            html, body {
-                height: 100%;
-                margin: 0;
-            }
-            body {
-                display: flex;
-                flex-direction: column;
-            }
-            .main-content {
-                flex: 1;
-            }
-            .livro-detalhes {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 2rem;
-                align-items: flex-start;
-                margin-top: 2rem;
-            }
-            .livro-imagem {
-                flex: 1 1 300px;
-            }
-            .livro-info {
-                flex: 2 1 500px;
-            }
-            .livro-imagem img {
-                width: 100%;
-                max-width: 400px;
-                object-fit: cover;
-            }
-        </style>
-    </head>
-    <body>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ livro.titulo }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+        .livro-header {
+            text-align: center;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        .livro-header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        .livro-main {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        .livro-imagem img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+        }
+        .livro-info {
+            max-width: 500px;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.05);
+        }
+        .livro-info .preco {
+            font-size: 2.2rem;
+            color: #28a745;
+            font-weight: bold;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        .descricao {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #ddd;
+        }
+        .descricao h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        .comprar-btn {
+            background-color: #ffa500;
+            color: white;
+            border: none;
+            font-size: 1.3rem;
+            padding: 0.9rem 1.5rem;
+            width: 100%;
+            margin-top: 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .comprar-btn:hover {
+            background-color: #ff8c00;
+        }
+        .estoque-info {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            color: #28a745;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
 
-    {% include "global/partials/navmenu.html" %}
+{% include "global/partials/navmenu.html" %}
 
-    <div class="main-content container">
-        <div class="livro-detalhes">
+<div class="container">
 
-            <div class="livro-imagem">
-                <img src="{{ livro.imagem }}" alt="{{ livro.titulo }}" class="img-fluid rounded shadow">
-            </div>
-
-            <div class="livro-info">
-                <h1>{{ livro.titulo }}</h1>
-                <p><strong>Autor:</strong> {{ livro.autor }}</p>
-
-                {% if livro.data_publicacao %}
-                    <p><strong>Data de publicação:</strong> {{ livro.data_publicacao }}</p>
-                {% endif %}
-
-                <p><strong>Preço:</strong> <span class="text-success fw-bold">R$ {{ livro.preco }}</span></p>
-
-                {% if livro.descricao %}
-                    <p><strong>Descrição:</strong> {{ livro.descricao }}</p>
-                {% endif %}
-
-                <div class="mt-4 d-flex flex-column gap-2">
-                    <!-- Botão Adicionar ao Carrinho -->
-                    <form method="POST" action="{% url 'adicionar_ao_carrinho' livro.id %}" id="formAdicionarCarrinho">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-primary w-100">Adicionar ao Carrinho 🛒</button>
-                    </form>
-                    
-
-                    <!-- Botão Lista de Desejos -->
-                    {% if user.is_authenticated %}
-                        <form method="POST" action="{% url 'toggle_wishlist' livro.id %}">
-                            {% csrf_token %}
-                            <button type="submit" class="btn w-100 {% if is_in_wishlist %}btn-outline-danger{% else %}btn-outline-primary{% endif %}">
-                                {% if is_in_wishlist %}
-                                    Remover da Lista de Desejos ❤️
-                                {% else %}
-                                    Adicionar à Lista de Desejos 🤍
-                                {% endif %}
-                            </button>
-                        </form>
-                    {% endif %}
-                </div>
-
-                <div class="mt-4">
-                    <a href="{% url 'home' %}" class="btn btn-link">← Voltar para a Página Inicial</a>
-                </div>
-            </div>
-
-        </div>
+    <div class="livro-header">
+        <h1>{{ livro.titulo }}</h1>
     </div>
 
-    {% include "global/partials/footer.html" %}
+    <div class="livro-main">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          const form = document.getElementById('formAdicionarCarrinho');
-          form.addEventListener('submit', function(event) {
-            event.preventDefault();
-        
-            fetch(form.action, {
-              method: 'POST',
-              headers: {
-                'X-CSRFToken': form.querySelector('[name=csrfmiddlewaretoken]').value,
-                'X-Requested-With': 'XMLHttpRequest',
-              },
-            })
-            .then(response => response.json())
-            .then(data => {
-              if (data.mensagem) {
-                var carrinhoModal = new bootstrap.Modal(document.getElementById('carrinhoModal'));
-                carrinhoModal.show();
-                document.getElementById('carrinhoContador').innerText = data.total_itens;
-              }
-            })
-            .catch(error => console.error('Erro:', error));
-          });
-        });
-        </script>
-        
-        <!-- Modal Bonito de sucesso -->
-        <div class="modal fade" id="carrinhoModal" tabindex="-1" aria-labelledby="carrinhoModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content border-success">
-              <div class="modal-header bg-success text-white">
-                <h5 class="modal-title" id="carrinhoModalLabel">✅ Produto adicionado!</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
-              </div>
-              <div class="modal-body">
-                Seu livro foi adicionado ao carrinho com sucesso.
-              </div>
-              <div class="modal-footer">
-                <a href="{% url 'carrinho' %}" class="btn btn-success">Ir para o Carrinho</a>
-                <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Continuar Comprando</button>
-              </div>
-            </div>
-          </div>
+        <div class="livro-imagem">
+            <img src="{{ livro.imagem }}" alt="{{ livro.titulo }}">
         </div>
-        
-    </body>
-    </html>
+
+        <div class="livro-info">
+
+            <div class="text-muted small mb-2">
+                Vendido e entregue por: <strong>Página Virada Store</strong>
+            </div>
+            <div class="estoque-info">
+                Em estoque
+            </div>
+
+            <div class="preco">
+                R$ {{ livro.preco|floatformat:2 }}
+            </div>
+
+            <form method="POST" action="{% url 'adicionar_ao_carrinho' livro.id %}">
+                {% csrf_token %}
+                <button type="submit" class="comprar-btn">COMPRAR AGORA 🛒</button>
+            </form>
+
+            {% if user.is_authenticated %}
+                <form method="POST" action="{% url 'toggle_wishlist' livro.id %}" class="mt-3">
+                    {% csrf_token %}
+                    <button type="submit" class="btn w-100 {% if is_in_wishlist %}btn-danger{% else %}btn-outline-primary{% endif %}">
+                        {% if is_in_wishlist %}
+                            Remover da Lista de Desejos ❤️
+                        {% else %}
+                            Adicionar à Lista de Desejos 🤍
+                        {% endif %}
+                    </button>
+                </form>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    <div class="descricao container">
+        <h2>Descrição</h2>
+        {% if livro.descricao %}
+            <p>{{ livro.descricao }}</p>
+        {% else %}
+            <p>Este livro ainda não possui uma descrição.</p>
+        {% endif %}
+    </div>
+
+    <div class="text-center mt-5">
+        <a href="{% url 'home' %}" class="btn btn-link">← Voltar para a Página Inicial</a>
+    </div>
+
+</div>
+
+{% include "global/partials/footer.html" %}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

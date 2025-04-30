@@ -1,0 +1,23 @@
+{
+  "name": "projeto_django",
+  "version": "1.0.0",
+  "description": "**Página Virada Store** é um e-commerce especializado na venda de livros e e-books. O projeto tem como objetivo proporcionar uma experiência intuitiva e acessível para os usuários adquirirem seus títulos favoritos de forma rápida e segura.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jjoaoguilherme/Pagina_Virada_Store.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jjoaoguilherme/Pagina_Virada_Store/issues"
+  },
+  "homepage": "https://github.com/jjoaoguilherme/Pagina_Virada_Store#readme",
+  "devDependencies": {
+    "cypress": "^14.3.2"
+  }
+}
