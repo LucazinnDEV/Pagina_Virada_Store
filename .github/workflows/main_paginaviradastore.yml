@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python version
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -23,11 +23,14 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r requirements.txt
 
+      - name: Set TARGET_ENV=dev
+        run: echo "TARGET_ENV=dev" >> $GITHUB_ENV
+
+      - name: Migrate database
+        run: python manage.py migrate
+
       - name: Collect static files
         run: python manage.py collectstatic --noinput
-
-      - name: Run database migrations
-        run: python manage.py migrate
 
       - name: Start Django server in background
         run: |
@@ -39,18 +42,12 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install Cypress (modo CI)
-        run: |
-          npm install
-          npx cypress install --force
+      - name: Install Node dependencies
+        run: npm ci
 
-      - name: Corrige permissão do Cypress
-        run: chmod +x ./node_modules/.bin/cypress
-
-      - name: Run Cypress tests (headless CI)
+      - name: Run Cypress tests (modo CI)
         run: npx cypress run
         env:
-          CYPRESS_INSTALL_BINARY: 0
           CI: true
 
       - name: Clean testing files
@@ -93,7 +90,7 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_D66C1E62D9244683B21C79DDF2427544 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_5CFF844993964C54A287DE8F8B7D32C4 }}
 
-      - name: 'Deploy to Azure Web App'
+      - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
