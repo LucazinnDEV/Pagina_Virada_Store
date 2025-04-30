@@ -1,18 +1,14 @@
-name: Build and deploy Python app to Azure Web App - PaginaViradaStore
+name: Build and Deploy Django + Cypress
 
 on:
   push:
     branches:
-      - main
+      - prod
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      TARGET_ENV: dev
-      SECRET_KEY: segredoqualquer123
-      DEBUG: True
 
     steps:
       - uses: actions/checkout@v4
@@ -20,49 +16,49 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.12'
 
-      - name: Install Python dependencies
-        run: pip install -r requirements.txt
+      - name: Create virtualenv and install Python deps
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install -r requirements.txt
 
-      - name: Set up Node.js
+      - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Install Node.js dependencies e Cypress com permissões
+      - name: Install Cypress and JS deps
         run: |
-          npm install
-          node_modules/.bin/cypress install
+          npm ci
+          npx cypress install
           chmod +x node_modules/.bin/cypress
 
-      - name: Collect static files
-        run: python manage.py collectstatic --noinput
-
-      - name: Run database migrations
-        run: python manage.py migrate
-
-      - name: Start Django server in background
+      - name: Run migrations and local server
         run: |
+          python manage.py migrate
           nohup python manage.py runserver 0.0.0.0:8000 &
-          sleep 15
+          sleep 10
 
-      - name: Run Cypress tests (headless with Chrome)
-        run: npx cypress run --browser chrome
-        env:
-          CYPRESS_baseUrl: http://127.0.0.1:8000
+      - name: Run Cypress tests
+        run: |
+          npx cypress run
 
-      - name: Clean test files
-        run: rm -f ci_db.sqlite3 || true
+      - name: Clean test/development files
+        run: |
+          rm -f .env db.sqlite3 cypress.config.js package-lock.json package.json
+          rm -rf cypress node_modules venv
 
-      - name: Zip app for deploy
+      - name: Zip for deployment
         run: zip -r release.zip ./*
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: python-app
-          path: release.zip
+          path: |
+            release.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -70,9 +66,11 @@ jobs:
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+    permissions:
+      id-token: write
 
     steps:
-      - name: Download build artifact
+      - name: Download artifact
         uses: actions/download-artifact@v4
         with:
           name: python-app
@@ -80,17 +78,16 @@ jobs:
       - name: Unzip artifact
         run: unzip release.zip
 
-      - name: Azure login
+      - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_AC2CFEEC6D90471A9A7D1DE1AFDA7381 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_D01DBB11DCD843DCB2F7455C0DC81599 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_CC5273913AE940BA8A7E479B70ED94DB }}
 
-      - name: Deploy to Azure Web App
+      - name: Deploy to Azure
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
-          app-name: 'PaginaViradaStore'
+          app-name: 'advocatusonline'
           slot-name: 'Production'
-          package: release.zip
