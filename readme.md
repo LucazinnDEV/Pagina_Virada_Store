@@ -81,8 +81,8 @@
 <details>
   <summary>🚀 Entrega 2</summary>
 
-  ![Sprint Done](./prints/entrega2_sprint1Done.png)  
-  ![Backlog](./prints/entrega2_backlog.png)  
+  ![Sprint1 Quadro](./prints/entrega2_sprint1Done.png)  
+  ![Sprint1 Backlog](./prints/entrega2_backlog.png)  
   ![Issues/Tracker](./prints/entrega2_issues.png)  
   🎥 [Vídeo Demonstração](https://youtu.be/kaBcxNm3d-Y)  
   🌐 Link Azure: [Página Virada Store](https://paginaviradastore-g8fjeqbuc9beeuc3.brazilsouth-01.azurewebsites.net)
@@ -101,8 +101,10 @@
 <details>
   <summary>🚀 Entrega 3</summary>
 
-  ![Sprint ToDo](./prints/entrega3_sprint2backlog.png) 
-  ![Sprint Done](./prints/entrega3_sprint2quadro.png) 
+  ![Sprint2 backlog](./prints/entrega3_sprint2Backlog.png) 
+  
+  ![Sprint2 Quadro](./prints/entrega3_sprint2quadro.png) 
+  
   ![Issues/Tracker](./prints/entrega3_issues.png) 
 
   #### 💬 Relato Programação em Par
