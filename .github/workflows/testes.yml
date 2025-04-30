@@ -10,7 +10,7 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
     env:
-      TARGET_ENV: dev  # Garante uso do SQLite (e não PostgreSQL)
+      TARGET_ENV: dev  # Garante o uso do SQLite (não PostgreSQL)
 
     steps:
       - name: Clonar repositório
@@ -32,24 +32,26 @@ jobs:
       - name: Rodar testes Django
         run: python manage.py test
 
-      # Passo para verificar a estrutura de diretórios
-      - name: Verificar estrutura de diretórios
+      # Verificando a estrutura do diretório e2e
+      - name: Verificar estrutura do diretório e2e
         run: |
-          echo "Listando os diretórios principais do repositório..."
-          ls -R  # Lista recursivamente todos os diretórios e arquivos no repositório
+          echo "Listando o conteúdo do diretório e2e..."
+          ls -R e2e  # Listando os arquivos no diretório e2e
 
-      # Passo para verificar se o diretório 'e2e' e 'cypress' existem
-      - name: Verificar diretório e2e
+      # Verificando o conteúdo do diretório Cypress
+      - name: Verificar diretório Cypress
         run: |
-          echo "Listando conteúdo do diretório e2e..."
-          ls e2e  # Verifica o conteúdo do diretório e2e
+          echo "Listando o conteúdo do diretório Cypress..."
+          ls -R e2e/cypress  # Verificando a pasta cypress
 
       # Instalar dependências do Cypress
       - name: Instalar dependências do Cypress
         run: |
-          cd e2e/cypress  # Muda para o diretório onde está o Cypress
+          cd e2e/cypress  # Muda para o diretório do Cypress
           npm install
 
+      # Rodar testes do Cypress
       - name: Rodar testes Cypress
-        run: npx cypress run
-        working-directory: ./e2e/cypress  # Corrige o caminho para o diretório correto do Cypress
+        run: |
+          cd e2e/cypress  # Certifica-se de que está no diretório correto
+          npx cypress run
