@@ -58,20 +58,15 @@
 
 ---
 
-<p align="center">
-  <a href="https://jira.example.com" target="_blank">
-    <img src="https://yourimagehost.com/jira-button.png" alt="Jira" height="50">
-  </a>
-  <a href="https://youtube.com/screencast" target="_blank">
-    <img src="https://yourimagehost.com/screencast-button.png" alt="Screencast" height="50">
-  </a>
-  <a href="https://figma.com" target="_blank">
-    <img src="https://yourimagehost.com/figma-button.png" alt="Figma" height="50">
-  </a>
-  <a href="https://docs.google.com" target="_blank">
-    <img src="https://yourimagehost.com/historias-button.png" alt="Histórias" height="50">
-  </a>
-</p>
+## 🔗 Links do Projeto
+
+- 🎨 **[Protótipo no Figma](https://www.figma.com/design/aDKjwqFzzYOgslpmmFgf3w/Untitled?node-id=0-1&t=petcbihtWxGSNXbQ-1)**
+- 🎥 **[Demonstração - Vídeo 1](https://youtu.be/muRVmqQawBw)**
+- 🎥 **[Demonstração - Vídeo 2](https://youtu.be/kaBcxNm3d-Y)**
+- 📄 **[Histórias do Usuário](https://docs.google.com/document/d/1qxWeY8sgxpPxejGPDY0ZJitrgwIRGgKHSkECFL7OSgg/edit?usp=sharing)**
+- 📌 **[Gerenciamento do Projeto - Jira](https://paginaviradastore.atlassian.net/jira/software/projects/SCRUM/summary)**
+- 🌐 **[Deploy no Azure](https://paginaviradastore-g8fjeqbuc9beeuc3.brazilsouth-01.azurewebsites.net)**
+
 
 ## 📦 Entregas
 
@@ -86,8 +81,8 @@
 <details>
   <summary>🚀 Entrega 2</summary>
 
-  ![Sprint Done](./prints/entrega2_sprint1Done.png)  
-  ![Backlog](./prints/entrega2_backlog.png)  
+  ![Sprint1 Quadro](./prints/entrega2_sprint1Done.png)  
+  ![Sprint1 Backlog](./prints/entrega2_backlog.png)  
   ![Issues/Tracker](./prints/entrega2_issues.png)  
   🎥 [Vídeo Demonstração](https://youtu.be/kaBcxNm3d-Y)  
   🌐 Link Azure: [Página Virada Store](https://paginaviradastore-g8fjeqbuc9beeuc3.brazilsouth-01.azurewebsites.net)
@@ -95,18 +90,29 @@
   #### 💬 Relato Programação em Par
   Tentamos utilizar o metodo de programação em par, porém, com resultados abaixo da expectativa e que não agregaram suficientemente para com o projeto. 
 
-Dessa forma, optamos por não utilizar o modelo de programação em par em nosso projeto, principalmente devido à dificuldade de conciliar os horários dos integrantes do grupo. Muitas vezes, não era possível reunir todos ao mesmo tempo, o que tornava inviável manter sessões contínuas de codificação conjunta.
+  Dessa forma, optamos por não utilizar o modelo de programação em par em nosso projeto, principalmente devido à dificuldade de conciliar os horários dos integrantes do grupo. Muitas vezes, não era possível reunir todos ao mesmo tempo, o que tornava inviável manter sessões contínuas de codificação conjunta.
 
-Em vez disso, adotamos uma abordagem mais flexível: realizamos reuniões no Discord com os membros disponíveis no momento para discutir o andamento do projeto e definir os próximos passos. A partir dessas conversas, cada integrante ficou responsável por desenvolver partes específicas do sistema, contribuindo de forma colaborativa, ainda que em momentos diferentes.
+  Em vez disso, adotamos uma abordagem mais flexível: realizamos reuniões no Discord com os membros disponíveis no momento para discutir o andamento do projeto e definir os próximos passos. A partir dessas conversas, cada integrante ficou responsável por desenvolver partes específicas do sistema, contribuindo de forma colaborativa, ainda que em momentos diferentes.
 
-Essa estratégia nos permitiu manter o ritmo de trabalho, respeitar os prazos e garantir a qualidade do projeto, mesmo sem seguir o modelo tradicional de programação em par.
+  Essa estratégia nos permitiu manter o ritmo de trabalho, respeitar os prazos e garantir a qualidade do projeto, mesmo sem seguir o modelo tradicional de programação em par.
 
 </details>
 
 <details>
-  <summary>🚧 Entrega 3</summary>
+  <summary>🚀 Entrega 3</summary>
 
-  *(Em andamento)*
+  ![Sprint2 backlog](./prints/entrega3_sprint2backlog.png) 
+  
+  ![Sprint2 Quadro](./prints/entrega3_sprint2quadro.png) 
+  
+  ![Issues/Tracker](./prints/entrega3_issues.png) 
+
+  #### 💬 Relato Programação em Par
+  Dando continuidade à estratégia definida na Sprint 1, mantivemos a divisão de tarefas entre os membros do grupo com base em reuniões pontuais realizadas no Discord. Essa abordagem, mais flexível e adaptada à nossa rotina, seguiu sendo eficaz ao permitir que cada integrante contribuísse com partes específicas do projeto de forma assíncrona.
+
+  Apesar de termos considerado a possibilidade de retomar a programação em par, concluímos que, devido às limitações de disponibilidade simultânea dos integrantes, o modelo ainda não é viável para o grupo neste momento. A colaboração tem ocorrido de maneira produtiva através de alinhamentos regulares, trocas de feedbacks e suporte mútuo durante o desenvolvimento.
+
+  Essa forma de organização tem favorecido a fluidez do trabalho, o cumprimento dos prazos e a qualidade das entregas previstas para esta sprint.
 
 </details>
 
