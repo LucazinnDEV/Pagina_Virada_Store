@@ -32,9 +32,24 @@ jobs:
       - name: Rodar testes Django
         run: python manage.py test
 
+      # Passo para verificar a estrutura de diretórios
+      - name: Verificar estrutura de diretórios
+        run: |
+          echo "Listando os diretórios principais do repositório..."
+          ls -R  # Lista recursivamente todos os diretórios e arquivos no repositório
+
+      # Passo para verificar se o diretório 'e2e' e 'cypress' existem
+      - name: Verificar diretório e2e
+        run: |
+          echo "Listando conteúdo do diretório e2e..."
+          ls e2e  # Verifica o conteúdo do diretório e2e
+
+      # Instalar dependências do Cypress
       - name: Instalar dependências do Cypress
-        run: npm install
+        run: |
+          cd e2e/cypress  # Muda para o diretório onde está o Cypress
+          npm install
 
       - name: Rodar testes Cypress
         run: npx cypress run
-        working-directory: ./e2e/cypress
+        working-directory: ./e2e/cypress  # Corrige o caminho para o diretório correto do Cypress
