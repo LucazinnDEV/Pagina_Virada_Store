@@ -1,4 +1,4 @@
-name: Build and deploy Python app to Azure Web App - PaginaViradaStore-
+name: Build and deploy Python app to Azure Web App - PaginaViradaStore
 
 on:
   push:
@@ -21,15 +21,16 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Clean testing files
         run: |
-          rm -f db.sqlite3
-          rm -f .env
+          python -m venv venv
+          source venv/bin/activate
+          pip install -r requirements.txt
+
+      - name: Collect static files
+        run: python manage.py collectstatic --noinput
 
       - name: Zip artifact for deployment
-        run: zip -r release.zip . -x "venv/*" ".git/*" "node_modules/*" "*.pyc" "__pycache__/*"
+        run: zip -r release.zip . -x "venv/*"
 
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v4
@@ -56,25 +57,12 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Run migrations and collectstatic
-        run: |
-          python manage.py migrate
-          python manage.py collectstatic --noinput
-
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_A7671980A78945C4AB4423910CA31EF2 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_D66C1E62D9244683B21C79DDF2427544 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_5CFF844993964C54A287DE8F8B7D32C4 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_10B46995B8DC43A79B5F2300F7E5F0F0 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_E264FD5E033C4A049254994F8FF32776 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_834B0DF9378F4E3C969C504AEB890CCC }}
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
@@ -82,4 +70,4 @@ jobs:
         with:
           app-name: 'paginaviradastore--aac3ehfxb6h8bzhu'
           slot-name: 'Production'
-          package: release.zip
+          package: .
