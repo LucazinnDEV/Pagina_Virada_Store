@@ -12,9 +12,6 @@ jobs:
     permissions:
       contents: read
 
-    env:
-      TARGET_ENV: dev  # Usa SQLite no CI
-
     steps:
       - uses: actions/checkout@v4
 
@@ -45,17 +42,18 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install Cypress (modo CI)
+      - name: Install Cypress
         run: |
-          npm ci
+          npm install
           npx cypress install
 
-      - name: Run Cypress tests (modo CI)
+      - name: Run Cypress tests
         run: npx cypress run
 
       - name: Clean testing files
         run: |
           rm -f db.sqlite3
+          rm -f ci_db.sqlite3
           rm -f .env
 
       - name: Zip artifact for deployment
