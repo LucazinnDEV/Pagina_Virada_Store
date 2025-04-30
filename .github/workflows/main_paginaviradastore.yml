@@ -23,9 +23,6 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Set environment to force SQLite in CI
-        run: echo "GITHUB_ACTIONS=true" >> $GITHUB_ENV
-
       - name: Collect static files
         run: python manage.py collectstatic --noinput
 
@@ -46,6 +43,9 @@ jobs:
         run: |
           npm install
           npx cypress install
+
+      - name: Corrige permissão do Cypress
+        run: chmod +x ./node_modules/.bin/cypress
 
       - name: Run Cypress tests
         run: npx cypress run
