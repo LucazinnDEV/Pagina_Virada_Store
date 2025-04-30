@@ -23,16 +23,13 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Collect static files
-        run: python manage.py collectstatic --noinput
-
       - name: Clean testing files
         run: |
           rm -f db.sqlite3
           rm -f .env
 
       - name: Zip artifact for deployment
-        run: zip -r release.zip ./*
+        run: zip -r release.zip . -x "venv/*" ".git/*" "node_modules/*" "*.pyc" "__pycache__/*"
 
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v4
@@ -58,6 +55,19 @@ jobs:
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run migrations and collectstatic
+        run: |
+          python manage.py migrate
+          python manage.py collectstatic --noinput
 
       - name: Login to Azure
         uses: azure/login@v2
