@@ -1,4 +1,3 @@
-echo "name: Build and Test Django App with Cypress
 
 on:
   push:
