@@ -20,7 +20,7 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
+      - name: Install Python dependencies
         run: pip install -r requirements.txt
 
       - name: Collect static files
@@ -39,16 +39,19 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install Cypress
+      - name: Install Cypress (modo CI)
         run: |
           npm install
-          npx cypress install
+          npx cypress install --force
 
       - name: Corrige permissão do Cypress
         run: chmod +x ./node_modules/.bin/cypress
 
-      - name: Run Cypress tests
+      - name: Run Cypress tests (headless CI)
         run: npx cypress run
+        env:
+          CYPRESS_INSTALL_BINARY: 0
+          CI: true
 
       - name: Clean testing files
         run: |
