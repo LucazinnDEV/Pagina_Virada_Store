@@ -1,57 +1,48 @@
-name: Testes Automatizados
+name: Run Tests
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
-  build-and-test:
+  test:
     runs-on: ubuntu-latest
-    env:
-      TARGET_ENV: dev  # Garante o uso do SQLite (não PostgreSQL)
-
     steps:
-      - name: Clonar repositório
-        uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - name: Instalar Python
-        uses: actions/setup-python@v4
+      - name: Set up Python version
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.12'
 
-      - name: Instalar dependências Python
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
+          # Instalar as dependências Python
           pip install -r requirements.txt
+          # Instalar as dependências do Cypress (Node.js)
+          npm ci
 
-      - name: Aplicar migrações do Django
+      - name: Run migrations
         run: python manage.py migrate
 
-      - name: Rodar testes Django
-        run: python manage.py test
+      - name: Collect static files
+        run: python manage.py collectstatic --noinput
 
-      # Verificando a estrutura do diretório e2e
-      - name: Verificar estrutura do diretório e2e
+      - name: Run Cypress tests
         run: |
-          echo "Listando o conteúdo do diretório e2e..."
-          ls -R e2e  # Listando os arquivos no diretório e2e
-
-      # Verificando o conteúdo do diretório Cypress
-      - name: Verificar diretório Cypress
-        run: |
-          echo "Listando o conteúdo do diretório Cypress..."
-          ls -R e2e/cypress  # Verificando a pasta cypress
-
-      # Instalar dependências do Cypress
-      - name: Instalar dependências do Cypress
-        run: |
-          cd e2e/cypress  # Muda para o diretório do Cypress
-          npm install
-
-      # Rodar testes do Cypress
-      - name: Rodar testes Cypress
-        run: |
-          cd e2e/cypress  # Certifica-se de que está no diretório correto
+          # Rodar os testes Cypress
           npx cypress run
+
+      - name: Clean testing files
+        run: |
+          # Limpar arquivos de testes
+          rm -f db.sqlite3
+          rm -f .env
