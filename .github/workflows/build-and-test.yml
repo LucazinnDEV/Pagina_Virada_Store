@@ -1,0 +1,99 @@
+echo "name: Build and Test Django App with Cypress
+
+on:
+  push:
+    branches:
+      - prod  # Altere para a branch desejada, se for outra
+  workflow_dispatch:  # Gatilho manual
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Create virtual environment and install Python deps
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install -r requirements.txt
+
+      - name: Install Node.js dependencies
+        run: npm ci
+
+      - name: Fix directory permissions
+        run: sudo chown -R $USER:$USER ./
+
+      - name: Give permission to Cypress binary
+        run: chmod +x ./node_modules/.bin/cypress
+
+      - name: Run migrations
+        run: python manage.py migrate
+
+      - name: Start Django server in background
+        run: |
+          nohup python manage.py runserver 0.0.0.0:8000 & 
+          sleep 10
+
+      - name: Run Cypress tests via npx (sem erro de permissão)
+        run: npx cypress run
+
+      - name: Clean testing files
+        run: |
+          rm -f .env db.sqlite3
+          rm -f package-lock.json
+          rm -rf node_modules cypress
+
+      - name: Zip artifact
+        run: zip -r release.zip . -x venv/**\*
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: python-app
+          path: release.zip
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'Production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: python-app
+
+      - name: Unzip artifact
+        run: unzip release.zip
+
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID }}
+
+      - name: Deploy to Azure
+        uses: azure/webapps-deploy@v3
+        id: deploy-to-webapp
+        with:
+          app-name: 'PaginaViradaStore'
+          slot-name: 'Production'
+          package: release.zip" > .github\workflows\build-and-test.yml
