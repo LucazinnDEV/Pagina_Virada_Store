@@ -30,10 +30,11 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install Node.js dependencies
+      - name: Install Node.js dependencies e Cypress com permissões
         run: |
           npm install
-          npx cypress install
+          node_modules/.bin/cypress install
+          chmod +x node_modules/.bin/cypress
 
       - name: Collect static files
         run: python manage.py collectstatic --noinput
