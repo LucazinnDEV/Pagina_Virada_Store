@@ -38,7 +38,17 @@ jobs:
       - name: 🚀 Iniciar servidor Django para Cypress
         run: |
           nohup python manage.py runserver 127.0.0.1:8000 &
-          sleep 10
+      
+      - name: ⏳ Esperar o servidor Django estar pronto
+        run: |
+          for i in {1..10}; do
+            if curl --silent http://127.0.0.1:8000 > /dev/null; then
+              echo "Servidor Django está pronto!"
+              break
+            fi
+            echo "Aguardando o servidor iniciar..."
+            sleep 3
+          done
 
       - name: 🧪 Rodar testes Cypress
         run: npx cypress run --config-file cypress.config.js
