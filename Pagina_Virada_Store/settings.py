@@ -119,15 +119,9 @@ USE_TZ = True
 USE_L10N = True
 
 # Arquivos estáticos
-<<<<<<< HEAD
-STATIC_URL = '/static/'
-STATICFILES_DIRS = []  # Ou ajuste se tiver uma pasta específica
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-=======
 STATIC_URL = os.environ.get('DJANGO_STATIC_URL', '/static/')
 STATICFILES_DIRS = []  # Defina se houver uma pasta 'static' além da app
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
->>>>>>> 8d6b5d99c713ec7843f5bd4125fa559a5a42645c
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Arquivos de mídia
@@ -136,3 +130,19 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 # Chave primária padrão
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Logs para produção
+if not NOT_PROD:
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'handlers': {
+            'console': {
+                'class': 'logging.StreamHandler',
+            },
+        },
+        'root': {
+            'handlers': ['console'],
+            'level': 'INFO',
+        },
+    }
