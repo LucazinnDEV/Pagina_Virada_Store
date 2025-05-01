@@ -130,3 +130,19 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 # Chave primária padrão
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Logs para produção
+if not NOT_PROD:
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'handlers': {
+            'console': {
+                'class': 'logging.StreamHandler',
+            },
+        },
+        'root': {
+            'handlers': ['console'],
+            'level': 'INFO',
+        },
+    }
