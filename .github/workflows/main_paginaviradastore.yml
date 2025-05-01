@@ -66,10 +66,9 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_D66C1E62D9244683B21C79DDF2427544 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_5CFF844993964C54A287DE8F8B7D32C4 }}
 
-      - name: 'Deploy to Azure Web App'
+      - name: 🚀 Fazer deploy no Azure Web App
         uses: azure/webapps-deploy@v3
-        id: deploy-to-webapp
         with:
-          app-name: 'paginaviradastore--aac3ehfxb6h8bzhu'
-          slot-name: 'Production'
-          package: release.zip
+          app-name: 'PaginaViradaStore'
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: .

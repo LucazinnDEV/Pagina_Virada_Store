@@ -11,7 +11,7 @@
     <img src="https://img.shields.io/badge/Jira-BF9056?style=for-the-badge&logo=Jira&logoColor=white"/></a>
   <a href="https://www.figma.com/design/aDKjwqFzzYOgslpmmFgf3w/Untitled?node-id=0-1&t=petcbihtWxGSNXbQ-1">
     <img src="https://img.shields.io/badge/Figma-40211A?style=for-the-badge&logo=figma&logoColor=white"/></a>
-  <a href="https://paginaviradastore-g8fjeqbuc9beeuc3.brazilsouth-01.azurewebsites.net">
+  <a href="https://paginaviradastore-hrfde8hchhbdcjbg.brazilsouth-01.azurewebsites.net/">
     <img src="https://img.shields.io/badge/Azure Deploy-40211A?style=for-the-badge&logoColor=white"/></a>
   <a href="https://youtube.com/playlist?list=PLql-8xGSZOnC54kFiA03umnxNXTRMA4z9&si=_I32WK-SXjsJZ-Jb">
     <img src="https://img.shields.io/badge/Youtube-40211A?style=for-the-badge&logo=youtube&logoColor=white"/></a>
@@ -103,7 +103,7 @@
 <p align="center">
   <a href="https://paginaviradastore.atlassian.net/jira/software/projects/SCRUM/summary">
       <img src="https://img.shields.io/badge/Jira-BF9056?style=for-the-badge&logo=Jira&logoColor=white"/></a>
-  <a href="https://paginaviradastore-g8fjeqbuc9beeuc3.brazilsouth-01.azurewebsites.net">
+  <a href="https://paginaviradastore-hrfde8hchhbdcjbg.brazilsouth-01.azurewebsites.net/">
     <img src="https://img.shields.io/badge/Azure Deploy-40211A?style=for-the-badge&logoColor=white"/></a>
   <a href="https://youtu.be/kaBcxNm3d-Y">
     <img src="https://img.shields.io/badge/Screencast Protótipo de alta fidelidade part.1-BF9056?style=for-the-badge&logo=youtube&logoColor=white"/></a>
@@ -140,11 +140,11 @@
       <img src="https://img.shields.io/badge/Jira-BF9056?style=for-the-badge&logo=Jira&logoColor=white"/></a>
   <a href="https://www.figma.com/design/aDKjwqFzzYOgslpmmFgf3w/Untitled?node-id=0-1&t=petcbihtWxGSNXbQ-1">
       <img src="https://img.shields.io/badge/Figma-40211A?style=for-the-badge&logo=figma&logoColor=white"/></a>
-  <a href="https://paginaviradastore-g8fjeqbuc9beeuc3.brazilsouth-01.azurewebsites.net">
+  <a href="https://paginaviradastore-hrfde8hchhbdcjbg.brazilsouth-01.azurewebsites.net/">
     <img src="https://img.shields.io/badge/Azure Deploy-40211A?style=for-the-badge&logoColor=white"/></a>
   <a href="https://www.youtube.com/watch?v=DuMqZE8qhM4&list=PLql-8xGSZOnC54kFiA03umnxNXTRMA4z9&index=3&ab_channel=LUCASSAMUELPEREIRAALVES">
     <img src="https://img.shields.io/badge/Screencast LO FI + part.2-40211A?style=for-the-badge&logo=youtube&logoColor=white"/></a>
-  <a href="https://www.youtube.com/watch?v=DuMqZE8qhM4&list=PLql-8xGSZOnC54kFiA03umnxNXTRMA4z9&index=3&ab_channel=LUCASSAMUELPEREIRAALVES">
+  <a href="https://www.youtube.com/watch?v=09Yv8eIaykw&ab_channel=LUCASSAMUELPEREIRAALVES">
     <img src="https://img.shields.io/badge/Screencast Deploy (ênfase nas novas histórias)-40211A?style=for-the-badge&logo=youtube&logoColor=white"/></a>
   <a href="https://www.youtube.com/watch?v=DuMqZE8qhM4&list=PLql-8xGSZOnC54kFiA03umnxNXTRMA4z9&index=3&ab_channel=LUCASSAMUELPEREIRAALVES">
     <img src="https://img.shields.io/badge/Screencast do processo de build e deployment-40211A?style=for-the-badge&logo=youtube&logoColor=white"/></a>
