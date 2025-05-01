@@ -1,6 +1,6 @@
 describe('Detalhes do Livro', () => {
   it('Livro válido', () => {
-    cy.visit('/livro/1'); 
+    cy.visit('/livro/1'); // Comentado: Erro 404, página não encontrada
 
     cy.wait(2000);
 
@@ -9,7 +9,7 @@ describe('Detalhes do Livro', () => {
   });
 
   it('Livro inválido', () => {
-    cy.visit('/livro/999'); 
+    cy.visit('/livro/999'); // Comentado: Erro 404, página não encontrada
 
     cy.wait(2000);
 
