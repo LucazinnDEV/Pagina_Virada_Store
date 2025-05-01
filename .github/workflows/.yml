@@ -3,33 +3,52 @@ name: Deploy to Azure Web App - Produção
 on:
   push:
     branches:
-      - prod  # Só roda quando fizer push na branch 'prod'
+      - prod
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout do código
+      - name: 🔄 Checkout do código
         uses: actions/checkout@v4
 
-      - name: Configurar Python
+      - name: 🐍 Configurar Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Instalar dependências
+      - name: 📦 Instalar dependências do Django
         run: pip install -r requirements.txt
 
-      - name: Coletar arquivos estáticos
+      - name: 🧪 Rodar testes Django
+        run: python manage.py test
+
+      - name: 🟢 Instalar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: 📦 Instalar dependências do Cypress
+        run: npm install
+
+      - name: 🧪 Rodar testes Cypress
+        run: npx cypress run --config-file cypress.config.js  
+
+      - name: 🗂️ Coletar arquivos estáticos
         run: python manage.py collectstatic --noinput
 
-      - name: Aplicar migrações do banco de dados
+      - name: 🧩 Aplicar migrações do banco de dados
         run: python manage.py migrate
 
-      - name: Fazer deploy no Azure Web App
+      - name: 🧹 Remover arquivos sensíveis antes do deploy
+        run: |
+          rm -f db.sqlite3
+          rm -f .env || true
+
+      - name: 🚀 Fazer deploy no Azure Web App
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'PaginaViradaStore'  # Nome exato do App Service no Azure
+          app-name: 'PaginaViradaStore'
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: .
