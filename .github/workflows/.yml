@@ -22,7 +22,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: 🧪 Rodar testes Django
-        run: python manage.py test
+        run: npm run cy:run
 
       - name: 🟢 Instalar Node.js
         uses: actions/setup-node@v3
