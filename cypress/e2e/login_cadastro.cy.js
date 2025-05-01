@@ -60,13 +60,11 @@ describe('Testes de cadastro: cenário bom e ruim', () => {
     cy.get('a[href="/login/"]').first().click();
     cy.contains('Cadastre-se').click();
 
-    // Preenche tudo MENOS o nome
     cy.get('input[name="username"]').type(usuario);
     cy.get('input[name="email"]').type(email);
     cy.get('input[name="password1"]').type(senha);
     cy.get('input[name="password2"]').type(senha);
     cy.get('select[name="tipo_pessoa"]').select('Física');
-    // nome ausente
     cy.get('input[name="sobrenome"]').type(`Silva_${timestamp}`);
     cy.get('input[name="data_nascimento"]').type('2000-01-01');
     cy.get('input[name="cpf"]').type(cpf);
@@ -74,17 +72,12 @@ describe('Testes de cadastro: cenário bom e ruim', () => {
     cy.get('input[name="endereco"]').type(`Rua Exemplo ${timestamp}`);
     cy.get('input[name="telefone"]').type(telefone);
 
-    // Verifica que o formulário não será enviado
     cy.get('form').last().within(() => {
       cy.contains('Cadastre-se').click();
     });
 
-    // Verifica a validação nativa do navegador impedindo o envio
-    cy.focused().then(($el) => {
-      expect($el[0].validationMessage).to.eq('Please fill out this field.');
-    });
+    cy.get('input[name="nome"]').should('have[aria-invalid="true"]');  
 
-    // Confirma que ainda está na página de registro
     cy.url().should('include', '/registrar');
   });
 });
