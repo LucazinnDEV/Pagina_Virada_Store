@@ -1,10 +1,12 @@
-name: Teste de Pipeline
+name: Deploy to Azure Web App - Staging (Main)
 
 on:
-  workflow_dispatch:  # Permite rodar manualmente pela interface do GitHub
+  push:
+    branches:
+      - main
 
 jobs:
-  test-pipeline:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,9 +21,6 @@ jobs:
       - name: 📦 Instalar dependências do Django
         run: pip install -r requirements.txt
 
-      - name: 🧩 Aplicar migrações do banco de dados
-        run: python manage.py migrate
-
       - name: 🧪 Rodar testes Django
         run: python manage.py test
 
@@ -35,6 +34,3 @@ jobs:
 
       - name: 🧪 Rodar testes Cypress
         run: npx cypress run --config-file cypress.config.js
-
-      - name: 🗂️ Coletar arquivos estáticos
-        run: python manage.py collectstatic --noinput
