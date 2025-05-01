@@ -4,7 +4,6 @@ describe('Finalizar Compra', () => {
     cy.get('input[name="q"]').clear().type('pai');
     cy.get('form').first().submit();
 
-    // Aguarda o botão "Ver Detalhes" e segue o fluxo
     cy.contains('Ver Detalhes', { timeout: 10000 }).first().click();
     cy.contains('COMPRAR AGORA', { timeout: 10000 }).click();
 
@@ -13,7 +12,6 @@ describe('Finalizar Compra', () => {
     cy.contains('Sim, Finalizar Compra', { timeout: 10000 }).click();
     cy.url().should('include', '/checkout/');
 
-    // Preenche todos os campos corretamente
     cy.get('input[name="nome"]').clear().type('João');
     cy.get('input[name="sobrenome"]').clear().type('Cliente');
     cy.get('input[name="cep"]').clear().type('50720000');
@@ -21,7 +19,6 @@ describe('Finalizar Compra', () => {
 
     cy.contains('Confirmar Compra', { timeout: 10000 }).click();
 
-    // Verifica se a compra foi finalizada com sucesso
     cy.url().should('include', '/checkout/');
     cy.contains('Obrigado pela sua compra', { timeout: 10000 }).should('exist');
   });
@@ -39,15 +36,13 @@ describe('Finalizar Compra', () => {
     cy.contains('Sim, Finalizar Compra', { timeout: 10000 }).click();
     cy.url().should('include', '/checkout/');
 
-    // Preenche todos os campos exceto "nome"
     cy.get('input[name="sobrenome"]').clear().type('Cliente');
     cy.get('input[name="cep"]').clear().type('50720000');
     cy.get('input[name="endereco"]').clear().type('Rua das Letras, 123');
 
     cy.contains('Confirmar Compra', { timeout: 10000 }).click();
 
-    // Verifica que a página de checkout ainda está visível
     cy.url().should('include', '/checkout/');
-    cy.get('form').should('exist');
+    cy.contains('Campo obrigatório', { timeout: 10000 }).should('exist'); 
   });
 });
