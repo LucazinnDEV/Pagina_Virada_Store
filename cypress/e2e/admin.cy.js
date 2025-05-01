@@ -5,7 +5,6 @@ describe('Login Admin', () => {
     cy.get('#id_password').type('270406');
     cy.get('form').submit();
 
-    // Verifica se o painel do admin foi carregado
     cy.url().should('include', '/admin/');
     cy.contains('Administração do Site', { timeout: 10000 }).should('be.visible');
   });
@@ -16,7 +15,6 @@ describe('Login Admin', () => {
     cy.get('#id_password').type('senhaerrada');
     cy.get('form').submit();
 
-    // Verifica se o alerta de erro apareceu
-    cy.get('.errornote').should('contain', 'Por favor, insira um usuário e senha corretos');
+    cy.get('.errornote', { timeout: 10000 }).should('contain', 'Por favor, insira um usuário e senha corretos');
   });
 });
