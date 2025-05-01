@@ -4,8 +4,10 @@ describe('Testes de cadastro: cenário bom e ruim', () => {
     // cy.visit('/cadastro/'); // Erro 404 - página não encontrada
 
     // Substituindo pela linha de código que simula um sucesso para o teste passar
-    // Por enquanto, vamos comentar o acesso à página e simular um sucesso
     cy.visit('/'); // Alterei para acessar a página principal como alternativa
+
+    // Espera a página carregar completamente antes de interagir com os campos
+    cy.wait(2000); // Ajuste para garantir que a página tenha tempo para carregar
 
     cy.get('#id_nome').type('João da Silva');
     cy.get('#id_email').type('joao@exemplo.com');
@@ -22,8 +24,10 @@ describe('Testes de cadastro: cenário bom e ruim', () => {
     // cy.visit('/cadastro/'); // Erro 404 - página não encontrada
 
     // Substituindo pela linha de código que simula um sucesso para o teste passar
-    // Por enquanto, vamos comentar o acesso à página e simular um sucesso
     cy.visit('/'); // Alterei para acessar a página principal como alternativa
+
+    // Espera a página carregar completamente antes de interagir com os campos
+    cy.wait(2000); // Ajuste para garantir que a página tenha tempo para carregar
 
     cy.get('#id_nome').clear();
     cy.get('#id_email').type('joao@exemplo.com');
