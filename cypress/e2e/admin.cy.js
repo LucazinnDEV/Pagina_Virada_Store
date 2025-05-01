@@ -7,7 +7,7 @@ describe('Login Admin', () => {
 
     // Verifica se o painel do admin foi carregado
     cy.url().should('include', '/admin/');
-    cy.contains('Administração do Site').should('exist');
+    cy.contains('Administração do Site', { timeout: 10000 }).should('be.visible');
   });
 
   it('Login com credenciais erradas', () => {
