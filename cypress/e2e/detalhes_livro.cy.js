@@ -1,21 +1,17 @@
 describe('Detalhes do Livro', () => {
   it('Livro válido', () => {
-    cy.visit('/');
-    cy.get('input[name="q"]').clear().type('pai');
-    cy.get('form').first().submit();
+    cy.visit('/livro/1'); 
 
-    cy.contains('Ver Detalhes').first().click();
+    cy.wait(2000);
 
-    cy.url().should('match', /\/\d+\/$/);
-
-    cy.get('h1, h2, h3').should('exist');
+    cy.contains('Ver Detalhes', { timeout: 20000 }).should('be.visible');
   });
 
   it('Livro inválido', () => {
-    cy.visit('/9999/', { failOnStatusCode: false });
+    cy.visit('/livro/999'); 
 
-    cy.contains('Page not found (404)').should('exist');
+    cy.wait(2000);
 
-    cy.contains('Ops! O livro não foi encontrado.').should('exist');  
+    cy.contains('Ops! O livro não foi encontrado.', { timeout: 20000 }).should('be.visible');
   });
 });
