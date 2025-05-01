@@ -144,7 +144,7 @@
     <img src="https://img.shields.io/badge/Azure Deploy-40211A?style=for-the-badge&logoColor=white"/></a>
   <a href="https://www.youtube.com/watch?v=DuMqZE8qhM4&list=PLql-8xGSZOnC54kFiA03umnxNXTRMA4z9&index=3&ab_channel=LUCASSAMUELPEREIRAALVES">
     <img src="https://img.shields.io/badge/Screencast LO FI + part.2-40211A?style=for-the-badge&logo=youtube&logoColor=white"/></a>
-  <a href="https://www.youtube.com/watch?v=DuMqZE8qhM4&list=PLql-8xGSZOnC54kFiA03umnxNXTRMA4z9&index=3&ab_channel=LUCASSAMUELPEREIRAALVES">
+  <a href="https://youtu.be/MoXdeayNSFY?si=iTpNEMh6-NaSQKuT">
     <img src="https://img.shields.io/badge/Screencast Deploy (ênfase nas novas histórias)-40211A?style=for-the-badge&logo=youtube&logoColor=white"/></a>
   <a href="https://www.youtube.com/watch?v=DuMqZE8qhM4&list=PLql-8xGSZOnC54kFiA03umnxNXTRMA4z9&index=3&ab_channel=LUCASSAMUELPEREIRAALVES">
     <img src="https://img.shields.io/badge/Screencast do processo de build e deployment-40211A?style=for-the-badge&logo=youtube&logoColor=white"/></a>
