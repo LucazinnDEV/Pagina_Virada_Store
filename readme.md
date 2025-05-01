@@ -66,10 +66,10 @@
 <br/>
 
 ### 📄 Jira Board 
-![Quadro Jira](./prints/entrega2_sprint1Done.png)
+![Quadro Jira](./prints/entrega1_quadro.png)
 
 ### 📄 Jira Backlog
-![Quadro Jira](./prints/entrega2_sprint1Done.png)
+![Quadro Jira](./prints/entrega1_backlog.png)
 <br/>
 
 <p align="center">
