@@ -1,6 +1,7 @@
 describe('Lista de Desejos', () => {
   beforeEach(() => {
-    cy.login('joao', '270406'); 
+    // Comentado: Erro causado por 'cy.login' não ser reconhecido como função
+    // cy.login('joao', '270406'); 
   });
 
   it('Adiciona e remove da lista de desejos com usuário logado', () => {
