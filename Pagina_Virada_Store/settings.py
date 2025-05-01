@@ -15,6 +15,10 @@ NOT_PROD = not TARGET_ENV.lower().startswith('prod')
 # Chave secreta
 SECRET_KEY = os.getenv('SECRET_KEY', 'chave-insegura-dev')
 
+# Aviso em modo dev
+if NOT_PROD and SECRET_KEY == 'chave-insegura-dev':
+    print("⚠️ ATENÇÃO: Você está usando a SECRET_KEY padrão em modo de desenvolvimento.")
+
 # Modo debug
 DEBUG = os.getenv('DEBUG', 'True' if NOT_PROD else 'False').lower() in ['true', '1', 't']
 
@@ -42,7 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'whitenoise.runserver_nostatic',  # Adicionado para servir arquivos estáticos
+    'whitenoise.runserver_nostatic',
     'forum',
     'widget_tweaks',
 ]
@@ -50,7 +54,7 @@ INSTALLED_APPS = [
 # Middleware
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # Deve vir logo após SecurityMiddleware
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -91,6 +95,11 @@ if NOT_PROD:
         }
     }
 else:
+    required_vars = ['DBNAME', 'DBUSER', 'DBPASS', 'DBHOST']
+    for var in required_vars:
+        if not os.getenv(var):
+            raise Exception(f"Variável de ambiente obrigatória ausente: {var}")
+
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
@@ -120,7 +129,7 @@ USE_L10N = True
 
 # Arquivos estáticos
 STATIC_URL = os.environ.get('DJANGO_STATIC_URL', '/static/')
-STATICFILES_DIRS = []  # Defina se houver uma pasta 'static' além da app
+STATICFILES_DIRS = [BASE_DIR / 'static'] if (BASE_DIR / 'static').exists() else []
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
