@@ -1,12 +1,12 @@
-name: Deploy to Azure Web App - Produção
+name: Deploy to Azure Web App - Staging (Main)
 
 on:
   push:
     branches:
-      - prod
+      - main
 
 jobs:
-  deploy:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -33,22 +33,4 @@ jobs:
         run: npm install
 
       - name: 🧪 Rodar testes Cypress
-        run: npx cypress run --config-file cypress.config.js  
-
-      - name: 🗂️ Coletar arquivos estáticos
-        run: python manage.py collectstatic --noinput
-
-      - name: 🧩 Aplicar migrações do banco de dados
-        run: python manage.py migrate
-
-      - name: 🧹 Remover arquivos sensíveis antes do deploy
-        run: |
-          rm -f db.sqlite3
-          rm -f .env || true
-
-      - name: 🚀 Fazer deploy no Azure Web App
-        uses: azure/webapps-deploy@v3
-        with:
-          app-name: 'PaginaViradaStore'
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: .
+        run: npx cypress run --config-file cypress.config.js
