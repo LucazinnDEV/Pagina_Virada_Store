@@ -1,36 +1,35 @@
-name: Deploy to Azure Web App
+name: Deploy to Azure Web App - Produção
 
 on:
   push:
     branches:
-      - main  # ou 'prod', se for o nome da sua branch de produção
+      - prod  # Só roda quando fizer push na branch 'prod'
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout do código
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Configurar Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
+      - name: Instalar dependências
+        run: pip install -r requirements.txt
 
-      - name: Collect static files
+      - name: Coletar arquivos estáticos
         run: python manage.py collectstatic --noinput
 
-      - name: Run migrations
+      - name: Aplicar migrações do banco de dados
         run: python manage.py migrate
 
-      - name: Deploy to Azure Web App
+      - name: Fazer deploy no Azure Web App
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'PaginaViradaStore'
+          app-name: 'PaginaViradaStore'  # Nome exato do App Service no Azure
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: .
