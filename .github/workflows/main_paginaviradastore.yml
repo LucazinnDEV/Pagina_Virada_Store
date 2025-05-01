@@ -66,6 +66,6 @@ jobs:
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
-          app-name: 'paginaviradastore--aac3ehfxb6h8bzhu'
+          app-name: 'PaginaViradaStore-'
           slot-name: 'Production'
           package: release.zip
