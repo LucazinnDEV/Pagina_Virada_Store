@@ -1,0 +1,40 @@
+name: Teste de Pipeline
+
+on:
+  workflow_dispatch:  # Permite rodar manualmente pela interface do GitHub
+
+jobs:
+  test-pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🔄 Checkout do código
+        uses: actions/checkout@v4
+
+      - name: 🐍 Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 📦 Instalar dependências do Django
+        run: pip install -r requirements.txt
+
+      - name: 🧩 Aplicar migrações do banco de dados
+        run: python manage.py migrate
+
+      - name: 🧪 Rodar testes Django
+        run: python manage.py test
+
+      - name: 🟢 Instalar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: 📦 Instalar dependências do Cypress
+        run: npm install
+
+      - name: 🧪 Rodar testes Cypress
+        run: npx cypress run --config-file cypress.config.js
+
+      - name: 🗂️ Coletar arquivos estáticos
+        run: python manage.py collectstatic --noinput
