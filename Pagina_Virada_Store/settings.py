@@ -5,31 +5,31 @@ from dotenv import load_dotenv
 # Caminho base do projeto
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Carrega variáveis do .env
+# Carrega variáveis do .env (apenas em ambiente local)
 load_dotenv(BASE_DIR / '.env')
 
 # Detecta ambiente: produção ou desenvolvimento
 TARGET_ENV = os.getenv('TARGET_ENV', 'dev')
 NOT_PROD = not TARGET_ENV.lower().startswith('prod')
 
-# Chave secreta e modo debug
-SECRET_KEY = os.getenv('SECRET_KEY') if not NOT_PROD else '<SUA_SECRET_KEY_LOCAL>'
+# Chave secreta
+SECRET_KEY = os.getenv('SECRET_KEY', 'chave-insegura-dev')
+
+# Modo debug
 DEBUG = os.getenv('DEBUG', 'True' if NOT_PROD else 'False').lower() in ['true', '1', 't']
 
-# Hosts permitidos e origens confiáveis para CSRF
-ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'localhost',
-    'paginaviradastore--g8fjeqbuc9beeuc3.brazilsouth-01.azurewebsites.net'
-]
-CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', 'http://paginaviradastore--aac3ehfxb6h8bzhu.brazilsouth-01.azurewebsites.net').split() if not NOT_PROD else []
+# Hosts permitidos
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "127.0.0.1 localhost").split()
 
-# Redirecionamento HTTPS (produção)
+# CSRF trusted origins
+CSRF_TRUSTED_ORIGINS = os.getenv("CSRF_TRUSTED_ORIGINS", "").split() if not NOT_PROD else []
+
+# Redirecionamento HTTPS
 SECURE_SSL_REDIRECT = os.getenv('SECURE_SSL_REDIRECT', 'False').lower() in ['true', '1', 't']
 if SECURE_SSL_REDIRECT:
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-# Redirecionamento de login/logout
+# URLs de redirecionamento de login/logout
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login/'
@@ -59,7 +59,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# Configuração de URLs
+# URLs do projeto
 ROOT_URLCONF = 'Pagina_Virada_Store.urls'
 
 # Templates
@@ -79,8 +79,9 @@ TEMPLATES = [
     },
 ]
 
-# Aplicação WSGI
+# WSGI
 WSGI_APPLICATION = 'Pagina_Virada_Store.wsgi.application'
+
 # Banco de dados
 if NOT_PROD:
     DATABASES = {
@@ -97,6 +98,7 @@ else:
             'USER': os.getenv('DBUSER'),
             'PASSWORD': os.getenv('DBPASS'),
             'HOST': os.getenv('DBHOST'),
+            'PORT': '5432',
             'OPTIONS': {'sslmode': 'require'},
         }
     }
@@ -118,7 +120,7 @@ USE_L10N = True
 
 # Arquivos estáticos
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'forum' / 'static']
+STATICFILES_DIRS = []  # Ou ajuste se tiver uma pasta específica
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
