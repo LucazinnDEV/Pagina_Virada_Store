@@ -21,6 +21,9 @@ jobs:
       - name: 📦 Instalar dependências do Django
         run: pip install -r requirements.txt
 
+      - name: 🧩 Aplicar migrações do banco de dados
+        run: python manage.py migrate
+        
       - name: 🧪 Rodar testes Django
         run: python manage.py test
 
@@ -37,9 +40,6 @@ jobs:
 
       - name: 🗂️ Coletar arquivos estáticos
         run: python manage.py collectstatic --noinput
-
-      - name: 🧩 Aplicar migrações do banco de dados
-        run: python manage.py migrate
 
       - name: 🧹 Remover arquivos sensíveis
         run: |
