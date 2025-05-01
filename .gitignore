@@ -173,6 +173,6 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
-# Node.js (usado com Cypress)
+# Node.js (Cypress)
 node_modules/
 npm-debug.log
