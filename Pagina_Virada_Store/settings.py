@@ -91,6 +91,11 @@ if NOT_PROD:
         }
     }
 else:
+    required_vars = ['DBNAME', 'DBUSER', 'DBPASS', 'DBHOST']
+    for var in required_vars:
+        if not os.getenv(var):
+            raise Exception(f"Variável de ambiente obrigatória ausente: {var}")
+
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
