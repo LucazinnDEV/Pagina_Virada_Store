@@ -1,4 +1,4 @@
-name: Deploy to Azure Web App - Produção
+name: Deploy Azure - Produção Limpo
 
 on:
   push:
