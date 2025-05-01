@@ -54,6 +54,7 @@
                     <h5 class="card-title">{{ livro.titulo }}</h5>
                     <p class="card-text">Autor: {{ livro.autor }}</p>
                     <p class="card-text text-success">R$ {{ livro.preco }}</p>
+                    <a href="{% url 'detalhes_livro' livro.id %}" class="btn btn-primary mt-2">Ver Detalhes</a>
                   </div>
                 </div>
               </div>
