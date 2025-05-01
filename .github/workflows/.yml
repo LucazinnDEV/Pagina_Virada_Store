@@ -19,12 +19,10 @@ jobs:
           python-version: '3.11'
 
       - name: 📦 Instalar dependências do Django
-        run: |
-          set -x
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
 
       - name: 🧪 Rodar testes Django
-        run: npm run cy:run
+        run: python manage.py test
 
       - name: 🟢 Instalar Node.js
         uses: actions/setup-node@v3
@@ -43,7 +41,7 @@ jobs:
       - name: 🧩 Aplicar migrações do banco de dados
         run: python manage.py migrate
 
-      - name: 🧹 Remover arquivos sensíveis antes do deploy
+      - name: 🧹 Remover arquivos sensíveis
         run: |
           rm -f db.sqlite3
           rm -f .env || true
@@ -54,7 +52,3 @@ jobs:
           app-name: 'PaginaViradaStore'
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: .
-
-
-          
-#TESTANDO PIPELINE
