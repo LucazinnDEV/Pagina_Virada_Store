@@ -19,7 +19,9 @@ jobs:
           python-version: '3.11'
 
       - name: 📦 Instalar dependências do Django
-        run: pip install -r requirements.txt
+        run: |
+          set -x
+          pip install -r requirements.txt
 
       - name: 🧪 Rodar testes Django
         run: npm run cy:run
