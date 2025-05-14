@@ -1,0 +1,54 @@
+name: Deploy Azure - Staging (Main)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🔄 Checkout do código
+        uses: actions/checkout@v4
+
+      - name: 🐍 Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 📦 Instalar dependências do Django
+        run: pip install -r requirements.txt
+
+      - name: 🧩 Aplicar migrações do banco de dados
+        run: python manage.py migrate
+
+      - name: 🧪 Rodar testes Django
+        run: python manage.py test
+
+      - name: 🟢 Instalar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: 📦 Instalar dependências do Cypress
+        run: npm install
+
+      - name: 🚀 Iniciar servidor Django para Cypress
+        run: |
+          nohup python manage.py runserver 127.0.0.1:8000 &
+      
+      - name: ⏳ Esperar o servidor Django estar pronto
+        run: |
+          for i in {1..10}; do
+            if curl --silent http://127.0.0.1:8000 > /dev/null; then
+              echo "Servidor Django está pronto!"
+              break
+            fi
+            echo "Aguardando o servidor iniciar..."
+            sleep 3
+          done
+
+      - name: 🧪 Rodar testes Cypress
+        run: npx cypress run --config-file cypress.config.js

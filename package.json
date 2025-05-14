@@ -4,7 +4,8 @@
   "description": "**Página Virada Store** é um e-commerce especializado na venda de livros e e-books. O projeto tem como objetivo proporcionar uma experiência intuitiva e acessível para os usuários adquirirem seus títulos favoritos de forma rápida e segura.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "python manage.py runserver",
+    "cy:run": "start-server-and-test start http://127.0.0.1:8000 npx cypress run"
   },
   "repository": {
     "type": "git",
