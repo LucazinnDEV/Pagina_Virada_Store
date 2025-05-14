@@ -116,12 +116,12 @@
 <summary>🚀 Entrega 3</summary>
 <br/>
 
-### 📄 Jira Board 
+### 📄 Jira Backlog
 ![Sprint2 Quadro](./prints/entrega3_sprint2quadro.png)
 <br/>
 
 ### 📄 Jira Backlog
-![Sprint2 backlog](./prints/entrega3_sprint2backlog.png)
+![Sprint2 Backlog](./prints/entrega3_sprint2backlog.png)
 <br/>
 
 ### 📌 Issues 
