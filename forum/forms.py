@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import Perfil
 
 class RegistroUsuarioForm(UserCreationForm):
     TIPO_PESSOA_CHOICES = [
@@ -25,6 +26,12 @@ class RegistroUsuarioForm(UserCreationForm):
             'username': forms.TextInput(attrs={'class': 'form-control'}),
             'password1': forms.PasswordInput(attrs={'class': 'form-control'}),
             'password2': forms.PasswordInput(attrs={'class': 'form-control'}),
-        model = Perfil
-        fields = ['nome', 'sobrenome', 'data_nascimento', 'cpf', 'cep', 'endereco', 'telefone', 'foto']
         }
+
+class PerfilForm(forms.ModelForm):
+    class Meta:
+        model = Perfil
+        fields = [
+            'nome', 'sobrenome', 'tipo_pessoa', 'cpf',
+            'telefone', 'data_nascimento', 'cep', 'endereco', 'foto'
+        ]

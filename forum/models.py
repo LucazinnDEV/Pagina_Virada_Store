@@ -6,15 +6,16 @@ class Perfil(models.Model):
         ('F', 'Pessoa Física'),
         ('J', 'Pessoa Jurídica'),
     ]
-    usuario = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     nome = models.CharField(max_length=100)
     sobrenome = models.CharField(max_length=100)
-    tipo_pessoa = models.CharField(max_length=1, choices=TIPO_PESSOA_CHOICES)
-    data_nascimento = models.DateField()
-    cpf = models.CharField(max_length=14, unique=True)
+    tipo_pessoa = models.CharField(max_length=20)
+    cpf = models.CharField(max_length=14)
+    telefone = models.CharField(max_length=15)
+    data_nascimento = models.DateField(null=True, blank=True)
     cep = models.CharField(max_length=9)
-    endereco = models.CharField(max_length=200)
-    telefone = models.CharField(max_length=15, unique=True)
+    endereco = models.CharField(max_length=255)
+    foto = models.ImageField(upload_to='fotos_perfil/', null=True, blank=True)
 
     def __str__(self):
         return f"{self.nome} {self.sobrenome}"
@@ -72,13 +73,3 @@ class EventoPedido(models.Model):
     local = models.CharField(max_length=100)
     status = models.CharField(max_length=255)
     detalhes = models.TextField(blank=True, null=True)
-
-class Perfil(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    cpf = models.CharField(max_length=14, blank=True)
-    telefone = models.CharField(max_length=15, blank=True)
-    data_nascimento = models.DateField(null=True, blank=True)
-    foto = models.ImageField(upload_to='fotos_perfil/', null=True, blank=True)
-
-    def __str__(self):
-        return f'Perfil de {self.user.username}'

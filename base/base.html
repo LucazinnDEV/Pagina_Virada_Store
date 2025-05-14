@@ -46,6 +46,7 @@
 
       <ul class="navbar-nav ms-auto d-flex align-items-center gap-3">
         {% if user.is_authenticated %}
+      
           <li class="nav-item">
             <a class="nav-link" href="{% url 'wishlist' %}">
               <i class="bi bi-heart" style="font-size:1.5rem;"></i>
@@ -69,6 +70,9 @@
               <i class="bi bi-box-arrow-right" style="font-size:1.5rem;"></i>
             </a>
           </li>
+          <a class="nav-link" href="{% url 'perfil_usuario' %}">
+            <i class="bi bi-person-lines-fill" style="font-size:1.5rem;"></i>
+          </a>
         {% else %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'login' %}">

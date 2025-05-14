@@ -8,10 +8,9 @@ from django.db.models import Q
 from django.http import JsonResponse
 from decimal import Decimal
 from django.utils import timezone
-from .views import editar_perfil
-
-from .forms import RegistroUsuarioForm
-from .models import Perfil, Livro, Categoria, Wishlist, Pedido, EventoPedido, ItemPedido, PerfilForm
+from .models import Perfil
+from .forms import RegistroUsuarioForm, PerfilForm
+from .models import Perfil, Livro, Categoria, Wishlist, Pedido, EventoPedido, ItemPedido
 
 # Registro de usuário
 def registrar_usuario(request):
@@ -31,17 +30,15 @@ def registrar_usuario(request):
                 return render(request, 'forum/cadastro.html', {'form': form})
 
             with transaction.atomic():
-                usuario = form.save()
+                usuario = form.save()  # Cria o User
+
+                # Agora cria manualmente o perfil completo
                 Perfil.objects.create(
-                    usuario=usuario,
-                    nome=form.cleaned_data['nome'],
-                    sobrenome=form.cleaned_data['sobrenome'],
-                    tipo_pessoa=form.cleaned_data['tipo_pessoa'],
-                    data_nascimento=form.cleaned_data['data_nascimento'],
+                    user=usuario,
                     cpf=form.cleaned_data['cpf'],
-                    cep=form.cleaned_data['cep'],
-                    endereco=form.cleaned_data['endereco'],
                     telefone=form.cleaned_data['telefone'],
+                    data_nascimento=form.cleaned_data['data_nascimento'],
+                    foto=None  # ou algo como request.FILES.get('foto'), se quiser
                 )
 
             messages.success(request, 'Cadastro realizado com sucesso! Faça login.')
@@ -314,17 +311,19 @@ def rastrear_pedido(request, pedido_id):
 
 @login_required
 def editar_perfil(request):
-    perfil = get_object_or_404(Perfil, usuario=request.user)
+    perfil = get_object_or_404(Perfil, user=request.user)
 
     if request.method == 'POST':
         form = PerfilForm(request.POST, request.FILES, instance=perfil)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Perfil atualizado com sucesso!')
             return redirect('editar_perfil')
-        else:
-            messages.error(request, 'Erro ao atualizar o perfil. Verifique os dados.')
     else:
         form = PerfilForm(instance=perfil)
 
     return render(request, 'forum/editar_perfil.html', {'form': form})
+
+@login_required
+def perfil_usuario(request):
+    perfil = get_object_or_404(Perfil, user=request.user)
+    return render(request, 'forum/perfil.html', {'perfil': perfil})

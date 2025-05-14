@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+  <h2>Meu Perfil</h2>
+  <div class="card p-3">
+    {% if perfil.foto %}
+      <img src="{{ perfil.foto.url }}" alt="Foto de perfil" width="120" class="rounded mb-3">
+    {% endif %}
+    <p><strong>Usuário:</strong> {{ perfil.user.username }}</p>
+    <p><strong>Email:</strong> {{ perfil.user.email }}</p>
+    <p><strong>CPF:</strong> {{ perfil.cpf }}</p>
+    <p><strong>Telefone:</strong> {{ perfil.telefone }}</p>
+    <p><strong>Data de Nascimento:</strong> {{ perfil.data_nascimento }}</p>
+
+    <a href="{% url 'editar_perfil' %}" class="btn btn-primary mt-3">Editar Perfil</a>
+  </div>
+</div>
+{% endblock %}
