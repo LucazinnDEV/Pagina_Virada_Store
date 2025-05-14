@@ -72,3 +72,13 @@ class EventoPedido(models.Model):
     local = models.CharField(max_length=100)
     status = models.CharField(max_length=255)
     detalhes = models.TextField(blank=True, null=True)
+
+class Perfil(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    cpf = models.CharField(max_length=14, blank=True)
+    telefone = models.CharField(max_length=15, blank=True)
+    data_nascimento = models.DateField(null=True, blank=True)
+    foto = models.ImageField(upload_to='fotos_perfil/', null=True, blank=True)
+
+    def __str__(self):
+        return f'Perfil de {self.user.username}'
