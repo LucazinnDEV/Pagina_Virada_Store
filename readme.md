@@ -129,11 +129,11 @@
 <br/>
 
 #### 💬 Relato Programação em Par
-  Dando continuidade à estratégia definida na Sprint 1, mantivemos a divisão de tarefas entre os membros do grupo com base em reuniões pontuais realizadas no Discord. Essa abordagem, mais flexível e adaptada à nossa rotina, seguiu sendo eficaz ao permitir que cada integrante contribuísse com partes específicas do projeto de forma assíncrona.
+Dando continuidade à estratégia definida na Sprint 1, mantivemos a divisão de tarefas entre os membros do grupo com base em reuniões pontuais realizadas no Discord. Essa abordagem, mais flexível e adaptada à nossa rotina, seguiu sendo eficaz ao permitir que cada integrante contribuísse com partes específicas do projeto de forma assíncrona.
 
-  Apesar de termos considerado a possibilidade de retomar a programação em par, concluímos que, devido às limitações de disponibilidade simultânea dos integrantes, o modelo ainda não é viável para o grupo neste momento. A colaboração tem ocorrido de maneira produtiva através de alinhamentos regulares, trocas de feedbacks e suporte mútuo durante o desenvolvimento.
+Apesar de termos considerado a possibilidade de retomar a programação em par, concluímos que, devido às limitações de disponibilidade simultânea dos integrantes, o modelo ainda não é viável para o grupo neste momento. A colaboração tem ocorrido de maneira produtiva através de alinhamentos regulares, trocas de feedbacks e suporte mútuo durante o desenvolvimento.
 
-  Essa forma de organização tem favorecido a fluidez do trabalho, o cumprimento dos prazos e a qualidade das entregas previstas para esta sprint.
+Essa forma de organização tem favorecido a fluidez do trabalho, o cumprimento dos prazos e a qualidade das entregas previstas para esta sprint.
 
 <p align="center">
   <a href="https://paginaviradastore.atlassian.net/jira/software/projects/SCRUM/summary">
@@ -156,10 +156,29 @@
 </details>
 
 <details>
-<summary>🚧 Entrega 4</summary>
+<summary>🚀 Entrega 4</summary>
 <br/>
 
-*(Em andamento)*
+### 📄 Jira Board 
+![Sprint3 Quadro](./prints/entrega4_sprint3quadro.png)
+<br/>
+
+### 📄 Jira Backlog
+![Sprint3 backlog](./prints/entrega4_sprint3Backlog.png)
+<br/>
+
+### 📌 Issues 
+![Issues/Tracker](./prints/entrega3_issues.png)
+<br/>
+
+#### 💬 Relato Programação em Par
+Dando continuidade à estratégia estabelecida nas sprints anteriores, mantivemos a divisão de tarefas entre os membros do grupo com base em reuniões pontuais realizadas no Discord. Essa abordagem, que privilegia a flexibilidade e a adaptação à rotina individual de cada integrante, seguiu sendo eficaz ao permitir contribuições assíncronas e consistentes ao longo do desenvolvimento do projeto.
+
+Durante a Sprint 3, essa prática se consolidou ainda mais: aprimoramos a forma como documentamos os alinhamentos e evoluímos na organização das tarefas por meio de checklists compartilhados e atualizações frequentes em ferramentas colaborativas. Isso facilitou o acompanhamento do progresso por todos os membros, mesmo sem a necessidade de encontros síncronos frequentes.
+
+A possibilidade de retomar a programação em par foi novamente discutida, mas concluímos que, embora desejável, ainda não é viável neste momento devido às limitações de disponibilidade simultânea. Em compensação, intensificamos o apoio mútuo por meio de revisões de código e sugestões de melhorias, o que garantiu a coesão do trabalho e a manutenção da qualidade das entregas.
+
+Essa forma de organização tem se mostrado funcional e madura, contribuindo não apenas para o cumprimento dos prazos, mas também para o fortalecimento da colaboração e do senso de responsabilidade compartilhada dentro do grupo.
 
 </details>
 
