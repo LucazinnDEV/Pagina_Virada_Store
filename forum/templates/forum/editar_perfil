@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}Editar Perfil{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2 class="mb-4">Editar Perfil</h2>
+  <form method="post" enctype="multipart/form-data" class="row g-3">
+    {% csrf_token %}
+
+    <div class="col-md-6">
+      <label for="id_cpf" class="form-label">CPF</label>
+      {% render_field form.cpf class="form-control" placeholder="Digite seu CPF" %}
+    </div>
+
+    <div class="col-md-6">
+      <label for="id_telefone" class="form-label">Telefone</label>
+      {% render_field form.telefone class="form-control" placeholder="Digite seu telefone" %}
+    </div>
+
+    <div class="col-md-6">
+      <label for="id_data_nascimento" class="form-label">Data de Nascimento</label>
+      {% render_field form.data_nascimento class="form-control" %}
+    </div>
+
+    <div class="col-md-6">
+      <label for="id_foto" class="form-label">Foto de Perfil</label><br>
+      {% if form.instance.foto %}
+        <img src="{{ form.instance.foto.url }}" alt="Foto atual" style="max-height: 100px;" class="mb-2 d-block">
+      {% endif %}
+      {% render_field form.foto class="form-control" %}
+    </div>
+
+    <div class="col-12 mt-4">
+      <button type="submit" class="btn btn-primary">Salvar</button>
+      <a href="{% url 'home' %}" class="btn btn-secondary">Cancelar</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

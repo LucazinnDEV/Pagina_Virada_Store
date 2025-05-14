@@ -25,4 +25,6 @@ class RegistroUsuarioForm(UserCreationForm):
             'username': forms.TextInput(attrs={'class': 'form-control'}),
             'password1': forms.PasswordInput(attrs={'class': 'form-control'}),
             'password2': forms.PasswordInput(attrs={'class': 'form-control'}),
+        model = Perfil
+        fields = ['nome', 'sobrenome', 'data_nascimento', 'cpf', 'cep', 'endereco', 'telefone', 'foto']
         }

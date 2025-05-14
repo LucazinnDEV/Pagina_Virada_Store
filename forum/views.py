@@ -8,10 +8,10 @@ from django.db.models import Q
 from django.http import JsonResponse
 from decimal import Decimal
 from django.utils import timezone
+from .views import editar_perfil
 
 from .forms import RegistroUsuarioForm
-from .models import Perfil, Livro, Categoria, Wishlist, Pedido, EventoPedido
-from .models import Perfil, Livro, Categoria, Wishlist, Pedido, EventoPedido, ItemPedido
+from .models import Perfil, Livro, Categoria, Wishlist, Pedido, EventoPedido, ItemPedido, PerfilForm
 
 # Registro de usuário
 def registrar_usuario(request):
@@ -311,3 +311,20 @@ def rastrear_pedido(request, pedido_id):
         'pedido': pedido,
         'eventos': eventos
     })
+
+@login_required
+def editar_perfil(request):
+    perfil = get_object_or_404(Perfil, usuario=request.user)
+
+    if request.method == 'POST':
+        form = PerfilForm(request.POST, request.FILES, instance=perfil)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Perfil atualizado com sucesso!')
+            return redirect('editar_perfil')
+        else:
+            messages.error(request, 'Erro ao atualizar o perfil. Verifique os dados.')
+    else:
+        form = PerfilForm(instance=perfil)
+
+    return render(request, 'forum/editar_perfil.html', {'form': form})

@@ -37,4 +37,8 @@ urlpatterns = [
     path('obrigado/', views.obrigado, name='obrigado'),
     path('meus-pedidos/<int:pedido_id>/rastrear/', views.rastrear_pedido, name='rastrear_pedido'),
 
+    #perfil
+    urlpatterns = [
+    path('perfil/', views.editar_perfil, name='editar_perfil'),
+
 ]
