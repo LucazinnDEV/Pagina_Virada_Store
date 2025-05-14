@@ -168,7 +168,7 @@ Essa forma de organização tem favorecido a fluidez do trabalho, o cumprimento 
 <br/>
 
 ### 📌 Issues 
-![Issues/Tracker](./prints/entrega3_issues.png)
+![Issues/Tracker]()
 <br/>
 
 #### 💬 Relato Programação em Par
