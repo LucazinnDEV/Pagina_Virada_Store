@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block title %}Editar Perfil{% endblock %}
+
+{% block content %}
+<style>
+  input[readonly], select[disabled], input:disabled {
+    background-color: #f8f9fa !important;
+    color: #6c757d !important;
+    cursor: not-allowed;
+  }
+</style>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="mb-4 text-center">Editar Perfil</h2>
+          <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- Nome (readonly) -->
+            <div class="mb-3">
+              <label class="form-label">Nome</label>
+              <input type="text" name="nome" class="form-control" value="{{ perfil.nome }}" readonly>
+            </div>
+            <!-- Sobrenome (readonly) -->
+            <div class="mb-3">
+              <label class="form-label">Sobrenome</label>
+              <input type="text" name="sobrenome" class="form-control" value="{{ perfil.sobrenome }}" readonly>
+            </div>
+            <!-- Tipo de Pessoa (readonly text) -->
+            <div class="mb-3">
+              <label class="form-label">Tipo de Pessoa</label>
+              <input type="text" class="form-control" value="{% if perfil.tipo_pessoa == 'F' %}Pessoa Física{% else %}Pessoa Jurídica{% endif %}" readonly>
+            </div>
+            <!-- CPF (readonly) -->
+            <div class="mb-3">
+              <label class="form-label">CPF</label>
+              <input type="text" name="cpf" class="form-control" value="{{ perfil.cpf }}" readonly>
+            </div>
+            <!-- Data de Nascimento (readonly) -->
+            <div class="mb-3">
+              <label class="form-label">Data de Nascimento</label>
+              <input type="date" name="data_nascimento" class="form-control" value="{{ perfil.data_nascimento|date:'Y-m-d' }}" readonly>
+            </div>
+            <!-- Telefone (editável) -->
+            <div class="mb-3">
+              <label class="form-label">Telefone</label>
+              <input type="text" name="telefone" class="form-control" value="{{ perfil.telefone }}">
+            </div>
+            <!-- CEP (editável) -->
+            <div class="mb-3">
+              <label class="form-label">CEP</label>
+              <input type="text" name="cep" class="form-control" value="{{ perfil.cep }}">
+            </div>
+            <!-- Endereço (editável) -->
+            <div class="mb-3">
+              <label class="form-label">Endereço</label>
+              <input type="text" name="endereco" class="form-control" value="{{ perfil.endereco }}">
+            </div>
+            <!-- Foto (editável) -->
+            <div class="mb-3">
+              <label class="form-label">Foto</label>
+              <input type="file" name="foto" class="form-control">
+              {% if perfil.foto %}
+                <div class="mt-2">
+                  <img src="{{ perfil.foto.url }}" alt="Foto de perfil" class="rounded" style="max-width:120px;">
+                </div>
+              {% endif %}
+            </div>
+            <div class="d-flex justify-content-between mt-4">
+              <button type="submit" class="btn btn-primary w-50 me-2">Salvar</button>
+              <a href="{% url 'perfil_usuario' %}" class="btn btn-secondary w-50">Cancelar</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

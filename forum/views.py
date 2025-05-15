@@ -327,3 +327,11 @@ def editar_perfil(request):
 def perfil_usuario(request):
     perfil = get_object_or_404(Perfil, user=request.user)
     return render(request, 'forum/perfil.html', {'perfil': perfil})
+
+def livros_por_categoria(request, categoria_id):
+    categoria = get_object_or_404(Categoria, id=categoria_id)
+    livros = Livro.objects.filter(categoria=categoria)
+    return render(request, 'forum/livros_por_categoria.html', {
+        'categoria': categoria,
+        'livros': livros
+    })

@@ -10,6 +10,8 @@ urlpatterns = [
     path('mais-vendidos/', views.mais_vendidos, name='mais_vendidos'),
     path('recomendados/', views.ver_recomendados, name='ver_recomendados'),
     path('<int:livro_id>/', views.detalhes_livro, name='detalhes_livro'),
+    path('categoria/<int:categoria_id>/', views.livros_por_categoria, name='livros_por_categoria'),
+
 
     # Usuário
     path('registrar/', views.registrar_usuario, name='registrar'),
@@ -40,5 +42,6 @@ urlpatterns = [
     #perfil
     path('perfil/', views.perfil_usuario, name='perfil_usuario'),
     path('perfil/editar/', views.editar_perfil, name='editar_perfil'),
+
 
 ]
