@@ -171,6 +171,14 @@ Essa forma de organização tem favorecido a fluidez do trabalho, o cumprimento 
 ![Issues/Tracker]()
 <br/>
 
+### 📘 Como Contribuir
+
+Se você deseja contribuir com o projeto, leia nosso guia completo:
+
+📄 [Guia de Contribuição (CONTRIBUTING.md)](CONTRIBUTING.md)
+
+Esse documento inclui instruções de instalação, uso do ambiente virtual, práticas recomendadas, estrutura de branches e como criar Pull Requests. Sua colaboração é muito bem-vinda!
+
 #### 💬 Relato Programação em Par
 Dando continuidade à estratégia estabelecida nas sprints anteriores, mantivemos a divisão de tarefas entre os membros do grupo com base em reuniões pontuais realizadas no Discord. Essa abordagem, que privilegia a flexibilidade e a adaptação à rotina individual de cada integrante, seguiu sendo eficaz ao permitir contribuições assíncronas e consistentes ao longo do desenvolvimento do projeto.
 
