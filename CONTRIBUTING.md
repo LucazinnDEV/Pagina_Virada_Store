@@ -31,7 +31,7 @@ Se necessário, baixe:
 ### 3. Clone o Repositório
 
 ```bash
-git clone https://github.com/jjoaoguilherme/Pagina_Virada_Store.git
+git clone https://github.com/Rafaellc-DEV/Pagina_Virada_Store
 cd Pagina_Virada_Store
 ```
 
