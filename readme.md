@@ -168,7 +168,7 @@ Essa forma de organização tem favorecido a fluidez do trabalho, o cumprimento 
 <br/>
 
 ### 📌 Issues 
-![Issues/Tracker](./prints/entrega4_issues)
+![Issues/Tracker](./prints/entrega4_issues.png)
 <br/>
 
 ### 📘 Como Contribuir
