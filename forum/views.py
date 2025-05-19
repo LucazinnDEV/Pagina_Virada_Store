@@ -83,13 +83,16 @@ def home(request):
     livros = Livro.objects.all()
     mais_vendidos = Livro.objects.order_by('-vendas')[:10]
     recomendados = Livro.objects.filter(recomendado=True)[:10]
+    categorias = Categoria.objects.all()
     desejos_count = Wishlist.objects.filter(user=request.user).count() if request.user.is_authenticated else 0
     return render(request, 'forum/home.html', {
         'livros': livros,
         'mais_vendidos': mais_vendidos,
         'recomendados': recomendados,
+        'categorias': categorias,
         'desejos_count': desejos_count,
     })
+
 
 # Categorias
 def categorias(request):
