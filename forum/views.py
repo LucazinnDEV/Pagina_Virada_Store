@@ -328,8 +328,21 @@ def editar_perfil(request):
 
 @login_required
 def perfil_usuario(request):
-    perfil = get_object_or_404(Perfil, user=request.user)
-    return render(request, 'forum/perfil.html', {'perfil': perfil})
+    # garante que exista um Perfil para o usuário
+    perfil, created = Perfil.objects.get_or_create(user=request.user)
+
+    if request.method == 'POST':
+        form = PerfilForm(request.POST, instance=perfil)
+        if form.is_valid():
+            form.save()
+            return redirect('perfil')  # ou onde você queira ir após salvar
+    else:
+        form = PerfilForm(instance=perfil)
+
+    return render(request, 'forum/perfil.html', {
+        'form': form,
+        'created': created,  # útil se quiser mostrar algo novo
+    })
 
 def livros_por_categoria(request, categoria_id):
     categoria = get_object_or_404(Categoria, id=categoria_id)
