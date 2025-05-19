@@ -1,32 +1,38 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Livros - {{ categoria.nome }}{% endblock %}
+{% block title %}{{ categoria.nome }} - Livros{% endblock %}
 
 {% block content %}
-<div class="container my-5">
-  <h2 class="mb-4">Categoria: {{ categoria.nome }}</h2>
+  <div class="container mt-4">
+    <h2 class="mb-4">Livros da Categoria: {{ categoria.nome }}</h2>
 
-  {% if livros %}
-    <div class="row row-cols-1 row-cols-md-4 g-4">
-      {% for livro in livros %}
-        <div class="col">
-          <div class="card h-100 shadow-sm">
-            <img src="{{ livro.imagem.url }}" class="card-img-top" alt="{{ livro.titulo }}" style="height: 250px; object-fit: cover;">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">{{ livro.titulo }}</h5>
-              <p class="card-text text-muted">{{ livro.autor }}</p>
-              <p class="card-text fw-bold mb-2">R$ {{ livro.preco }}</p>
-              <a href="{% url 'detalhes_livro' livro.id %}" class="btn btn-primary mt-auto">Ver Detalhes</a>
+    {% if livros %}
+      <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4">
+        {% for livro in livros %}
+          <div class="col">
+            <div class="card h-100 shadow-sm position-relative">
+              <img src="{{ livro.imagem }}" class="card-img-top" alt="{{ livro.titulo }}" style="height:200px; object-fit:cover;">
+              <div class="card-body d-flex flex-column">
+                <h6 class="card-title">{{ livro.titulo }}</h6>
+                <p class="text-muted small mb-1">{{ livro.autor }}</p>
+                <p class="text-success fw-bold mb-2">R$ {{ livro.preco }}</p>
+                <div class="mt-auto">
+                  <a href="{% url 'detalhes_livro' livro.id %}" class="btn btn-outline-primary btn-sm w-100">Ver Detalhes</a>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      {% endfor %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="alert alert-info">
+        Nenhum livro encontrado nesta categoria.
+      </div>
+    {% endif %}
+
+    <div class="text-center mt-4">
+      <a href="{% url 'home' %}" class="btn btn-link">← Voltar à Home</a>
     </div>
-  {% else %}
-    <div class="alert alert-info mt-4" role="alert">
-      Nenhum livro encontrado nesta categoria.
-    </div>
-  {% endif %}
-</div>
+  </div>
 {% endblock %}
