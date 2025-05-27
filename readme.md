@@ -195,3 +195,4 @@ Essa forma de organização tem se mostrado funcional e madura, contribuindo nã
 ## 💡 Observações
 
 > Este projeto é parte da disciplina de Fundamentos de Desenvolvimento de Software (FDS) – 2025.1.
+
