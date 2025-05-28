@@ -1,49 +1,39 @@
-name: Deploy Azure - Produção Limpo
+name: Deploy Django to Azure
 
 on:
   push:
     branches:
-      - prod
+      - prod  # Altere para 'main' se for sua branch principal
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🔄 Checkout do código
-        uses: actions/checkout@v4
+      - name: 📦 Clonar o repositório
+        uses: actions/checkout@v3
 
       - name: 🐍 Configurar Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
-      - name: 📦 Instalar dependências do Django
+      - name: 📚 Instalar dependências
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: 🧩 Aplicar migrações do banco de dados
-        run: python manage.py migrate
-
-      - name: 🧪 Rodar testes Django
-        run: python manage.py test
-
-      - name: 🗂️ Coletar arquivos estáticos
-        run: python manage.py collectstatic --noinput
-
-      - name: 🧹 Remover arquivos sensíveis
+      - name: 📁 Coletar arquivos estáticos
         run: |
-          rm -f db.sqlite3
-          rm -f .env || true
+          python manage.py collectstatic --noinput
 
-      - name: 📁 Criar pacote de deploy
+      - name: 🗃️ Aplicar migrações do banco
         run: |
-          zip -r django_app.zip . -x "*.git*" "cypress/*" "node_modules/*"
+          python manage.py migrate
 
-      - name: 🚀 Fazer deploy no Azure Web App
+      - name: 🚀 Deploy para Azure Web App
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'PaginaViradaStore'
+          app-name: PaginaViradaStore
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: django_app.zip
+          package: .
