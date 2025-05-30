@@ -4,11 +4,8 @@ describe('Login Admin', () => {
     cy.get('#id_username').type('joao');
     cy.get('#id_password').type('270406');
     cy.get('form').submit();
-
     cy.url().should('include', '/admin/');
-
-    // Comentado: validação baseada em conteúdo da página
-    // cy.contains('Administração do Site', { timeout: 10000 }).should('be.visible');
+    cy.get('#site-name', { timeout: 10000 }).should('contain.text', 'Site administration');
   });
 
   it('Login com credenciais erradas', () => {
@@ -16,8 +13,7 @@ describe('Login Admin', () => {
     cy.get('#id_username').type('joao');
     cy.get('#id_password').type('senhaerrada');
     cy.get('form').submit();
-
-    // Comentado: validação baseada em conteúdo da página
-    // cy.get('.errornote', { timeout: 10000 }).should('contain', 'Por favor, insira um usuário e senha corretos');
+    cy.get('.errornote', { timeout: 10000 }).should('be.visible');
+    cy.get('.errornote').should('contain.text', 'senha corretos');
   });
 });
