@@ -179,6 +179,38 @@ Se você deseja contribuir com o projeto, leia nosso guia completo:
 
 Esse documento inclui instruções de instalação, uso do ambiente virtual, práticas recomendadas, estrutura de branches e como criar Pull Requests. Sua colaboração é muito bem-vinda!
 
+## 💬 Relato de Programação em Par
+
+Dando continuidade à estratégia estabelecida nas sprints anteriores, mantivemos a divisão de tarefas entre os membros do grupo com base em reuniões pontuais realizadas no Discord. Essa abordagem, que privilegia a flexibilidade e a adaptação à rotina individual de cada integrante, seguiu sendo eficaz ao permitir contribuições assíncronas e consistentes ao longo do desenvolvimento do projeto.
+
+Durante a Sprint 3, essa prática se consolidou ainda mais: aprimoramos a forma como documentamos os alinhamentos e evoluímos na organização das tarefas por meio de checklists compartilhados e atualizações frequentes em ferramentas colaborativas. Isso facilitou o acompanhamento do progresso por todos os membros, mesmo sem a necessidade de encontros síncronos frequentes.
+
+A possibilidade de retomar a programação em par foi novamente discutida, mas concluímos que, embora desejável, ainda não é viável neste momento devido às limitações de disponibilidade simultânea. Em compensação, intensificamos o apoio mútuo por meio de revisões de código e sugestões de melhorias, o que garantiu a coesão do trabalho e a manutenção da qualidade das entregas.
+
+Essa forma de organização tem se mostrado funcional e madura, contribuindo não apenas para o cumprimento dos prazos, mas também para o fortalecimento da colaboração e do senso de responsabilidade compartilhada dentro do grupo.
+
+### 👥 Distribuição das Tarefas em Dupla
+
+Durante esta sprint, a organização do trabalho por duplas foi mantida como estratégia central para distribuir as tarefas de forma equilibrada e alinhada às competências dos integrantes. Cada dupla assumiu responsabilidades específicas, conforme detalhado abaixo:
+
+- **Hugo e João**  
+  - Responsáveis pelos **testes automatizados**  
+  - Implementação da **História 0: Resumo do Pedido e Rastreamento**  
+  - Organização da nova sprint  
+  - Atualização do **Jira** com os novos cards e progresso  
+
+- **Guilherme e José**  
+  - Atualização da documentação: `README.md` e `CONTRIBUTING.md`  
+  - Gravação dos **screencasts**  
+  - Implementação da **História 9: Livros Mais Vendidos**
+  - Manutenção do **bug tracker** e das **issues**
+
+- **Lucas e Rafael**  
+  - Implementação das histórias:
+    - **História 5: Navegar por Categoria**
+    - **História 8: Criação e Edição de Perfil**  
+  - Atualização dos protótipos no **Figma**
+
 <p align="center">
   <a href="https://paginaviradastore.atlassian.net/jira/software/projects/SCRUM/summary">
       <img src="https://img.shields.io/badge/Jira-BF9056?style=for-the-badge&logo=Jira&logoColor=white"/></a>
@@ -196,15 +228,6 @@ Esse documento inclui instruções de instalação, uso do ambiente virtual, pr�
     <img src="https://img.shields.io/badge/Screencast da execução dos testes-40211A?style=for-the-badge&logo=youtube&logoColor=white"/></a>
 </p>
 <br/>
-
-#### 💬 Relato Programação em Par
-Dando continuidade à estratégia estabelecida nas sprints anteriores, mantivemos a divisão de tarefas entre os membros do grupo com base em reuniões pontuais realizadas no Discord. Essa abordagem, que privilegia a flexibilidade e a adaptação à rotina individual de cada integrante, seguiu sendo eficaz ao permitir contribuições assíncronas e consistentes ao longo do desenvolvimento do projeto.
-
-Durante a Sprint 3, essa prática se consolidou ainda mais: aprimoramos a forma como documentamos os alinhamentos e evoluímos na organização das tarefas por meio de checklists compartilhados e atualizações frequentes em ferramentas colaborativas. Isso facilitou o acompanhamento do progresso por todos os membros, mesmo sem a necessidade de encontros síncronos frequentes.
-
-A possibilidade de retomar a programação em par foi novamente discutida, mas concluímos que, embora desejável, ainda não é viável neste momento devido às limitações de disponibilidade simultânea. Em compensação, intensificamos o apoio mútuo por meio de revisões de código e sugestões de melhorias, o que garantiu a coesão do trabalho e a manutenção da qualidade das entregas.
-
-Essa forma de organização tem se mostrado funcional e madura, contribuindo não apenas para o cumprimento dos prazos, mas também para o fortalecimento da colaboração e do senso de responsabilidade compartilhada dentro do grupo.
 
 </details>
 
