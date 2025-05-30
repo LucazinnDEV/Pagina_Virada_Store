@@ -11,7 +11,7 @@
     <img src="https://img.shields.io/badge/Jira-BF9056?style=for-the-badge&logo=Jira&logoColor=white"/></a>
   <a href="https://www.figma.com/design/aDKjwqFzzYOgslpmmFgf3w/Untitled?node-id=0-1&t=petcbihtWxGSNXbQ-1">
     <img src="https://img.shields.io/badge/Figma-40211A?style=for-the-badge&logo=figma&logoColor=white"/></a>
-  <a href="https://paginaviradastore-hrfde8hchhbdcjbg.brazilsouth-01.azurewebsites.net/">
+  <a href="http://paginaviradastore-bkg4fbezg5ebbaej.brazilsouth-01.azurewebsites.net">
     <img src="https://img.shields.io/badge/Azure Deploy-40211A?style=for-the-badge&logoColor=white"/></a>
   <a href="https://youtube.com/playlist?list=PLql-8xGSZOnC54kFiA03umnxNXTRMA4z9&si=_I32WK-SXjsJZ-Jb">
     <img src="https://img.shields.io/badge/Youtube-40211A?style=for-the-badge&logo=youtube&logoColor=white"/></a>
