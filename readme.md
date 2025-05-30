@@ -103,7 +103,7 @@
 <p align="center">
   <a href="https://paginaviradastore.atlassian.net/jira/software/projects/SCRUM/summary">
       <img src="https://img.shields.io/badge/Jira-BF9056?style=for-the-badge&logo=Jira&logoColor=white"/></a>
-  <a href="https://paginaviradastore-hrfde8hchhbdcjbg.brazilsouth-01.azurewebsites.net/">
+  <a href="http://paginaviradastore-bkg4fbezg5ebbaej.brazilsouth-01.azurewebsites.net">
     <img src="https://img.shields.io/badge/Azure Deploy-40211A?style=for-the-badge&logoColor=white"/></a>
   <a href="https://youtu.be/kaBcxNm3d-Y">
     <img src="https://img.shields.io/badge/Screencast Protótipo de alta fidelidade part.1-BF9056?style=for-the-badge&logo=youtube&logoColor=white"/></a>
@@ -140,7 +140,7 @@ Essa forma de organização tem favorecido a fluidez do trabalho, o cumprimento 
       <img src="https://img.shields.io/badge/Jira-BF9056?style=for-the-badge&logo=Jira&logoColor=white"/></a>
   <a href="https://www.figma.com/design/aDKjwqFzzYOgslpmmFgf3w/Untitled?node-id=0-1&t=petcbihtWxGSNXbQ-1">
       <img src="https://img.shields.io/badge/Figma-40211A?style=for-the-badge&logo=figma&logoColor=white"/></a>
-  <a href="https://paginaviradastore-hrfde8hchhbdcjbg.brazilsouth-01.azurewebsites.net/">
+  <a href="http://paginaviradastore-bkg4fbezg5ebbaej.brazilsouth-01.azurewebsites.net">
     <img src="https://img.shields.io/badge/Azure Deploy-40211A?style=for-the-badge&logoColor=white"/></a>
   <a href="https://www.youtube.com/watch?v=DuMqZE8qhM4&list=PLql-8xGSZOnC54kFiA03umnxNXTRMA4z9&index=3&ab_channel=LUCASSAMUELPEREIRAALVES">
     <img src="https://img.shields.io/badge/Screencast LO FI + part.2-40211A?style=for-the-badge&logo=youtube&logoColor=white"/></a>
@@ -178,6 +178,24 @@ Se você deseja contribuir com o projeto, leia nosso guia completo:
 📄 [Guia de Contribuição (CONTRIBUTING.md)](CONTRIBUTING.md)
 
 Esse documento inclui instruções de instalação, uso do ambiente virtual, práticas recomendadas, estrutura de branches e como criar Pull Requests. Sua colaboração é muito bem-vinda!
+
+<p align="center">
+  <a href="https://paginaviradastore.atlassian.net/jira/software/projects/SCRUM/summary">
+      <img src="https://img.shields.io/badge/Jira-BF9056?style=for-the-badge&logo=Jira&logoColor=white"/></a>
+  <a href="https://www.figma.com/design/aDKjwqFzzYOgslpmmFgf3w/Untitled?node-id=0-1&t=petcbihtWxGSNXbQ-1">
+      <img src="https://img.shields.io/badge/Figma-40211A?style=for-the-badge&logo=figma&logoColor=white"/></a>
+  <a href="http://paginaviradastore-bkg4fbezg5ebbaej.brazilsouth-01.azurewebsites.net">
+    <img src="https://img.shields.io/badge/Azure Deploy-40211A?style=for-the-badge&logoColor=white"/></a>
+  <a href="https://www.youtube.com/watch?v=DuMqZE8qhM4&list=PLql-8xGSZOnC54kFiA03umnxNXTRMA4z9&index=3&ab_channel=LUCASSAMUELPEREIRAALVES">
+    <img src="https://img.shields.io/badge/Screencast LO FI part.3-40211A?style=for-the-badge&logo=youtube&logoColor=white"/></a>
+  <a href="https://www.youtube.com/watch?v=09Yv8eIaykw&ab_channel=LUCASSAMUELPEREIRAALVES">
+    <img src="https://img.shields.io/badge/Screencast Deploy (ênfase nas novas histórias)-40211A?style=for-the-badge&logo=youtube&logoColor=white"/></a>
+  <a href="https://www.youtube.com/watch?v=BO3O6hDzTIU">
+    <img src="https://img.shields.io/badge/Screencast do processo de build e deployment-40211A?style=for-the-badge&logo=youtube&logoColor=white"/></a>
+  <a href="https://www.youtube.com/watch?v=MoXdeayNSFY&list=PLql-8xGSZOnC54kFiA03umnxNXTRMA4z9&index=4">
+    <img src="https://img.shields.io/badge/Screencast da execução dos testes-40211A?style=for-the-badge&logo=youtube&logoColor=white"/></a>
+</p>
+<br/>
 
 #### 💬 Relato Programação em Par
 Dando continuidade à estratégia estabelecida nas sprints anteriores, mantivemos a divisão de tarefas entre os membros do grupo com base em reuniões pontuais realizadas no Discord. Essa abordagem, que privilegia a flexibilidade e a adaptação à rotina individual de cada integrante, seguiu sendo eficaz ao permitir contribuições assíncronas e consistentes ao longo do desenvolvimento do projeto.
