@@ -14,6 +14,6 @@ describe('Login Admin', () => {
     cy.get('#id_password').type('senhaerrada');
     cy.get('form').submit();
     cy.get('.errornote', { timeout: 10000 }).should('be.visible');
-    cy.get('.errornote').should('contain.text', 'senha corretos');
+    cy.get('.errornote').should('contain.text', 'Please enter the correct username and password');
   });
 });
