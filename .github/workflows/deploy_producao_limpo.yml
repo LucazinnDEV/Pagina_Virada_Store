@@ -56,6 +56,6 @@ jobs:
       - name: 🚀 Fazer deploy no Azure Web App
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'paginaviradastore-bkg4fbezg5ebbaej'  # << Nome exato da Azure
+          app-name: 'PaginaViradaStore'  # Nome exato do App Service
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: .
