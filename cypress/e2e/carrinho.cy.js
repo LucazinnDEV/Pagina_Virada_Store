@@ -7,7 +7,11 @@ describe('Carrinho', () => {
 
   it('Adiciona item ao carrinho e acessa a página do carrinho', () => {
     
-    cy.get('button').contains('Adicionar ao carrinho').click();
+    cy.visit('/pagina-do-produto/1'); 
+    cy.get('button#comprarBtn')
+      .should('contain.text', 'ADICIONAR NO CARRINHO 🛒')
+      .click();
+    cy.get('form#comprarForm').submit();
     cy.visit('/carrinho');
     cy.url().should('include', '/carrinho');
     cy.get('tbody tr').should('have.length.greaterThan', 0);
