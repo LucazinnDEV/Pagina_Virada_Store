@@ -35,5 +35,6 @@ describe('Finalizar Compra', () => {
 
     // Comentado: validação baseada em conteúdo da página
     // cy.contains('Este campo é obrigatório').should('be.visible');
+    a
   });
 });
