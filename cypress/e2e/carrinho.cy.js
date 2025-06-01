@@ -5,7 +5,7 @@ describe('Carrinho', () => {
   });
 
   it('Adiciona item ao carrinho e acessa a página do carrinho', () => {
-    cy.visit('/1/');
+    cy.visit('/livro/1/');  
     cy.get('#comprarBtn').should('be.visible').click();
     cy.get('#confirmModal', { timeout: 10000 }).should('be.visible');
     cy.get('#goToCart').click();
