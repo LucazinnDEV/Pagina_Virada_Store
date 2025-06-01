@@ -195,7 +195,7 @@ Durante esta sprint, a organização do trabalho por duplas foi mantida como est
 
 - **Hugo e João**  
   - Responsáveis pelos **testes automatizados**  
-  - Implementação da **História 0: Resumo do Pedido e Rastreamento**  
+  - Implementação da **História 10: Resumo do Pedido e Rastreamento**  
   - Organização da nova sprint  
   - Atualização do **Jira** com os novos cards e progresso  
 
