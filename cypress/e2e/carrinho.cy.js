@@ -19,3 +19,4 @@ describe('Carrinho', () => {
     cy.contains('Seu carrinho está vazio').should('be.visible');
   });
 });
+test
