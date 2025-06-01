@@ -4,9 +4,6 @@ describe('Páginas básicas', () => {
   paginas.forEach((pagina) => {
     it(`Acessa a página ${pagina}`, () => {
       cy.visit(pagina);
-
-      // Comentado: verificação de conteúdo da página
-      // cy.contains('Página Virada').should('be.visible'); 
     });
   });
 });
