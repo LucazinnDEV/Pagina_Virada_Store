@@ -2,7 +2,6 @@ describe('Carrinho', () => {
   beforeEach(() => {
     cy.clearLocalStorage();
     cy.clearCookies();
-    cy.visit('/');
   });
 
   it('Adiciona item ao carrinho e acessa a página do carrinho', () => {
@@ -16,8 +15,6 @@ describe('Carrinho', () => {
   });
 
   it('Exibe mensagem ao acessar o carrinho vazio', () => {
-    cy.clearLocalStorage();
-    cy.clearCookies();
     cy.visit('/carrinho');
     cy.contains('Seu carrinho está vazio').should('be.visible');
   });
