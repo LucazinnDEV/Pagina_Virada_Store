@@ -226,8 +226,11 @@ Durante esta sprint, a organização do trabalho por duplas foi mantida como est
     <img src="https://img.shields.io/badge/Screencast do processo de build e deployment-40211A?style=for-the-badge&logo=youtube&logoColor=white"/></a>
   <a href="https://www.youtube.com/watch?v=MoXdeayNSFY&list=PLql-8xGSZOnC54kFiA03umnxNXTRMA4z9&index=4">
     <img src="https://img.shields.io/badge/Screencast da execução dos testes-40211A?style=for-the-badge&logo=youtube&logoColor=white"/></a>
+  <a href="https://www.youtube.com/watch?v=XptsB1qyD2Y">
+    <img src="https://img.shields.io/badge/Screencast extra-40211A?style=for-the-badge&logo=youtube&logoColor=white"/></a>
 </p>
 <br/>
+
 
 </details>
 
