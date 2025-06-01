@@ -2,7 +2,7 @@ const { defineConfig } = require('cypress')
 
 module.exports = defineConfig({
   e2e: {
-    baseUrl: 'http://127.0.0.1:8000',
+    baseUrl: 'https://paginaviradastore-bkg4fbezg5ebbaej.brazilsouth-01.azurewebsites.net',
     supportFile: false,
     specPattern: 'cypress/e2e/**/*.cy.js',
     defaultCommandTimeout: 20000, 
