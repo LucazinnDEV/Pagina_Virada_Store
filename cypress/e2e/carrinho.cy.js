@@ -5,7 +5,7 @@ describe('Carrinho', () => {
   });
 
   it('Adiciona item ao carrinho e acessa a página do carrinho', () => {
-    cy.visit('/produto/1/');
+    cy.visit('/1/'); 
     cy.get('#comprarBtn').click();
     cy.get('#confirmModal').should('be.visible');
     cy.get('#goToCart').click();
