@@ -15,6 +15,8 @@
     <img src="https://img.shields.io/badge/Azure Deploy-40211A?style=for-the-badge&logoColor=white"/></a>
   <a href="https://youtube.com/playlist?list=PLql-8xGSZOnC54kFiA03umnxNXTRMA4z9&si=_I32WK-SXjsJZ-Jb">
     <img src="https://img.shields.io/badge/Youtube-40211A?style=for-the-badge&logo=youtube&logoColor=white"/></a>
+  <a href="https://www.canva.com/design/DAGpJkDiuAg/5__YPDeJX23JJPcV1c65WA/edit">
+    <img src="https://img.shields.io/badge/Apresentação-40211A?style=for-the-badge&logoColor=white"/></a>
 </div>
 
 
